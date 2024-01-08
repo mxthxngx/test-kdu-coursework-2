@@ -49,16 +49,16 @@ public class Main {
         int id = 1;
         Student st1 = studentRepoObj.getStudent(id);
         if (st1 != null)
-            CustomLogging.getLoggerCustom().info("\nID: %d Name %s Grade %s  Age %d" ,st1.getID(), st1.getName() , st1.getGrade() , st1.getAge());
+            CustomLogging.getLoggerCustom().debug("\nID: {} Name {} Grade {}  Age {}" ,st1.getID(), st1.getName() , st1.getGrade() , st1.getAge());
 
         else
-            System.out.println("Unable to find user");
+            CustomLogging.getLoggerCustom().error("Unable to find user");
 
 
         String name = "mathangi";
         Student st = studentRepoObj.getStudent(name);
         if (st != null)
-            CustomLogging.getLoggerCustom().info("\nID: %d Name %s Grade %s Age %d" ,st.getID(), st.getName() , st.getGrade(),st.getAge());
+            CustomLogging.getLoggerCustom().info("\nID: {} Name {} Grade {} Age {}" ,st.getID(), st.getName() , st.getGrade(),st.getAge());
         else
             CustomLogging.getLoggerCustom().error("Unable to find user");
 
