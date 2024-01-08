@@ -1,8 +1,6 @@
 package org.handson;
 
-import java.util.Scanner;
 
-import static java.lang.System.exit;
 
 public class Main {
     Student getStudentDetail() {
@@ -27,11 +25,11 @@ public class Main {
 
     }
 
-    void Update(StudentRepo studentRepoobj) {
+    void update(StudentRepo studentRepoobj) {
 
 
-        int ID = 1;
-        Student student = studentRepoobj.getStudent(ID);
+        int id = 1;
+        Student student = studentRepoobj.getStudent(id);
         if (student == null) {
             System.out.println("User not found");
             return;
@@ -45,13 +43,13 @@ public class Main {
 
     }
 
-    void Retrieve(StudentRepo studentRepoObj) {
+    void retrieve(StudentRepo studentRepoObj) {
 
 
-        int ID = 1;
-        Student st1 = studentRepoObj.getStudent(ID);
+        int id = 1;
+        Student st1 = studentRepoObj.getStudent(id);
         if (st1 != null)
-            CustomLogging.getLoggerCustom().info("\nID: %d Name %s Grade %s" ,st1.getID(), st1.getName() , st1.getGrade() + " Age:" + st1.getAge());
+            CustomLogging.getLoggerCustom().info("\nID: %d Name %s Grade %s  Age %d" ,st1.getID(), st1.getName() , st1.getGrade() , st1.getAge());
 
         else
             System.out.println("Unable to find user");
@@ -60,7 +58,7 @@ public class Main {
         String name = "mathangi";
         Student st = studentRepoObj.getStudent(name);
         if (st != null)
-            CustomLogging.getLoggerCustom().info("\nID: %d Name %s Grade %s" ,st1.getID(), st1.getName() , st1.getGrade() + " Age:" + st1.getAge());
+            CustomLogging.getLoggerCustom().info("\nID: %d Name %s Grade %s Age %d" ,st.getID(), st.getName() , st.getGrade(),st.getAge());
         else
             CustomLogging.getLoggerCustom().error("Unable to find user");
 
@@ -78,13 +76,13 @@ public class Main {
             Student student = driver.getStudentDetail();
             studentRepoobj.addStudent(student);
 
-            driver.Update(studentRepoobj);
+            driver.update(studentRepoobj);
 
-            driver.Retrieve(studentRepoobj);
+            driver.retrieve(studentRepoobj);
 
 
         } catch (Exception e) {
-            System.out.println("Something went wrong\n");
+           CustomLogging.getLoggerCustom().error("Something went wrong\n");
         }
 
 
