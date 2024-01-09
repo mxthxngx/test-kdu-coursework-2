@@ -4,21 +4,24 @@ import java.util.*;
 
 public class StudentUtil
 {
+    private StudentUtil(){}
     private static int getScore(char grade)
     {
         switch(grade)
         {
             case 'A' -> {
-                return 4;
+                return Constants.gradeAValue;
             }
             case 'B' -> {
-                return 3;
+                return Constants.gradeBValue;
             }
             case 'C' -> {
-                return 2;
+                return Constants.gradeCValue;
+            }
+            default -> {
+                return 0;
             }
         }
-        return 0;
     }
     public static double[] calculateGPA(int[] studentIdList, char[][] studentsGrades)
     {
