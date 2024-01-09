@@ -2,9 +2,8 @@ package org.handson;
 
 import java.util.*;
 
-public class StudentUtil {
-
-
+public class StudentUtil
+{
     private static int getScore(char grade)
     {
         switch(grade)
@@ -33,7 +32,7 @@ public class StudentUtil {
                 for (var grade : studentsGrades[i]) {
                     score += getScore(grade);
                 }
-                calcGPA[i] = score;
+                calcGPA[i] = score/studentsGrades[i].length;
             }
             CustomLogger.customLogger('d', "GPA Calculated");
 
@@ -50,16 +49,17 @@ public class StudentUtil {
     {
         try {
             CustomLogger.customLogger('i', "Entered getStudentsByGPA");
-
             if (higher < 0 || lower < 0 || higher < lower) {
                 return new int[0];
             }
             List<Integer> qualifiedStudents = new ArrayList<>();
-            int numberOfStudents = studentIdList.length;
             double[] calculatedGPA = calculateGPA(studentIdList, studentsGrade);
-            for (var GPA : calculatedGPA) {
-                if (GPA >= lower && GPA <= higher)
-                    qualifiedStudents.add((int) GPA);
+
+            for (int it = 0;it<calculatedGPA.length;it++) {
+                if (calculatedGPA[it] >= lower && calculatedGPA[it] <= higher) {
+                    qualifiedStudents.add(studentIdList[it]);
+
+                }
             }
 
             int numberGPA = qualifiedStudents.size();
@@ -78,4 +78,5 @@ public class StudentUtil {
             return new int[0];
         }
     }
+
 }

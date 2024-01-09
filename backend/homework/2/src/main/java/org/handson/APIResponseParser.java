@@ -1,8 +1,5 @@
 package org.handson;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public class APIResponseParser {
 
 
@@ -15,7 +12,6 @@ public class APIResponseParser {
         CustomLogger.customLogger('d',"Average Rating:"+obj.getAverageRating());
         CustomLogger.customLogger('d',"Ratings Count:"+obj.getRatingsCount());
         CustomLogger.customLogger('d',"ImageURL :"+obj.getImageUrl());
-
     }
 
     public static Book parse(String response) {
@@ -82,7 +78,7 @@ public class APIResponseParser {
             else
             {
                 CustomLogger.customLogger('i',"Author Name Received");
-               book.setAuthor(authorID,authorName);
+                book.setAuthor(authorID,authorName);
                 CustomLogger.customLogger('d',"Author Name and ID Added");
 
             }
@@ -90,7 +86,7 @@ public class APIResponseParser {
             String ratingsCountEndRule = "</ratings_count>";
             String ratingString = parse(response, ratingsCountStartRule, ratingsCountEndRule);
             ratingString=ratingString.replaceAll(",","");
-   
+
             Integer ratingsCount = Integer.parseInt(ratingString);
             if (ratingsCount==0) {
                 CustomLogger.customLogger('e', "Invalid Rating Count");
@@ -126,25 +122,27 @@ public class APIResponseParser {
     }
 
     public static String parse(String response, String startRule, String endRule) {
-        Integer initialIndex = response.indexOf(startRule);
-        Integer finalIndex = response.indexOf(endRule);
-//        System.out.println(initialIndex);
-//        System.out.println(finalIndex);
-        String parsedValue = "";
-        if (!initialIndex.equals(-1) && !finalIndex.equals(-1)) {
-            initialIndex += +startRule.length();
 
-
-            parsedValue = response.substring(initialIndex, finalIndex);
-
+        try
+        {
+            Integer initialIndex = response.indexOf(startRule);
+            Integer finalIndex = response.indexOf(endRule);
+            String parsedValue = "";
+            if (!initialIndex.equals(-1) && !finalIndex.equals(-1)) {
+                initialIndex += +startRule.length();
+                parsedValue = response.substring(initialIndex, finalIndex);
+            }
+            return parsedValue;
 
         }
-
-
-        return parsedValue;
+        catch(Exception e)
+        {
+            CustomLogger.customLogger('e', e.toString());
+            return "";
+        }
     }
 
-    // write overloaded parse method with the 3 parameters response,startRule, endRule
+
     public static void main(String[] args) {
 
         String response = "<work>" +
@@ -171,7 +169,7 @@ public class APIResponseParser {
                 "</small_image_url>" +
                 "</best_book>" +
                 "</work>";
-      Book bookObject =  APIResponseParser.parse(response);
-      APIResponseParser.displayDetails(bookObject);
+        Book bookObject =  APIResponseParser.parse(response);
+        APIResponseParser.displayDetails(bookObject);
     }
 }
