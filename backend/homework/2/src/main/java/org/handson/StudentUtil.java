@@ -10,13 +10,13 @@ public class StudentUtil
         switch(grade)
         {
             case 'A' -> {
-                return Constants.gradeAValue;
+                return Constants.GRADE_A_VALUE;
             }
             case 'B' -> {
-                return Constants.gradeBValue;
+                return Constants.GRADE_B_VALUE;
             }
             case 'C' -> {
-                return Constants.gradeCValue;
+                return Constants.GRADE_C_VALUE;
             }
             default -> {
                 return 0;

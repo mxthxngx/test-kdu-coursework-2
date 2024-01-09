@@ -128,8 +128,8 @@ public class SentimentAnalyzer {
 
     public static void main(String[] args) {
 
-        int[] featureOpinions = detectProsAndCons(Constants.reviewSentimentAnalyser, Constants.featureSetSentimentAnalyser,
-                Constants.positiveOpinionWords, Constants.negativeOpinionWords);
+        int[] featureOpinions = detectProsAndCons(Constants.REVIEW_SENTIMENT_ANALYSER, Constants.FEATURE_SET_SENTIMENT_ANALYSER,
+                Constants.POSITIVE_OPINION_WORDS, Constants.NEGATIVE_OPINION_WORDS);
         CustomLogger.customLogger('d', "Opinions on Features: " +
                 Arrays.toString(featureOpinions));
     }

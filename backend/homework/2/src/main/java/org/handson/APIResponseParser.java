@@ -19,7 +19,7 @@ public class APIResponseParser {
         Book book = new Book();
 
         try {
-            String title = parse(response, Constants.startRuleTitle, Constants.endRuleTitle);
+            String title = parse(response, Constants.START_RULE_TITLE, Constants.END_RULE_TITLE);
             if (title.isBlank()) {
                 CustomLogger.customLogger('e', "Null Title");
             }
@@ -31,7 +31,7 @@ public class APIResponseParser {
             }
 
             CustomLogger.customLogger('i',"Title has been set ");
-            String imageURL = parse(response, Constants.imageURLStartRule, Constants.imageURLEndRule);
+            String imageURL = parse(response, Constants.IMAGE_URL_START_RULE, Constants.IMAGE_URL_END_RULE);
             if (imageURL.isBlank()) {
                 CustomLogger.customLogger('e', "Null Image URL");
             }
@@ -43,7 +43,7 @@ public class APIResponseParser {
             }
 
 
-            Integer publicationYear = Integer.parseInt(parse(response, Constants.publicationStartRule, Constants.publicationEndRule).trim());
+            Integer publicationYear = Integer.parseInt(parse(response, Constants.PUBLICATION_START_RULE, Constants.PUBLICATION_END_RULE).trim());
             if (publicationYear==0) {
                 CustomLogger.customLogger('e', "Null publication year");
             }
@@ -56,8 +56,8 @@ public class APIResponseParser {
                 CustomLogger.customLogger('d',"Publication year Added: "+publicationYear);
             }
 
-            Long authorID = Long.parseLong(parse(response, Constants.authorIDStartRule, Constants.authorIDEndRule));
-            if (authorID.equals(0)) {
+            Long authorID = Long.parseLong(parse(response, Constants.AUTHOR_ID_START_RULE, Constants.AUTHOR_ID_END_RULE));
+            if (authorID == 0) {
                 CustomLogger.customLogger('e', "Null ID of author");
             }
             else
@@ -65,7 +65,7 @@ public class APIResponseParser {
                 CustomLogger.customLogger('i',"ID of Author recieved");
             }
 
-            String authorName = parse(response, Constants.authorNameStartRule, Constants.authorNameEndRule);
+            String authorName = parse(response, Constants.AUTHOR_NAME_START_RULE, Constants.AUTHOR_NAME_END_RULE);
             if (authorName.isBlank()) {
                 CustomLogger.customLogger('e', "Null Title");
             }
@@ -77,11 +77,11 @@ public class APIResponseParser {
 
             }
 
-            String ratingString = parse(response, Constants.ratingsCountStartRule, Constants.ratingsCountEndRule);
+            String ratingString = parse(response, Constants.RATINGS_COUNT_TYPE_INTEGER, Constants.RATINGS_COUNT_END_RULE);
             ratingString=ratingString.replace(",","");
 
             Integer ratingsCount = Integer.parseInt(ratingString);
-            if (ratingsCount.equals(0)) {
+            if (ratingsCount ==0) {
                 CustomLogger.customLogger('e', "Invalid Rating Count");
             }
             else
@@ -94,7 +94,7 @@ public class APIResponseParser {
             }
 
 
-            Double averageRating = Double.parseDouble(parse(response, Constants.averageRatingStartRule, Constants.averageRatingEndRule));
+            Double averageRating = Double.parseDouble(parse(response, Constants.AVERAGE_RATING_START_RULE, Constants.AVERAGE_RATING_END_RULE));
             if (averageRating.equals(0)) {
                 CustomLogger.customLogger('e', "Null Average Ratings");
             }
@@ -138,7 +138,7 @@ public class APIResponseParser {
     public static void main(String[] args) {
 
 
-        Book bookObject =  APIResponseParser.parse(Constants.apiResponse);
+        Book bookObject =  APIResponseParser.parse(Constants.API_RESPONSE);
         APIResponseParser.displayDetails(bookObject);
     }
 }
