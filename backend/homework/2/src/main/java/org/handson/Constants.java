@@ -6,10 +6,33 @@ public class Constants {
     public static final double HIGHERLIMITGPA = 3.5;
 
     protected static final int[] STUDENT_ID_LIST = {1001,1002};
-    public static final  char[][] STUDENTS_GRADES = {{'A','A','A','B'},{'A','B','B'}};
+    protected static final  char[][] STUDENTS_GRADES = {{'A','A','A','B'},{'A','B','B'}};
 
 
-    public static final String API_RESPONSE = "<work>" +
+ public static final String END_RULE_TITLE = "</title>";
+ public static final String START_RULE_TITLE = "<title>";
+
+ public static final String IMAGE_URL_START_RULE = "<image_url>";
+ public static final String IMAGE_URL_END_RULE = "</image_url>";
+
+ public static final String PUBLICATION_START_RULE = "<original_publication_year type=\"integer\">";
+
+ public static final String PUBLICATION_END_RULE = "</original_publication_year>";
+
+ public static final String AUTHOR_ID_START_RULE = "<id type=\"integer\">";
+ public static final String AUTHOR_ID_END_RULE = "</id>";
+
+ public static final String AUTHOR_NAME_START_RULE = "<name>";
+ public static final String AUTHOR_NAME_END_RULE = "</name>";
+
+ public static final String RATINGS_COUNT_TYPE_INTEGER = "<ratings_count type=\"integer\">";
+ public static final String RATINGS_COUNT_END_RULE = "</ratings_count>";
+
+ public static final  String AVERAGE_RATING_START_RULE = "<average_rating>";
+ public static final String AVERAGE_RATING_END_RULE = "</average_rating>";
+
+
+ protected static final String API_RESPONSE = "<work>" +
             "<id type=\"integer\">2361393</id>" +
             "<books_count type=\"integer\">813</books_count>" +
             "<ratings_count type=\"integer\">1,16,315</ratings_count>" +
@@ -25,9 +48,9 @@ public class Constants {
             "<id type=\"integer\">10264</id>" +
             "<name>Henry David Thoreau</name>" +
             "</author>" +
-            "<image_url>" +
+            IMAGE_URL_START_RULE+
             "http://images.gr-assets.com/books/1465675526m/16902.jpg" +
-            "</image_url>" +
+         IMAGE_URL_END_RULE +
             "<small_image_url>" +
             "http://images.gr-assets.com/books/1465675526s/16902.jpg" +
             "</small_image_url>" +
@@ -52,29 +75,6 @@ public class Constants {
             "delicious"};
     protected static final String[] NEGATIVE_OPINION_WORDS = {"slow", "bad", "horrible",
             "awful", "unprofessional", "poor"};
-
-    public static final String END_RULE_TITLE = "</title>";
-    public static final String START_RULE_TITLE = "<title>";
-
-    public static final String IMAGE_URL_START_RULE = "<image_url>";
-    public static final String IMAGE_URL_END_RULE = "</image_url>";
-
-    public static final String PUBLICATION_START_RULE = "<original_publication_year type=\"integer\">";
-
-    public static final String PUBLICATION_END_RULE = "</original_publication_year>";
-
-    public static final String AUTHOR_ID_START_RULE = "<id type=\"integer\">";
-   public static final String AUTHOR_ID_END_RULE = "</id>";
-
-    public static final String AUTHOR_NAME_START_RULE = "<name>";
-    public static final String AUTHOR_NAME_END_RULE = "</name>";
-
-    public static final String RATINGS_COUNT_TYPE_INTEGER = "<ratings_count type=\"integer\">";
-    public static final String RATINGS_COUNT_END_RULE = "</ratings_count>";
-
-    public static final  String AVERAGE_RATING_START_RULE = "<average_rating>";
-    public static final String AVERAGE_RATING_END_RULE = "</average_rating>";
-
 
 
 

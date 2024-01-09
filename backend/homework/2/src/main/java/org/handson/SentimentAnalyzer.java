@@ -81,8 +81,11 @@ public class SentimentAnalyzer {
                 }
                 List<String> positiveOpinionList = new ArrayList<>(Arrays.stream(posOpinionWords).toList());
                 List<String> negativeOpinionList = new ArrayList<>(Arrays.stream(negOpinionWords).toList());
-
-                return positiveOpinionList.contains(nextWord)?1:(negativeOpinionList.contains(nextWord)?-1:0);
+                if(positiveOpinionList.contains(nextWord))
+                {
+                    return 1;
+                }
+                return negativeOpinionList.contains(nextWord)?-1:0;
             }
             else {
                 return 0;

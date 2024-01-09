@@ -95,7 +95,7 @@ public class APIResponseParser {
 
 
             Double averageRating = Double.parseDouble(parse(response, Constants.AVERAGE_RATING_START_RULE, Constants.AVERAGE_RATING_END_RULE));
-            if (averageRating.equals(0)) {
+            if (averageRating==0) {
                 CustomLogger.customLogger('e', "Null Average Ratings");
             }
             else
