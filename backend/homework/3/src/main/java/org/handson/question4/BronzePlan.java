@@ -4,11 +4,12 @@ package org.handson.question4;
 import org.handson.question1and2.Constants;
 
 public class BronzePlan extends HealthInsurancePlan {
-    private static  double COVERAGE_BRONZE_PLAN = Constants.BRONZEPLAN;
-    private static  double PREMIUM_BRONZE_PLAN = Constants.BRONZEPLAN_PREMIUM;
+    private static final double COVERAGE_BRONZE_PLAN = Constants.BRONZEPLAN;
+    private static final double PREMIUM_BRONZE_PLAN = Constants.BRONZEPLAN_PREMIUM;
 
-    public BronzePlan() {
-        super(COVERAGE_BRONZE_PLAN,PREMIUM_BRONZE_PLAN);
+    public double getCoverage()
+    {
+        return COVERAGE_BRONZE_PLAN;
     }
 
     /**

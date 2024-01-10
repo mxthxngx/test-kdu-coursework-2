@@ -12,6 +12,7 @@ public class BlueCrossBlueShield implements InsuranceBrand{
     public double computeMonthlyPREMIUM_PLATINUM_PLAN(HealthInsurancePlan insurancePlan, int age, boolean smoking)
     {
         Double coverage = insurancePlan.getCoverage();
+
         double PREMIUM_PLATINUM_PLAN = 0;
         switch(coverage.toString())
         {

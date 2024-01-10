@@ -2,13 +2,9 @@ package org.handson.question3;
 
 abstract class HealthInsurancePlan {
     private double coverage;
-    private double PREMIUM_PLATINUM_PLAN;
     private InsuranceBrand offeredBy;
 
-    public  HealthInsurancePlan(double coverage,double PREMIUM_PLATINUM_PLAN)
-    {
-        this.coverage = coverage;this.PREMIUM_PLATINUM_PLAN=PREMIUM_PLATINUM_PLAN;
-    }
+
     /**
      * Retrieves the insurance brand that offers this particular insurance.
      *

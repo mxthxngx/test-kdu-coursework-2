@@ -1,8 +1,5 @@
 package org.handson.question3;
 
-/**
- *
- */
 public class Patient extends User {
 
     private long patientId;

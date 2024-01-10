@@ -4,11 +4,9 @@ package org.handson.question3;
 import org.handson.question1and2.Constants;
 
 public class SilverPlan extends HealthInsurancePlan {
-    private static final double COVERAGE_SILVER = Constants.SILVERPLAN;
+
     private static final double PREMIUM_PLATINUM_PLANSilver = Constants.SILVERPLAN_PREMIUM;
-    public SilverPlan() {
-        super(COVERAGE_SILVER,PREMIUM_PLATINUM_PLANSilver);
-    }
+
     /**
      * Computes the monthly PREMIUM_PLATINUM_PLANSilver based on the given salary.
      *

@@ -6,8 +6,9 @@ import org.handson.question1and2.Constants;
 public class SilverPlan extends HealthInsurancePlan {
     private static final double COVERAGE_SILVER_PLAN = Constants.SILVERPLAN;
     private static final double PREMIUM_PLATINUM_PLANSilverPlan = Constants.SILVERPLAN_PREMIUM;
-    public SilverPlan() {
-        super(COVERAGE_SILVER_PLAN,PREMIUM_PLATINUM_PLANSilverPlan);
+    public double getCoverage()
+    {
+        return COVERAGE_SILVER_PLAN;
     }
 
     /**

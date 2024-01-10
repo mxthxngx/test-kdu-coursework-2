@@ -5,10 +5,10 @@ import org.handson.question1and2.Constants;
 public class GoldPlan extends HealthInsurancePlan {
     private static final double COVERAGE_GOLD_PLAN = Constants.GOLDPLAN;
     private static final double PREMIUM_GOLD_PLAN = Constants.GOLDPLAN_PREMIUM;
-    public GoldPlan() {
-        super(COVERAGE_GOLD_PLAN,PREMIUM_GOLD_PLAN);
+    public double getCoverage()
+    {
+        return COVERAGE_GOLD_PLAN;
     }
-
     /**
      * Computes the monthly PREMIUM_GOLD_PLAN for an insurance policy based on the salary, age, and smoking status of the policyholder.
      *
