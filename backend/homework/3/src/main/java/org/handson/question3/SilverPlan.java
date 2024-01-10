@@ -4,19 +4,19 @@ package org.handson.question3;
 import org.handson.question1and2.Constants;
 
 public class SilverPlan extends HealthInsurancePlan {
-    private static final double coverage = Constants.SILVERPLAN;
-    private static final double premium = Constants.SILVERPLAN_PREMIUM;
+    private static final double coverageSilver = Constants.SILVERPLAN;
+    private static final double premiumSilver = Constants.SILVERPLAN_PREMIUM;
     public SilverPlan() {
-        super(coverage,premium);
+        super(coverageSilver,premiumSilver);
     }
     /**
-     * Computes the monthly premium based on the given salary.
+     * Computes the monthly premiumSilver based on the given salary.
      *
      * @param  salary	the salary of the individual
-     * @return         	the computed monthly premium
+     * @return         	the computed monthly premiumSilver
      */
     @Override
     double computeMonthlypremium(double salary) {
-        return salary*premium;
+        return salary*premiumSilver;
     }
 }

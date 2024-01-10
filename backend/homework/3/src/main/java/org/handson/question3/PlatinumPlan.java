@@ -3,10 +3,10 @@ package org.handson.question3;
 import org.handson.question1and2.Constants;
 
 public class PlatinumPlan extends HealthInsurancePlan {
-private static final double coverage = Constants.PLATINUMPLAN;
+private static final double coveragePlatinum = Constants.PLATINUMPLAN;
     private static final double premium = Constants.PLATINUMPLAN_PREMIUM;
     public PlatinumPlan() {
-        super(coverage,premium);
+        super(coveragePlatinum,premium);
     }
     /**
      * A description of the entire Java function.

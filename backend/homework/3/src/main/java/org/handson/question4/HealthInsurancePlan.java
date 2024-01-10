@@ -5,7 +5,7 @@ abstract class HealthInsurancePlan {
 private double premium;
     private InsuranceBrand offeredBy;
 
-    public  HealthInsurancePlan(double coverage,double premium)
+    protected   HealthInsurancePlan(double coverage,double premium)
     {
         this.coverage = coverage;this.premium=premium;
     }
