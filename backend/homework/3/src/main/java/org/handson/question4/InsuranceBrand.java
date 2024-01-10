@@ -1,6 +1,6 @@
 package org.handson.question4;
 
 interface  InsuranceBrand {
-    public double computeMonthlyPremium(HealthInsurancePlan insuranceBrand, int age,
+    public double computeMonthlyPREMIUM(HealthInsurancePlan insuranceBrand, int age,
                                         boolean smoking);
 }

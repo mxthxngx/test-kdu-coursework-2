@@ -1,13 +1,13 @@
 package org.handson.question1and2;
 
 public class HealthInsurancePlan {
-    private double coverage;
+    private double COVERAGE;
 
     private InsuranceBrand offeredBy;
 
-    public  HealthInsurancePlan(double coverage)
+    public  HealthInsurancePlan(double COVERAGE)
     {
-        this.coverage = coverage;
+        this.COVERAGE = COVERAGE;
     }
     /**
      * Returns the InsuranceBrand that offers this particular insurance.
@@ -26,19 +26,19 @@ public class HealthInsurancePlan {
         this.offeredBy = offeredBy;
     }
     /**
-     * Returns the coverage of the function.
+     * Returns the COVERAGE of the function.
      *
-     * @return the coverage of the function
+     * @return the COVERAGE of the function
      */
-    public double getCoverage() {
-        return coverage;
+    public double getCOVERAGE() {
+        return COVERAGE;
     }
     /**
-     * Sets the coverage value for the object.
+     * Sets the COVERAGE value for the object.
      *
-     * @param  coverage  the new coverage value to be set
+     * @param  COVERAGE  the new COVERAGE value to be set
      */
-    public void setCoverage(double coverage) {
-        this.coverage = coverage;
+    public void setCOVERAGE(double COVERAGE) {
+        this.COVERAGE = COVERAGE;
     }
 }

@@ -3,24 +3,24 @@ package org.handson.question4;
 import org.handson.question1and2.Constants;
 
 public class PlatinumPlan extends HealthInsurancePlan {
-private static final double coverage = Constants.PLATINUM_PLAN;
-    private static final double premium = Constants.PLATINUM_PLAN_PREMIUM;
+private static final double COVERAGE = Constants.PLATINUMPLAN;
+    private static final double PREMIUM = Constants.PLATINUMPLAN_PREMIUM;
     public PlatinumPlan() {
-        super(coverage,premium);
+        super(COVERAGE,PREMIUM);
     }
 
     /**
-     * Computes the monthly premium for the insurance based on the salary, age, and smoking status.
+     * Computes the monthly PREMIUM for the insurance based on the salary, age, and smoking status.
      *
      * @param  salary   the salary of the policyholder
      * @param  age      the age of the policyholder
      * @param  smoking  true if the policyholder is a smoker, false otherwise
-     * @return          the computed monthly premium
+     * @return          the computed monthly PREMIUM
      */
     @Override
-    double computeMonthlyPremium(double salary,int age, boolean smoking) {
+    double computeMonthlyPREMIUM(double salary,int age, boolean smoking) {
         InsuranceBrand insuranceBrand = getOfferedBy();
-        return salary*premium+insuranceBrand.computeMonthlyPremium(this,age,smoking);
+        return salary*PREMIUM+insuranceBrand.computeMonthlyPREMIUM(this,age,smoking);
     }
     }
 

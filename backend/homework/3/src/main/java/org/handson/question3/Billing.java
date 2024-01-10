@@ -1,6 +1,8 @@
 package org.handson.question3;
 
 public class Billing {
+private Billing(){}
+    private Billing(){}
         /**
      * Computes the payment amount for a given patient and amount.
      *
@@ -18,11 +20,11 @@ public class Billing {
             payments[1] = amount-20;
 
         } else {
-            Double coverage = patientInsurancePlan.getCoverage();
-            payments[0] = amount * coverage;
+            Double COVERAGE = patientInsurancePlan.getCOVERAGE();
+            payments[0] = amount * COVERAGE;
             payments[1] = amount - payments[0];
-            String coverageString = coverage.toString();
-            switch (coverageString)
+            String COVERAGEString = COVERAGE.toString();
+            switch (COVERAGEString)
             {
                 case "0.9"->payments[1]-=50;
                 case "0.8"->payments[1]-=40;

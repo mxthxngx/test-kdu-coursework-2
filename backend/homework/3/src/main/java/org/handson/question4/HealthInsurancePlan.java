@@ -1,13 +1,13 @@
 package org.handson.question4;
 
 abstract class HealthInsurancePlan {
-    private double coverage;
-private double premium;
+    private double COVERAGE;
+private double PREMIUM;
     private InsuranceBrand offeredBy;
 
-    public  HealthInsurancePlan(double coverage,double premium)
+    public  HealthInsurancePlan(double COVERAGE,double PREMIUM)
     {
-        this.coverage = coverage;this.premium=premium;
+        this.COVERAGE = COVERAGE;this.PREMIUM=PREMIUM;
     }
 
     /**
@@ -18,7 +18,7 @@ private double premium;
     public InsuranceBrand getOfferedBy() {
         return offeredBy;
     }
-    abstract double computeMonthlyPremium(double salary,int age,boolean smoking);
+    abstract double computeMonthlyPREMIUM(double salary,int age,boolean smoking);
     /**
      * Sets the insurance brand that offers this insurance.
      *
@@ -29,20 +29,20 @@ private double premium;
     }
 
     /**
-     * Gets the coverage of the function.
+     * Gets the COVERAGE of the function.
      *
-     * @return the coverage value
+     * @return the COVERAGE value
      */
-    public double getCoverage() {
-        return coverage;
+    public double getCOVERAGE() {
+        return COVERAGE;
     }
 
     /**
-     * Sets the coverage value for the object.
+     * Sets the COVERAGE value for the object.
      *
-     * @param  coverage   the coverage value to be set
+     * @param  COVERAGE   the COVERAGE value to be set
      */
-    public void setCoverage(double coverage) {
-        this.coverage = coverage;
+    public void setCOVERAGE(double COVERAGE) {
+        this.COVERAGE = COVERAGE;
     }
 }

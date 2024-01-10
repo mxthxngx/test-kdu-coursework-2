@@ -1,9 +1,9 @@
 package org.handson.question1and2;
 
 public class PlatinumPlan extends HealthInsurancePlan{
-private static final double coverage = Constants.PLATINUM_PLAN;
+private static final double COVERAGE = Constants.PLATINUMPLAN;
     public PlatinumPlan() {
-        super(coverage);
+        super(COVERAGE);
     }
 
 }
