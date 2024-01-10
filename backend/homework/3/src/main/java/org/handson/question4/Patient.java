@@ -1,7 +1,7 @@
 package org.handson.question4;
 
 /**
- *
+ * Represents a patient, extending the User class.
  */
 public class Patient extends User {
 
@@ -10,18 +10,18 @@ public class Patient extends User {
     /**
      * Retrieves the patient ID.
      *
-     * @return  the patient ID
+     * @return the patient ID
      */
     public long getPatientId() {
         return patientId;
     }
 
     /**
-     * @param patientId - patient ID of the patient
+     * Sets the patient ID.
+     *
+     * @param patientId the new patient ID
      */
     public void setPatientId(long patientId) {
         this.patientId = patientId;
     }
-
-
 }

@@ -21,7 +21,7 @@ public double getCoverage()
      * @return           description of return value
      */
     @Override
-    double computeMonthlyPremium(double salary,int age, boolean smoking) {
+   public double computeMonthlyPremium(double salary,int age, boolean smoking) {
         InsuranceBrand insuranceBrand = getOfferedBy();
         return salary*PREMIUM_SILVER_PLAN+insuranceBrand.computeMonthlyPremium(this,age,smoking);
     }

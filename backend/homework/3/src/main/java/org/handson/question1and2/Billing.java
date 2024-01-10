@@ -34,6 +34,7 @@ private Billing(){}
                 default -> payments[1]=0;
 
             }
+            MyLogger.customLogger("Payment details calculated "+payments[0]+" "+payments[1], "INFO");
         }
         return payments;
 

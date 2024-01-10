@@ -15,7 +15,7 @@ public class Nurse extends Staff {
     /**
      * Sets the nurse ID.
      *
-     * @param  nurseId the nurse ID to set
+     * @param nurseId the nurse ID to set
      */
     public void setNurseId(long nurseId) {
         this.nurseId = nurseId;

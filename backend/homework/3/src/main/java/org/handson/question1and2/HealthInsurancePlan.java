@@ -15,6 +15,7 @@ public class HealthInsurancePlan {
      * @return the InsuranceBrand that offers this particular insurance.
      */
     public InsuranceBrand getOfferedBy() {
+
         return offeredBy;
     }
     /**
@@ -23,7 +24,9 @@ public class HealthInsurancePlan {
      * @param  offeredBy  the insurance brand offering this insurance
      */
     public void setOfferedBy(InsuranceBrand offeredBy) {
+        MyLogger.customLogger("Entered setOfferedBy", "INFO");
         this.offeredBy = offeredBy;
+        MyLogger.customLogger("offeredBy set", "INFO");
     }
     /**
      * Returns the coverage of the function.
@@ -31,6 +34,7 @@ public class HealthInsurancePlan {
      * @return the coverage of the function
      */
     public double getCoverage() {
+        MyLogger.customLogger("Entered getCoverage", "INFO");
         return coverage;
     }
     /**
@@ -39,6 +43,8 @@ public class HealthInsurancePlan {
      * @param  coverage  the new coverage value to be set
      */
     public void setCoverage(double coverage) {
+        MyLogger.customLogger("Entered setCoverage", "INFO");
         this.coverage = coverage;
+        MyLogger.customLogger("Coverage set", "INFO");
     }
 }

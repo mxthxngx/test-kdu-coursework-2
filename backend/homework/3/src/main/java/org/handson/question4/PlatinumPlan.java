@@ -19,7 +19,7 @@ public double getCoverage()
      * @return          the computed monthly PREMIUM_PLATINUM_PLAN
      */
     @Override
-    double computeMonthlyPremium(double salary,int age, boolean smoking) {
+    public double computeMonthlyPremium(double salary,int age, boolean smoking) {
         InsuranceBrand insuranceBrand = getOfferedBy();
         return salary*PREMIUM_PLATINUM_PLAN+insuranceBrand.computeMonthlyPremium(this,age,smoking);
 

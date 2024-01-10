@@ -23,11 +23,11 @@ public class MyLogger {
             default -> logger.info(message);
         }
     }
-    /**
-     * A function that logs a message based on the specified log level.
+        /**
+     * Logs a message with a specified log level.
      *
-     * @param  messageDouble  the message to be logged as a Double
-     * @param  type           the log level as a String
+     * @param  messageDouble  the message to be logged as a double
+     * @param  type           the log level to use
      */
     static void customLogger(Double messageDouble, String type) {
     String message = messageDouble.toString();
@@ -38,5 +38,5 @@ public class MyLogger {
         }
     }
 
-    private static Logger logger = LoggerFactory.getLogger(MyLogger.class);
+    private static final Logger logger = LoggerFactory.getLogger(MyLogger.class);
 }
