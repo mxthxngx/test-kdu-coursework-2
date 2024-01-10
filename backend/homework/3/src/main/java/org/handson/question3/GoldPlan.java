@@ -3,19 +3,19 @@ package org.handson.question3;
 import org.handson.question1and2.Constants;
 
 public class GoldPlan extends HealthInsurancePlan {
-    private static final double coverageGoldPlan = Constants.GOLDPLAN;
-    private static final double premiumGold = Constants.GOLDPLAN_PREMIUM;
+    private static final double COVERAGE_GOLD_PLAN = Constants.GOLDPLAN;
+    private static final double PREMIUM_GOLD_PLAN = Constants.GOLDPLAN_PREMIUM;
     public GoldPlan() {
-        super(coverageGoldPlan,premiumGold);
+        super(COVERAGE_GOLD_PLAN,PREMIUM_GOLD_PLAN);
     }
     /**
-     * Computes the monthly premiumGold based on the given salary.
+     * Computes the monthly PREMIUM_GOLD_PLAN based on the given salary.
      *
-     * @param  salary  the salary used to calculate the monthly premiumGold
-     * @return         the computed monthly premiumGold
+     * @param  salary  the salary used to calculate the monthly PREMIUM_GOLD_PLAN
+     * @return         the computed monthly PREMIUM_GOLD_PLAN
      */
     @Override
-    double computeMonthlypremium(double salary) {
-        return salary*premiumGold;
+    double computeMonthlyPREMIUM_PLATINUM_PLAN(double salary) {
+        return salary*PREMIUM_GOLD_PLAN;
     }
 }

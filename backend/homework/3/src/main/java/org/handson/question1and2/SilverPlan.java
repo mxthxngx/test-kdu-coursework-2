@@ -2,8 +2,8 @@ package org.handson.question1and2;
 
 
 public class SilverPlan extends HealthInsurancePlan{
-    private static final double coverageSilverPlan = Constants.SILVERPLAN;
+    private static final double COVERAGE_SILVER_PLAN = Constants.SILVERPLAN;
     public SilverPlan() {
-        super(coverageSilverPlan);
+        super(COVERAGE_SILVER_PLAN);
     }
 }
