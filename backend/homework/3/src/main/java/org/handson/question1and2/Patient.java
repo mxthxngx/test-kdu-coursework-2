@@ -42,7 +42,7 @@ public class Patient extends User {
      *
      * @return the health insurance plan
      */
-    public HealthInsurancePlan getInsurancePlan() {
+    protected HealthInsurancePlan getInsurancePlan() {
         return healthInsurancePlan;
     }
     /**

@@ -21,11 +21,11 @@ private Billing(){}
             payments[1] = amount-20;
 
         } else {
-            Double COVERAGE = Double.valueOf(patientInsurancePlan.getCOVERAGE());
-            payments[0] = amount * COVERAGE;
+            Double coverage = Double.valueOf(patientInsurancePlan.getCoverage());
+            payments[0] = amount * coverage;
             payments[1] = amount - payments[0];
-            String COVERAGEString = COVERAGE.toString();
-            switch (COVERAGEString)
+            String coverageString = coverage.toString();
+            switch (coverageString)
             {
                 case "0.9"->payments[1]-=50;
                 case "0.8"->payments[1]-=40;

@@ -7,7 +7,7 @@ public class Main {
         HealthInsurancePlan insurancePlan = new PlatinumPlan();
         insurancePlan.setOfferedBy(insuranceBrand);
         staff.setInsurancePlan(insurancePlan);
-        MyLogger.customLogger("Amount Paid By Insurance Company: "+insurancePlan.computeMonthlyPREMIUM(5000, 56, true),"INFO");
+        MyLogger.customLogger("Amount Paid By Insurance Company: "+insurancePlan.computeMonthlypremium(5000, 56, true),"INFO");
 
     }
 }

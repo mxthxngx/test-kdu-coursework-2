@@ -38,5 +38,5 @@ public class MyLogger {
         }
     }
 
-    private static Logger logger = LoggerFactory.getLogger(MyLogger.class);
+    private static final Logger logger = LoggerFactory.getLogger(MyLogger.class);
 }

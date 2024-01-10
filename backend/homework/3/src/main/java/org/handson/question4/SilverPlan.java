@@ -4,10 +4,10 @@ package org.handson.question4;
 import org.handson.question1and2.Constants;
 
 public class SilverPlan extends HealthInsurancePlan {
-    private static final double COVERAGE = Constants.SILVERPLAN;
-    private static final double PREMIUM = Constants.SILVERPLAN_PREMIUM;
+    private static final double coverage = Constants.SILVERPLAN;
+    private static final double premium = Constants.SILVERPLAN_PREMIUM;
     public SilverPlan() {
-        super(COVERAGE,PREMIUM);
+        super(coverage,premium);
     }
 
     /**
@@ -19,8 +19,8 @@ public class SilverPlan extends HealthInsurancePlan {
      * @return           description of return value
      */
     @Override
-    double computeMonthlyPREMIUM(double salary,int age, boolean smoking) {
+    double computeMonthlypremium(double salary,int age, boolean smoking) {
         InsuranceBrand insuranceBrand = getOfferedBy();
-        return salary*PREMIUM+insuranceBrand.computeMonthlyPREMIUM(this,age,smoking);
+        return salary*premium+insuranceBrand.computeMonthlypremium(this,age,smoking);
     }
 }

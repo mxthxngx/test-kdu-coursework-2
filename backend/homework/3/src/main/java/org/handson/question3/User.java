@@ -121,7 +121,7 @@ public class User {
      *
      * @return the health insurance plan
      */
-    public HealthInsurancePlan getInsurancePlan() {
+    protected HealthInsurancePlan getInsurancePlan() {
         return healthInsurancePlan;
     }
 
