@@ -2,7 +2,6 @@ package org.handson.question3;
 
 public class Billing {
 private Billing(){}
-    private Billing(){}
         /**
      * Computes the payment amount for a given patient and amount.
      *
