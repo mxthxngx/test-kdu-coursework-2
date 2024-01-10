@@ -5,16 +5,16 @@ import org.handson.question1and2.Constants;
 
 public class SilverPlan extends HealthInsurancePlan {
 
-    private static final double PREMIUM_PLATINUM_PLANSilver = Constants.SILVERPLAN_PREMIUM;
+    private static final double PREMIUM_PLATINUM_PLAN = Constants.SILVERPLAN_PREMIUM;
 
     /**
-     * Computes the monthly PREMIUM_PLATINUM_PLANSilver based on the given salary.
+     * Computes the monthly PREMIUM_PLATINUM_PLAN based on the given salary.
      *
      * @param  salary	the salary of the individual
-     * @return         	the computed monthly PREMIUM_PLATINUM_PLANSilver
+     * @return         	the computed monthly PREMIUM_PLATINUM_PLAN
      */
     @Override
-    double computeMonthlyPREMIUM_PLATINUM_PLAN(double salary) {
-        return salary*PREMIUM_PLATINUM_PLANSilver;
+    double computeMonthlyPremium(double salary) {
+        return salary*PREMIUM_PLATINUM_PLAN;
     }
 }

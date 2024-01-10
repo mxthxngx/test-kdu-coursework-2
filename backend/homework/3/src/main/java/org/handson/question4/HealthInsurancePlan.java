@@ -2,7 +2,7 @@ package org.handson.question4;
 
 abstract class HealthInsurancePlan {
     private double coverage;
-private double PREMIUM_PLATINUM_PLAN;
+
     private InsuranceBrand offeredBy;
 
 
@@ -15,7 +15,7 @@ private double PREMIUM_PLATINUM_PLAN;
     public InsuranceBrand getOfferedBy() {
         return offeredBy;
     }
-    abstract double computeMonthlyPREMIUM_PLATINUM_PLAN(double salary,int age,boolean smoking);
+    abstract double computeMonthlyPremium(double salary,int age,boolean smoking);
     /**
      * Sets the insurance brand that offers this insurance.
      *

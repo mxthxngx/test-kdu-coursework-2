@@ -14,7 +14,7 @@ public class BronzePlan extends HealthInsurancePlan {
      * @return         the computed monthly PREMIUM_BRONZE_PLAN
      */
     @Override
-    double computeMonthlyPREMIUM_PLATINUM_PLAN(double salary) {
+    double computeMonthlyPremium(double salary) {
         return salary*PREMIUM_BRONZE_PLAN;
     }
 }

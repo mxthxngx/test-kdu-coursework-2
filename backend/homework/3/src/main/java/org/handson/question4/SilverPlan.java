@@ -5,8 +5,9 @@ import org.handson.question1and2.Constants;
 
 public class SilverPlan extends HealthInsurancePlan {
     private static final double COVERAGE_SILVER_PLAN = Constants.SILVERPLAN;
-    private static final double PREMIUM_PLATINUM_PLANSilverPlan = Constants.SILVERPLAN_PREMIUM;
-    public double getCoverage()
+    private static final double PREMIUM_SILVER_PLAN = Constants.SILVERPLAN_PREMIUM;
+    @Override
+public double getCoverage()
     {
         return COVERAGE_SILVER_PLAN;
     }
@@ -20,8 +21,8 @@ public class SilverPlan extends HealthInsurancePlan {
      * @return           description of return value
      */
     @Override
-    double computeMonthlyPREMIUM_PLATINUM_PLAN(double salary,int age, boolean smoking) {
+    double computeMonthlyPremium(double salary,int age, boolean smoking) {
         InsuranceBrand insuranceBrand = getOfferedBy();
-        return salary*PREMIUM_PLATINUM_PLANSilverPlan+insuranceBrand.computeMonthlyPREMIUM_PLATINUM_PLAN(this,age,smoking);
+        return salary*PREMIUM_SILVER_PLAN+insuranceBrand.computeMonthlyPremium(this,age,smoking);
     }
 }

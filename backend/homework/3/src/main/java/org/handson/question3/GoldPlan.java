@@ -12,7 +12,7 @@ public class GoldPlan extends HealthInsurancePlan {
      * @return         the computed monthly PREMIUM_GOLD_PLAN
      */
     @Override
-    double computeMonthlyPREMIUM_PLATINUM_PLAN(double salary) {
+    double computeMonthlyPremium(double salary) {
         return salary*PREMIUM_GOLD_PLAN;
     }
 }

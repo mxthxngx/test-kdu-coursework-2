@@ -13,7 +13,7 @@ abstract class HealthInsurancePlan {
     public InsuranceBrand getOfferedBy() {
         return offeredBy;
     }
-    abstract double computeMonthlyPREMIUM_PLATINUM_PLAN(double salary);
+    abstract double computeMonthlyPremium(double salary);
         /**
      * Sets the insurance brand that offers this product.
      *

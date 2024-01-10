@@ -13,7 +13,7 @@ public class PlatinumPlan extends HealthInsurancePlan {
      * @return         description of return value
      */
     @Override
-    double computeMonthlyPREMIUM_PLATINUM_PLAN(double salary) {
+    double computeMonthlyPremium(double salary) {
         return salary*PREMIUM_PLATINUM_PLAN;
     }
 }
