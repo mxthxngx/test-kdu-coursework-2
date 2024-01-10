@@ -21,7 +21,7 @@ private Billing(){}
 
         } else {
             Double coverage = Double.valueOf(patientInsurancePlan.getCoverage());
-            System.out.println(coverage);
+
             payments[0] = amount * coverage;
             payments[1] = amount - payments[0];
             String coverageString = coverage.toString();

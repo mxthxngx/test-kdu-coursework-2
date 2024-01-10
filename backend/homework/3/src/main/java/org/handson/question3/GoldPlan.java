@@ -3,8 +3,8 @@ package org.handson.question3;
 import org.handson.question1and2.Constants;
 
 public class GoldPlan extends HealthInsurancePlan {
-    private static final double COVERAGE_GOLD_PLAN = 0.9; // Replace with the actual value
-    private static final double PREMIUM_GOLD_PLAN = 100.0; // Replace with the actual value
+    private static final double COVERAGE_GOLD_PLAN = Constants.GOLDPLAN;
+    private static final double PREMIUM_GOLD_PLAN = Constants.GOLDPLAN_PREMIUM; // Replace with the actual value
 
     @Override
     public double getCoverage() {

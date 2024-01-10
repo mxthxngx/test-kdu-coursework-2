@@ -6,7 +6,7 @@ public class PlatinumPlan extends HealthInsurancePlan {
 private static final double COVERAGE_PLATINUM_PLAN = Constants.PLATINUMPLAN;
     private static final double PREMIUM_PLATINUM_PLAN = Constants.PLATINUMPLAN_PREMIUM;
     @Override
-public double getCoverage()
+    public double getCoverage()
     {
         return COVERAGE_PLATINUM_PLAN;
     }
