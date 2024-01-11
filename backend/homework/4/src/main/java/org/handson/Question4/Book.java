@@ -1,4 +1,4 @@
-package org.handson.Question3;
+package org.handson.Question4;
 public class Book implements Comparable {
 	private String title;
 	private String author;

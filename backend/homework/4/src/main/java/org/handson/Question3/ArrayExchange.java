@@ -1,8 +1,10 @@
-package org.handson.Question2;
+package org.handson.Question3;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
+import org.handson.MyLogger;
 
 public class ArrayExchange<T> {
     /**
@@ -29,6 +31,6 @@ public class ArrayExchange<T> {
         Integer[] array = {1, 2, 3, 4, 5, 6, 7};
         ArrayExchange<Integer> arrayExchange = new ArrayExchange<>();
         Integer[] array1 = arrayExchange.arrayExchange(array, 1, 3);
-        System.out.println(Arrays.toString(array1));
+        MyLogger.customLogger(Arrays.toString(array1),"DEBUG");
     }
 }
