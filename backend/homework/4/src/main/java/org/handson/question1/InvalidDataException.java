@@ -1,4 +1,4 @@
-package org.handsOn.Question1;
+package org.handson.question1;
 
 public class InvalidDataException extends RuntimeException{
     public InvalidDataException (String message, Throwable cause) {

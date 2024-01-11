@@ -1,10 +1,10 @@
-package org.handsOn.Question4;
+package org.handson.question4;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
-import org.handsOn.MyLogger;
+import org.handson.MyLogger;
 
 public class SetDemo {
 	

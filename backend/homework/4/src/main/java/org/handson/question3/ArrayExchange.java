@@ -1,10 +1,10 @@
-package org.handsOn.Question3;
+package org.handson.question3;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.handsOn.MyLogger;
+import org.handson.MyLogger;
 
 public class ArrayExchange<T> {
     /**

@@ -1,8 +1,8 @@
-package org.handsOn.Question1;
+package org.handson.question1;
 
 import java.util.*;
 
-import org.handsOn.MyLogger;
+import org.handson.MyLogger;
 
 public class StudentUtil
 {

@@ -1,8 +1,8 @@
-package org.handsOn.Question2;
+package org.handson.question2;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import org.handsOn.MyLogger;
+import org.handson.MyLogger;
 public class TicketReservation {
  
     private static final int CONFIRMEDLIST_LIMIT = 10;

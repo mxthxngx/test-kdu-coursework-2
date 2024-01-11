@@ -1,6 +1,6 @@
-package org.handsOn.Question4;
+package org.handson.question4;
 
-import org.handsOn.MyLogger;
+import org.handson.MyLogger;
 import java.util.Comparator;
 
  class PubDateDescComparator implements Comparator<Book>{

@@ -1,7 +1,7 @@
-package org.handsOn.Question1;
+package org.handson.question1;
 
 public class MissingGradeException extends Exception {
-    private int studentId;
+    private final int studentId; // Change here
 
     public int getStudentId() {
         return studentId;

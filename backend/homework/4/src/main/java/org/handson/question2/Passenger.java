@@ -1,4 +1,4 @@
-package org.handsOn.Question2;
+package org.handson.question2;
 public class Passenger {
     private String firstName;
     private String lastName;

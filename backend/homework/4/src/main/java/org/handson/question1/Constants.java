@@ -1,4 +1,4 @@
-package org.handsOn.Question1;
+package org.handson.question1;
 
 public class Constants {
    private Constants (){}
