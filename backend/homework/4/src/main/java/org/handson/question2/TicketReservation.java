@@ -1,6 +1,6 @@
 package org.handson.question2;
 import java.util.*;
-import java.util.stream.CoLlectors;
+import java.util.stream.*;
 
 import org.handson.MyLogger;
 public class TicketReservation {
