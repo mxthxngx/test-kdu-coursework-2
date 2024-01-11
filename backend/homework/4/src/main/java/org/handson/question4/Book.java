@@ -1,5 +1,5 @@
 package org.handson.question4;
-public class Book implements Comparable {
+public class Book implements Comparable<Book> {
 	private String title;
 	private String author;
 	private int year;
@@ -54,30 +54,22 @@ public class Book implements Comparable {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (obj == null || getClass() != obj.getClass())
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
+	
 		Book other = (Book) obj;
-		if (author == null) {
-			if (other.author != null)
-				return false;
-		} else if (!author.equals(other.author))
-			return false;
-		if (title == null) {
-			if (other.title != null)
-				return false;
-		} else if (!title.equals(other.title))
-			return false;
-		if (year != other.year)
-			return false;
-		return true;
+	
+		return (author == null ? other.author == null : author.equals(other.author)) &&
+			   (title == null ? other.title == null : title.equals(other.title)) &&
+			   year == other.year;
 	}
+	
 	
 
-	
-	public int compareTo(Object book) {
-		 return getTitle().compareTo(((Book)book).getTitle()); // utilizing String’s compareTo
+	@Override
+	public int compareTo(Book otherBook) {
+		return getTitle().compareTo(otherBook.getTitle());
 	}
+	
 	
 }
