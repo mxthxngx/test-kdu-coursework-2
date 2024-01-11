@@ -17,8 +17,14 @@ public class ArrayExchange<T> {
      */
     public T[] arrayExchange(T[] array, T elementOne, T elementTwo) {
         List<T> listOfArray = new ArrayList<>(Arrays.asList(array));
-        Collections.replaceAll(listOfArray, elementOne, elementTwo);
-        Collections.replaceAll(listOfArray, elementTwo, elementOne);
+        
+        // Find the indices of the elements
+        int indexOne = listOfArray.indexOf(elementOne);
+        int indexTwo = listOfArray.indexOf(elementTwo);
+        
+        // Swap the elements using Collections.swap()
+        Collections.swap(listOfArray, indexOne, indexTwo);
+        
         return listOfArray.toArray(array);
     }
 
@@ -31,6 +37,6 @@ public class ArrayExchange<T> {
         Integer[] array = {1, 2, 3, 4, 5, 6, 7};
         ArrayExchange<Integer> arrayExchange = new ArrayExchange<>();
         Integer[] array1 = arrayExchange.arrayExchange(array, 1, 3);
-        MyLogger.customLogger(Arrays.toString(array1),"DEBUG");
+        MyLogger.customLogger(Arrays.toString(array1), "DEBUG");
     }
 }
