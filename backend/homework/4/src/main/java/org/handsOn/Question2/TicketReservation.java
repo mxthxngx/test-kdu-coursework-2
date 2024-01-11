@@ -1,8 +1,8 @@
-package org.handson.Question2;
+package org.handsOn.Question2;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import org.handson.MyLogger;
+import org.handsOn.MyLogger;
 public class TicketReservation {
  
     private static final int CONFIRMEDLIST_LIMIT = 10;
@@ -44,8 +44,8 @@ public class TicketReservation {
      * @return                     true if the reservation was successfully cancelled, false otherwise
      */
     public boolean cancel(String confirmationNumber) {
-        List<String> confirmationNumberList = confirmedList.stream().map((n)-> n.getConfirmationNumber()).collect(Collectors.toList());
-                List<String> confirmationNumberWaitingList = confirmedList.stream().map((n)-> n.getConfirmationNumber()).collect(Collectors.toList());
+        List<String> confirmationNumberList = confirmedList.stream().map(n-> n.getConfirmationNumber()).toList();
+                List<String> confirmationNumberWaitingList = confirmedList.stream().map(n-> n.getConfirmationNumber()).toList();
 
         if(confirmationNumberList.contains(confirmationNumber))
         {

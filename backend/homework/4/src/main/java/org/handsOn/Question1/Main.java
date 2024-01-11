@@ -1,6 +1,6 @@
-package org.handson.Question1;
+package org.handsOn.Question1;
 
-import org.handson.MyLogger;
+import org.handsOn.MyLogger;
 
 public class Main {
     public static void main(String[] args) {
