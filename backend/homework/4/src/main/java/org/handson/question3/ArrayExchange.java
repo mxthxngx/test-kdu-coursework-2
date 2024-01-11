@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 import org.handson.MyLogger;
-
 public class ArrayExchange<T> {
     /**
      * This function exchanges two elements in an array.
@@ -18,11 +17,9 @@ public class ArrayExchange<T> {
     public T[] arrayExchange(T[] array, T elementOne, T elementTwo) {
         List<T> listOfArray = new ArrayList<>(Arrays.asList(array));
         
-        // Find the indices of the elements
         int indexOne = listOfArray.indexOf(elementOne);
         int indexTwo = listOfArray.indexOf(elementTwo);
         
-        // Swap the elements using Collections.swap()
         Collections.swap(listOfArray, indexOne, indexTwo);
         
         return listOfArray.toArray(array);
