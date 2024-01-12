@@ -19,6 +19,7 @@ public class MessageReceiver implements Runnable{
         catch(Exception e)
         {
             MyLogger.customLogger("Error in sleeping: "+e, "ERROR");
+            Thread.currentThread().interrupt();
         }
         MyLogger.customLogger("Entering Run of Message Reciever", "INFO");
         MyLogger.customLogger(consumerDetails + queue.getMessage(),"DEBUG");

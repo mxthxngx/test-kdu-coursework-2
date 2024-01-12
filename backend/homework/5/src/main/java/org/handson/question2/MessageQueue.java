@@ -30,6 +30,7 @@ public class MessageQueue {
         catch(Exception e)
         {
             MyLogger.customLogger("Exception in storing message", "ERROR");
+            Thread.currentThread().interrupt();
         }
     }
     public String getMessage()

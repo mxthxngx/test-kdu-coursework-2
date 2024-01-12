@@ -12,7 +12,8 @@ class Main{
         try {
             thread1.join();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            MyLogger.customLogger(e.toString(), "ERROR");;
+            Thread.currentThread().interrupt();
         }
         Factors factors = new Factors(15);
         Thread thread2 = new Thread(factors);
@@ -20,7 +21,8 @@ class Main{
         try {
             thread2.join();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+           MyLogger.customLogger(e.toString(), "ERROR");
+           Thread.currentThread().interrupt();
         }
         MyLogger.customLogger("This statement should print in the end of the code after the execution of the other threads","INFO");
     }
