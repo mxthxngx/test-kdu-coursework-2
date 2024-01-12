@@ -1,11 +1,7 @@
 package org.handson.question2;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
+
 
 /**
  * Another implementation of this problem is using the wait() function but works better when one producer is 
