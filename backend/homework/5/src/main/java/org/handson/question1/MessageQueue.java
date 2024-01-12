@@ -1,42 +1,29 @@
 package org.handson.question1;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.atomic.AtomicReference;
 
 import org.handson.MyLogger;
 
+
 public class MessageQueue {
-    public volatile String lastMessage;
-    private static MessageQueue messageQueue;
-    ConcurrentLinkedQueue<String> messages = new ConcurrentLinkedQueue<>();
-    private MessageQueue()
-    {
 
-    }
-    synchronized public static MessageQueue getInstance()
-    {
-        if(messageQueue == null)
-        {
-            messageQueue = new MessageQueue();
-        }
-        return messageQueue;
+    private static final AtomicReference<MessageQueue> INSTANCE = new AtomicReference<>();
+    private ConcurrentLinkedQueue<String> messages = new ConcurrentLinkedQueue<>();
+
+    private MessageQueue() {   }
+
+    public static MessageQueue getInstance() {
+        INSTANCE.compareAndSet(null, new MessageQueue());
+        return INSTANCE.get();
     }
 
-    public void storeMessage(String message)
-    {
-        try{
-        MyLogger.customLogger("Storing message: "+ message,"DEBUG");
-        messageQueue.messages.add(message);
-        }
-        catch(Exception e)
-        {
-            MyLogger.customLogger("Exception in storing message", "ERROR");
-            Thread.currentThread().interrupt();
-        }
-    }
-    public String getMessage()
-    {
-        return messageQueue.messages.poll();
+    public void storeMessage(String message) {
+        MyLogger.customLogger("Storing message: " + message, "DEBUG");
+        messages.add(message);
     }
 
+    public String getMessage() {
+        return messages.poll();
+    }
 }
-
