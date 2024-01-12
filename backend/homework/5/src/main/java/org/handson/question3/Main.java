@@ -12,7 +12,7 @@ class Main{
         try {
             thread1.join();
         } catch (InterruptedException e) {
-            MyLogger.customLogger(e.toString(), "ERROR");;
+            MyLogger.customLogger(e.toString(), "ERROR");
             Thread.currentThread().interrupt();
         }
         Factors factors = new Factors(15);
