@@ -103,7 +103,7 @@ public void createMatchFixtures()
         int randomIndex = (int)(r*(teamNames.size()));
 
         int totalcount  = 0;
-        while(totalcount<=Math.pow(2,teamNames.size()))
+        while(totalcount<=50)
         {
             r  = Math.random();
             randomIndex = (int)(r*(teamNames.size()));
