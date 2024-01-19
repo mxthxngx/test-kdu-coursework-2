@@ -103,17 +103,18 @@ public void createMatchFixtures()
         int randomIndex = (int)(r*(teamNames.size()));
 
         int totalcount  = 0;
-        while(totalcount<=Math.pow(2,teamNames.size()))
+    
+        while(totalcount<=50)
         {
             r  = Math.random();
             randomIndex = (int)(r*(teamNames.size()));
             Team team = teamNames.get(randomIndex);
-            MyLogger.customLogger(team.getTeamName(), "DEBUG");
+         //   MyLogger.customLogger(team.getTeamName(), "DEBUG");
             
              r  = Math.random();
              randomIndex = (int)(r*(teamNames.size()));
              Team team2 = teamNames.get(randomIndex);
-             MyLogger.customLogger(team2.getTeamName(),"DEBUG");
+         //    MyLogger.customLogger(team2.getTeamName(),"DEBUG");
              if(!team.getTeamName().equals(team2.getTeamName()) &&teamMapPlayedEachotherCount.get(team.getTeamName()+"_"+team2.getTeamName())==null)
              {
                  
@@ -121,6 +122,7 @@ public void createMatchFixtures()
                  String[] data = {c.getTime()+" "+times[index]+"",matchNumber+"",team.getTeamName(),team2.getTeamName(),team.getTeamName()+"_home"};
                  csvWriter.writeNext(data);
                  totalcount++;
+                 System.out.println(totalcount);
              }
              else{
                 continue;
