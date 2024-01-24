@@ -1,12 +1,10 @@
 package com.example.demo.controller;
 import com.example.demo.dto.VehicleDTO;
-import com.example.demo.exception.CustomException;
 import com.example.demo.model.Vehicle;
 import com.example.demo.services.FactoryService1;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
+
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -14,7 +12,6 @@ import java.util.List;
 
 @RestController
 
-//@RequestMapping("/vehicles")
 public class VehicleController {
 
     private FactoryService1 factoryService1;

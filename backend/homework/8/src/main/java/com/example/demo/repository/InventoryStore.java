@@ -1,5 +1,6 @@
 package com.example.demo.repository;
 
+import com.example.demo.logger.MyLogger;
 import com.example.demo.model.Vehicle;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,7 @@ public class InventoryStore {
               // break;
            }
        }
+       MyLogger.customLogger("Erorr in updating!","ERROR");
        return false;
    }
    public boolean remove(String id)
@@ -58,6 +60,7 @@ public class InventoryStore {
 
            }
        }
+       MyLogger.customLogger("Erorr in removing!","ERROR");
        return false;
    }
 
