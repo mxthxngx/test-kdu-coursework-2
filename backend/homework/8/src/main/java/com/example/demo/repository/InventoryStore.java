@@ -70,5 +70,15 @@ public class InventoryStore {
        }
        return vehList;
    }
+    public List<String> showLowestPrice()
+    {
+        List<String> vehList = new ArrayList<>();
+        for(var vehicle: vehicleList)
+        {
+            vehList.add(String.valueOf(vehicle.getPrice()));
+        }
+        return vehList;
+    }
+
 
 }

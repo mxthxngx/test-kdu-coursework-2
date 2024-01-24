@@ -56,10 +56,14 @@ public class VehicleController {
             else   return ResponseEntity.ok("Something went wrong! Most likely could not find id");
     }
 
-    @GetMapping("/factory1/showprice")
-    public String showMaxPrice()
+    @GetMapping("/factory1/showprice/{type}")
+    public String showMaxPrice(@PathVariable String type)
     {
-        return factoryService1.showHighestPrice();
+        if(type.equals("Highest"))
+        return "highest = "+factoryService1.showHighestPrice();
+
+        else
+            return "lowest = "+factoryService1.showLowestPrice();
     }
 
 }

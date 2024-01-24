@@ -41,5 +41,10 @@ public class FactoryService1 implements FactoryService{
       List<String> vh= inventoryStore.showHighestPrice();
       return Collections.max(vh);
     }
+    public String showLowestPrice()
+    {
+        List<String> vh= inventoryStore.showLowestPrice();
+        return Collections.min(vh);
+    }
 
 }
