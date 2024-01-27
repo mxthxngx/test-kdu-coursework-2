@@ -211,6 +211,7 @@ public class GeoCodingImpTest {
     @Test
     @Order(6)
     void testGeoCodingCacheEviction() throws Exception {
+
         // Call the method with address goa
         hitGeoCodingCache("goa");
 
@@ -325,6 +326,7 @@ public void tearDown() throws InterruptedException {
         Thread.sleep(REQUEST_DELAY_MS);
     }
     private synchronized void hitGeoCodingCache(String address) throws Exception {
+        Thread.sleep(1000);
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/geocoding")
                         .param("address", address)
                         .contentType(MediaType.APPLICATION_JSON))
