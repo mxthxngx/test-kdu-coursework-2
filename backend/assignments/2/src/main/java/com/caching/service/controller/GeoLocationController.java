@@ -68,29 +68,28 @@ public class GeoLocationController {
      */
     @GetMapping(value = "/reverse-geocoding")
     public List<ResponseDTOReverse> reverseGeoCoding(@RequestParam("lat") String lat, @RequestParam("lon") String lon, Model model) throws IOException {
-
-
         try {
             double latitude = Double.parseDouble(lat);
             double longitude = Double.parseDouble(lon);
-            log.info(latitude+" "+longitude);
+            log.info(latitude + " " + longitude);
         } catch (NumberFormatException e) {
-            // Handle the case where latitude or longitude is not a valid double
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Latitude or longitude is not valid", e);
+         
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Latitude or longitude is not a valid double", e);
         }
-
+    
         reverseGeoCodingParams.setLat(lat);
         reverseGeoCodingParams.setLon(lon);
-
+    
         var addresses = service.performReverseGeoCoding(reverseGeoCodingParams);
-
+    
         log.info("Address got is: " + addresses.toString());
         if (addresses.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No addresses found for the given coordinates");
         }
-
+    
         return addresses;
     }
+    
 
 
 }
