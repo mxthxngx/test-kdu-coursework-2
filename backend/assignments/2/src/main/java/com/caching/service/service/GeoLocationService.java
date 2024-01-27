@@ -53,7 +53,9 @@ public class GeoLocationService {
     @Cacheable(cacheNames = "geocoding", key = "#params.address", unless = "#params.getAddress().toLowerCase().contains(\"goa\") or #result[0].display_name.toLowerCase().contains(\"goa\")")
     public List<ResponseDTOForward> performForwardGeoCoding(ForwardGeoCodingParams params) throws IOException {
         String address = params.getAddress();
-
+        if (address == null || address.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Address parameter is missing or empty");
+        }
         List<ResponseDTOForward> cachedResponse = caffeineCacheManager.getCache("geocoding").get(address, List.class);
         log.info("Caching status for the address: "+params.getAddress()+" "+caffeineCacheManager.getCache("geocoding").get(params.getAddress()));
         if (cachedResponse != null) {
