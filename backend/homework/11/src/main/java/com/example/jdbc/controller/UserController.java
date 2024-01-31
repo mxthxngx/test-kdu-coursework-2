@@ -20,6 +20,12 @@ public class UserController {
         this.userService = userService;
     }
 
+    /**
+     * Adds a user using the provided userDTO.
+     *
+     * @param  userDTO  the user data transfer object
+     * @return          a response entity with the status of the user addition
+     */
     @PostMapping("/user/add")
     public ResponseEntity<String> addUser(@RequestBody UserDTO userDTO) {
         try {
@@ -29,6 +35,13 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Unable to add user: " + e.getMessage());
         }
     }
+    /**
+     * Retrieves a list of user DTOs based on the provided tenant ID.
+     *
+     * @param  tenantID  the ID of the tenant
+     * @return           a ResponseEntity containing the list of user DTOs if successful, 
+     *                   or an error response if an exception occurs
+     */
     @GetMapping("/user/getbytenant")
     public ResponseEntity<List<UserDTO>> getUsersByTenant(@RequestParam UUID tenantID) {
         try {
@@ -42,6 +55,13 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
+    /**
+     * Update a user.
+     *
+     * @param  username  the username of the user
+     * @param  userid    the unique identifier of the user
+     * @return           a ResponseEntity with a success message or an error message
+     */
     @PutMapping("/user/update")
     public ResponseEntity<String> updateUser(@RequestParam String username,@RequestParam UUID userid) {
         try {

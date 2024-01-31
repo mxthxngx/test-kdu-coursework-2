@@ -22,6 +22,12 @@ public class AllUpdateController {
     {
         this.allService = allDAO;
     }
+    /**
+     * A method to add all users.
+     *
+     * @param  allDTO   the DTO containing all users to be added
+     * @return          an HttpEntity with a String indicating success or failure
+     */
     @PostMapping("all/add")
     public HttpEntity<String> addAllUsers(@RequestBody AllDTO allDTO)
     {

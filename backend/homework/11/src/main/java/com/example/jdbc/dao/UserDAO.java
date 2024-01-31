@@ -29,6 +29,12 @@ public class UserDAO {
             throw e;
         }
     }
+    /**
+     * Retrieves a list of users by their tenant ID.
+     *
+     * @param  tenantID   the unique identifier of the tenant
+     * @return            a list of UserDTO objects for the given tenant ID
+     */
     public List<UserDTO> getUsersByTenant(UUID tenantID)
     {
         try {
@@ -46,6 +52,12 @@ public class UserDAO {
             throw e;
         }
     }
+    /**
+     * Updates a user in the database.
+     *
+     * @param  username  the new username
+     * @param  userID    the ID of the user to update
+     */
     public void updateUser(String username,UUID userID)
     {
         try {

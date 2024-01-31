@@ -20,6 +20,12 @@ public class UserService {
         this.userDAO = userDAO;
     }
 
+    /**
+     * Adds a user to the system.
+     *
+     * @param  user  the UserDTO to be added
+     * @return       true if the user is added successfully, false otherwise
+     */
     public boolean addUser(UserDTO user) {
         try {
             return userDAO.addUser(user) != 0;
@@ -29,6 +35,12 @@ public class UserService {
 
         }
     }
+    /**
+     * Retrieves a list of UserDTO objects based on the specified tenant ID.
+     *
+     * @param  tenantID  the ID of the tenant to retrieve user information for
+     * @return           a list of UserDTO objects for the specified tenant
+     */
     public List<UserDTO> getUsersByTenant(UUID tenantID) {
         try {
             return userDAO.getUsersByTenant(tenantID);
@@ -37,6 +49,13 @@ public class UserService {
             throw e;
         }
     }
+    /**
+     * Updates a user with the given username and user ID.
+     *
+     * @param  username  the username of the user to be updated
+     * @param  userid    the unique identifier of the user to be updated
+     * @return           void
+     */
     public void updateUser(String username,UUID userid)
     {
         try

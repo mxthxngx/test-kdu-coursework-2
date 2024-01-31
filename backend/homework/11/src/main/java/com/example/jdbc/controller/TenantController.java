@@ -19,6 +19,13 @@ public class TenantController {
         this.tenantService = tenantService;
     }
 
+    /**
+     * Adds a new tenant using the provided TenantDTO.
+     *
+     * @param  tenantDTO  the TenantDTO object representing the new tenant
+     * @return            a ResponseEntity with a success message if the tenant is added successfully, 
+     *                    otherwise a ResponseEntity with an error message
+     */
     @PostMapping("/tenant/add")
     public ResponseEntity<String> addTenant(@RequestBody TenantDTO tenantDTO) {
         if (tenantService.addTenant(tenantDTO)) {

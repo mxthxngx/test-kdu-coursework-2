@@ -21,6 +21,12 @@ public class ShiftController {
         this.shiftService = shiftService;
     }
 
+    /**
+     * Adds a shift using the provided ShiftDTO.
+     *
+     * @param  shiftRequest   the ShiftDTO to be added
+     * @return                a ResponseEntity containing a success or error message
+     */
     @PostMapping("/shift/add")
     public ResponseEntity<String> addShift(@RequestBody ShiftDTO shiftRequest) {
         try {
@@ -34,6 +40,12 @@ public class ShiftController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error: " + e.getMessage());
         }
     }
+    /**
+     * Retrieves shift information for a specific tenant.
+     *
+     * @param  tenantID  the UUID of the tenant
+     * @return           a ResponseEntity containing the shift information, or an error message
+     */
     @GetMapping("shift/getbytenant")
     public ResponseEntity<String> getByTenant(@RequestParam @JsonDeserialize UUID tenantID) {
         try {

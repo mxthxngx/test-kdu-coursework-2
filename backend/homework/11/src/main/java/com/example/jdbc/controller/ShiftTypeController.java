@@ -24,6 +24,12 @@ public class ShiftTypeController {
         this.shiftTypeService = service;
     }
 
+    /**
+     * Adds a new shift type based on the provided ShiftTypeDTO.
+     *
+     * @param  shiftTypeRequest  the ShiftTypeDTO to be added
+     * @return                   a ResponseEntity containing a success or error message
+     */
     @PostMapping("/shifttype/add")
     public ResponseEntity<String> addShiftType(@RequestBody ShiftTypeDTO shiftTypeRequest) {
         try {
@@ -37,6 +43,12 @@ public class ShiftTypeController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Unable to add shift type");
         }
     }
+    /**
+     * Retrieves shift type information for a specific tenant.
+     *
+     * @param  tenantID   the UUID of the specific tenant
+     * @return            a ResponseEntity containing the shift type information as a string
+     */
     @GetMapping("shifttype/getbytenant")
     public ResponseEntity<String> getByTenant(@RequestParam @JsonDeserialize UUID tenantID)
     {

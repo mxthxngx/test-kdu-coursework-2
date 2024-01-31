@@ -19,6 +19,12 @@ public class ShiftTypeService {
     {
         this.shiftTypeDAO = shiftTypeDAO;
     }
+    /**
+     * Adds a shift type to the system.
+     *
+     * @param  shiftTypeDTO  the ShiftTypeDTO to be added
+     * @return               true if the shift type was added successfully, false otherwise
+     */
     public boolean addShiftType(ShiftTypeDTO shiftTypeDTO) {
         try {
             if (!(shiftTypeDTO.getUniqueName().equals("Morning") || shiftTypeDTO.getUniqueName().equals("Afternoon") || shiftTypeDTO.getUniqueName().equals("Night"))) {
@@ -31,6 +37,12 @@ public class ShiftTypeService {
            throw e;
         }
     }
+    /**
+     * Retrieves a list of ShiftTypeDTO objects for the specified tenant ID.
+     *
+     * @param  tenantID  the ID of the tenant
+     * @return           a list of ShiftTypeDTO objects
+     */
     public List<ShiftTypeDTO> getShift(UUID tenantID)
     {
         return shiftTypeDAO.getShift(tenantID);

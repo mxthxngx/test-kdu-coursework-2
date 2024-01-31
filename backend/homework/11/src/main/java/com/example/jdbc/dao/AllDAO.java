@@ -25,6 +25,12 @@ public class AllDAO {
         this.tenantDAO = tenantDAO;
     }
 
+    /**
+     * Adds all the data access objects for the given AllDTO.
+     *
+     * @param  allDTO    the data transfer object containing all the necessary information
+     * @return          1 if the data access objects were added successfully
+     */
     public int addAllDAO(AllDTO allDTO)
     {
         try

@@ -14,19 +14,25 @@ public class AllService {
     {
         this.allDAO = allDAO;
     }
+    /**
+     * Adds all AllDTO objects to the database.
+     *
+     * @param  allDTO    the AllDTO object to be added
+     * @return          true if the addition is successful, false otherwise
+     */
+  
     @Transactional
     public boolean addAll(AllDTO allDTO) {
         try {
             if(allDAO.addAllDAO(allDTO)!=0)
-            {
                 return true;
-            }
-            else return false;
+
         }
         catch (Exception e)
         {
             log.error("Exception at allDTO");
             throw e;
         }
+        return false;
     }
 }

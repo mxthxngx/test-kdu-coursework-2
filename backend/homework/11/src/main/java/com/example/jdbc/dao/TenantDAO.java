@@ -24,6 +24,12 @@ public class TenantDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    /**
+     * Adds a new tenant to the database.
+     *
+     * @param  tenant  the TenantDTO object representing the tenant to be added
+     * @return         the number of rows affected in the database
+     */
     public int addTenant(TenantDTO tenant) {
         try {
             String sqlStatement = "INSERT INTO tenant (name) VALUES (?)";

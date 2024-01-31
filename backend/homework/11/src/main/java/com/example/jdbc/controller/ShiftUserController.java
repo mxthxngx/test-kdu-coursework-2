@@ -24,6 +24,12 @@ public class ShiftUserController {
         this.userService = userService;
     }
 
+    /**
+     * Add a new shift user.
+     *
+     * @param  userDTO   the ShiftUserDTO to be added
+     * @return           a ResponseEntity with a success message or an error message
+     */
     @PostMapping("/shift-user/add")
     public ResponseEntity<String> addShiftUser(@RequestBody ShiftUserDTO userDTO) {
         try {
@@ -33,6 +39,12 @@ public class ShiftUserController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to add shift user: " + e.getMessage());
         }
     }
+    /**
+     * A description of the entire Java function.
+     *
+     * @param  tenantID	description of parameter
+     * @return         	description of return value
+     */
     @GetMapping("shift-user/getbytenant")
     public ResponseEntity<String> getByTenant(@RequestParam @JsonDeserialize UUID tenantID)
     {

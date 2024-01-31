@@ -20,6 +20,12 @@ public class ShiftTypeDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    /**
+     * Adds a shift type to the database.
+     *
+     * @param  shiftType  the ShiftTypeDTO object to be added
+     * @return           the number of rows affected in the database
+     */
     public int addShiftType(ShiftTypeDTO shiftType) {
         try {
 
@@ -30,6 +36,12 @@ public class ShiftTypeDAO {
             throw e;
         }
     }
+    /**
+     * Retrieves a list of shift types for the given tenant ID.
+     *
+     * @param  tenantID   the ID of the tenant
+     * @return            a list of ShiftTypeDTO objects
+     */
     public List<ShiftTypeDTO> getShift(UUID tenantID)
     {
         try {

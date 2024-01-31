@@ -26,12 +26,18 @@ public class ShiftDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    /**
+     * Adds a shift to the database.
+     *
+     * @param  shift  the ShiftDTO object to be added
+     * @return       the number of rows affected by the insert operation
+     */
     public int addShift(ShiftDTO shift) {
         try {
             String sqlStatement = "INSERT INTO shifts (shift_type_id, name, date_start, date_end, " +
                     "time_start, time_end,tenant_id) VALUES (?, ?, ?, ?, ?, ?,?)";
 
-            return jdbcTemplate.update((connection) -> {
+            return jdbcTemplate.update(connection -> {
                 PreparedStatement ps = connection.prepareStatement(sqlStatement);
                 ps.setObject(1, shift.getShiftTypeId());
                 ps.setString(2, shift.getName());
@@ -48,6 +54,12 @@ public class ShiftDAO {
             throw e;
         }
     }
+    /**
+     * Retrieves the shift information for the given tenant ID.
+     *
+     * @param  tenantID   the UUID of the tenant
+     * @return            a List of ShiftDTO containing the shift information
+     */
     public List<ShiftDTO> getShift(UUID tenantID)
     {
         try {

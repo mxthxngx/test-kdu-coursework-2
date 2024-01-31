@@ -21,21 +21,33 @@ public class ShiftService {
         this.shiftDAO = shiftDAO;
     }
 
+    /**
+     * Adds a ShiftDTO to the system.
+     *
+     * @param  shiftDTO   the ShiftDTO to be added
+     * @return           true if the ShiftDTO is successfully added, false otherwise
+     */
     public boolean addShift(ShiftDTO shiftDTO) {
         try {
 
         if(shiftDAO.addShift(shiftDTO)!=0)
-        {
             return true;
-        }
-            return false;
+
+
         }
         catch (Exception e)
         {
             log.error(e.toString());
             return false;
         }
+        return false;
     }
+    /**
+     * Retrieves a list of ShiftDTO objects for the given tenant ID.
+     *
+     * @param  tenantID  the ID of the tenant
+     * @return           a list of ShiftDTO objects
+     */
     public List<ShiftDTO> getShift(UUID tenantID)
     {
       return  shiftDAO.getShift(tenantID);

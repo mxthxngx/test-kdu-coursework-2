@@ -14,6 +14,13 @@ public class TenantService {
         this.tenantDAO=tenantDAO;
     }
 
+    /**
+     * Adds a new tenant using the provided TenantDTO.
+     *
+     * @param  tenantDTO  the TenantDTO object representing the new tenant
+     * @return            true if the tenant was successfully added, false otherwise
+     */
+   
     public boolean addTenant(TenantDTO tenantDTO)
     {
         try

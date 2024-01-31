@@ -19,6 +19,12 @@ public class ShiftUserService {
     {
         this.shiftUserDAO = shiftUserDAO;
     }
+    /**
+     * Adds a shift user using the provided ShiftUserDTO.
+     *
+     * @param  shiftUserDTO  the ShiftUserDTO to be added
+     * @return              true if the shift user was added successfully
+     */
     public boolean addShiftUser(ShiftUserDTO shiftUserDTO)
     {
         try {
@@ -32,6 +38,12 @@ public class ShiftUserService {
         throw e;
     }
     }
+    /**
+     * Retrieves a list of ShiftUserDTO objects based on the given tenant ID.
+     *
+     * @param  tenantID   the unique identifier of the tenant
+     * @return            a list of ShiftUserDTO objects
+     */
     public List<ShiftUserDTO> getShiftUsersByTenantID(UUID tenantID) {
         try {
             return shiftUserDAO.getUsersByTenant(tenantID);
