@@ -28,7 +28,7 @@ public interface ShiftDAO extends CrudRepository<ShiftDTO, UUID> {
      * @param endDate the end date of the range.
      * @return a list of ShiftDTO objects within the specified date range, ordered by shift name.
      */
-    @Query("SELECT s FROM ShiftDTO s WHERE s.dateStart = :startDate AND s.dateEnd = :endDate ORDER BY s.name ASC")
+    @Query("SELECT s FROM ShiftDTO s WHERE s.dateStart = :startDate AND s.dateEnd = :endDate ORDER BY s.name ASC LIMIT 3")
     List<ShiftDTO> findTop3ByDateRange(Timestamp startDate, Timestamp endDate);
 
 }

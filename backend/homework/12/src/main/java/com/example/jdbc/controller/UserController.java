@@ -74,7 +74,7 @@ public class UserController {
     @PutMapping("/user/update")
     public ResponseEntity<String> updateUser(@RequestParam String username,@RequestParam UUID userid) {
         try {
-            userService.updateUser(username,userid); // Implement this method in your service layer
+            userService.updateUser(username,userid); 
             return ResponseEntity.ok("User updated successfully");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Unable to update user: " + e.getMessage());
