@@ -1,5 +1,6 @@
 package com.assessment.assessmenttwo.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.*;
@@ -8,7 +9,7 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Set;
-import java.util.UUID;
+
 
 @Data
 @RequiredArgsConstructor
@@ -17,7 +18,7 @@ import java.util.UUID;
 public class UserDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private Integer id;
 
     private String username;
 
@@ -29,9 +30,11 @@ public class UserDTO {
     private String email;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy="user")
+    @JsonIgnore
     private Set<AddressDTO> addressDTOList;
 
     @OneToOne(cascade = CascadeType.ALL,mappedBy = "user")
+    @JsonIgnore
     private ShoppingCartDTO shoppingCartDTO;
 
 }

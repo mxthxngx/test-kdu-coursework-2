@@ -4,16 +4,21 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-import java.util.UUID;
+//import java.util.int;
 
 @Data
 @Entity
 @Table(name="inventory")
 @RequiredArgsConstructor
 public class InventoryDTO {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private int id;
+
     @OneToOne
-    ProductDTO productDTO;
+    @JoinColumn(name = "product_id")
+    private ProductDTO productDTO;
+
+    private Integer quantity;
 }

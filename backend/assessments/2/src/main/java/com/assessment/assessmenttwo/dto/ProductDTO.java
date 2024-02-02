@@ -4,19 +4,18 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-import java.util.UUID;
+//import java.util.int;
 
 @Data
 @Entity
 @RequiredArgsConstructor
-@Table(name="products")
 public class ProductDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private int id;
 
     private double price;
-    private int quantity;
     private String description;
     private String name;
+
 }

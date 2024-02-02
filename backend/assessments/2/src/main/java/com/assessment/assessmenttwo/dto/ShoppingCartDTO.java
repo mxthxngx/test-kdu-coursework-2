@@ -1,25 +1,35 @@
 package com.assessment.assessmenttwo.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import org.antlr.v4.runtime.misc.NotNull;
 import org.hibernate.annotations.Fetch;
 
 import java.util.List;
+//import java.util.int;
 
 @Data
 @Entity
-@Table(name ="shoppingcart")
+@Table(name="shopping_cart")
+@NoArgsConstructor
+
 public class ShoppingCartDTO {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int  id;
-    @ManyToOne(fetch = FetchType.LAZY,optional = false)
-    @JoinColumn(name="product_id",referencedColumnName = "id")
-    ProductDTO  productDTO;
-    private int quantity;
+    private int id;
 
-@OneToOne(cascade = CascadeType.ALL)
-@JoinColumn(name="user_id")
+    private int quantity;
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private ProductDTO productDTO;
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    @JsonIgnore
     private UserDTO user;
 
 

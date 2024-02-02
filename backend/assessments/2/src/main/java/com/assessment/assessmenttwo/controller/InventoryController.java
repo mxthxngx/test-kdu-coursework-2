@@ -5,7 +5,7 @@ import com.assessment.assessmenttwo.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.UUID;
+//import java.util.int;
 
 @RestController
 public class InventoryController {
@@ -24,9 +24,9 @@ public class InventoryController {
         }
     }
     @PutMapping("/inventory/update")
-    public String updateInventory(@PathVariable UUID UUID, @RequestBody InventoryDTO inventoryDTO)
+    public String updateInventory(@PathVariable int id, @RequestBody InventoryDTO inventoryDTO)
     {try {
-        inventoryService.update(UUID, inventoryDTO);
+        inventoryService.update(id, inventoryDTO);
         return "Updated!";
     }
     catch (Exception e)
@@ -35,11 +35,11 @@ public class InventoryController {
     }
     }
     @PutMapping("/inventory/delete")
-    public String updateInventory(@PathVariable UUID UUID)
+    public String deleteInventory(@PathVariable int id)
     {
         try
         {
-            inventoryService.delete(UUID);
+            inventoryService.delete(id);
             return "Success";
         }
         catch (Exception e)

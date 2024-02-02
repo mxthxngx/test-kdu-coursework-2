@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Date;
-import java.util.UUID;
+//import java.util.int;
 
 @Data
 @Entity
@@ -12,7 +12,7 @@ import java.util.UUID;
 public class OrderDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private int id;
     Date date;
     int totalAmount;
     @OneToOne

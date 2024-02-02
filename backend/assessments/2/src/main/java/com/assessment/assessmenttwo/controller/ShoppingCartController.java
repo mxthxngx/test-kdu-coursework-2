@@ -2,10 +2,12 @@ package com.assessment.assessmenttwo.controller;
 
 import com.assessment.assessmenttwo.dto.ShoppingCartDTO;
 import com.assessment.assessmenttwo.service.ShoppingCartService;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.UUID;
+import java.util.List;
+
 
 @RestController
 public class ShoppingCartController {
@@ -17,10 +19,10 @@ public class ShoppingCartController {
     }
 
 @PostMapping("/shoppingcart/add")
-        public String addToShoppingCart(@RequestParam UUID productID,@RequestParam int quantity)
-{
+        public String addToShoppingCart(@RequestParam  String productID, @RequestParam int quantity, @RequestParam int userID) throws NoSuchFieldException {
     try {
-        shoppingCartService.add(productID,quantity);
+        int prodID = Integer.parseInt(productID);
+        shoppingCartService.addProduct(prodID,quantity,userID);
         return "Successfully added!";
     }
     catch (Exception e)
@@ -30,10 +32,9 @@ public class ShoppingCartController {
 }
 
 @DeleteMapping("/shoppingcart/remove")
-    public String fromShoppingCart(@RequestParam UUID uuid, @RequestParam int quantity)
-{
+    public String fromShoppingCart(@RequestParam @JsonDeserialize int productID, @RequestParam int quantity,@RequestParam int userID) throws NoSuchFieldException {
     try{
-        shoppingCartService.add(uuid,-quantity);
+        shoppingCartService.removeProduct(productID,quantity,userID);
         return "Successfully removed!";
     }
     catch (Exception e)
@@ -43,10 +44,9 @@ public class ShoppingCartController {
 }
 
 @GetMapping("shoppingcart/view")
-    public ShoppingCartDTO viewShoppingCart(@RequestParam UUID id)
-{
+    public List<ShoppingCartDTO> viewShoppingCart(@RequestParam int userID) throws NoSuchFieldException {
     try {
-        return shoppingCartService.view(id);
+        return shoppingCartService.view(userID);
     }
     catch (Exception e)
     {
