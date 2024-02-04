@@ -24,6 +24,6 @@ public interface AddDeviceDAO extends CrudRepository<AddDeviceModel,Integer> {
     List<Object[]> findHouseDeviceRoomByHouseId(@Param("houseId") Integer houseId);
 
     @Query("SELECT ad FROM AddDeviceModel ad WHERE ad.deviceModel.kickstonId = :kickston_id")
-    AddDeviceModel findByKickStonId(@Param("kickston_id") String kickston_id);
+    AddDeviceModel findByKickStonId(@Param("kickston_id") String kickstonId);
 
 }

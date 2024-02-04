@@ -1,11 +1,8 @@
 package com.kdu.smarthome.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.kdu.smarthome.dto.UserDTO;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.antlr.v4.runtime.misc.NotNull;
 import org.springframework.context.annotation.Scope;
 
 /**

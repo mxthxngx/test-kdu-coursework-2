@@ -1,8 +1,6 @@
 package com.kdu.smarthome.mapper;
 
-import com.kdu.smarthome.dto.AddDeviceDTO;
 import com.kdu.smarthome.dto.DeviceDTO;
-import com.kdu.smarthome.dto.DeviceRegisterDTO;
 import com.kdu.smarthome.model.AddDeviceModel;
 import com.kdu.smarthome.model.DeviceModel;
 import com.kdu.smarthome.model.RegisteredDevice;
@@ -43,15 +41,10 @@ public class DeviceMapper {
     /**
      * Converts a DeviceRegisterDTO to a RegisteredDevice.
      *
-     * @param deviceRegisterDTO The DeviceRegisterDTO object to be converted.
      * @return The corresponding RegisteredDevice object.
      */
-    public static RegisteredDevice toRegisteredDevice(DeviceRegisterDTO deviceRegisterDTO) {
-        RegisteredDevice registeredDevice = new RegisteredDevice();
-
-        // Add mapping logic here if needed
-
-        return registeredDevice;
+    public static RegisteredDevice toRegisteredDevice() {
+        return new RegisteredDevice();
     }
 
     /**

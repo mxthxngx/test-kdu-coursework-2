@@ -30,7 +30,7 @@ public class JWTTokenGenerator {
  * @return the generated JWT token
  */
 
-    public static String generateToken(Authentication authentication, String userType, HttpServletResponse response) {
+    public static String generateToken(Authentication authentication, HttpServletResponse response) {
         if (null != authentication) {
             SecretKey key = Keys.hmacShaKeyFor(JWT_KEY.getBytes(StandardCharsets.UTF_8));
             String jwt =   Jwts.builder().issuer("kdu").subject("JWT Token")

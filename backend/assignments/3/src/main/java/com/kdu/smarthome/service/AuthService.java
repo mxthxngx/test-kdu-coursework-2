@@ -55,7 +55,7 @@ public class AuthService {
             SecurityContextHolder.getContext().setAuthentication(authentication);
             UserDetails userDetails = customUserDetails.loadUserByUsername(user.getUsername());
             log.info(userDetails.toString());
-            String jwtToken = JWTTokenGenerator.generateToken(authentication,user.getRole(), response);
+            String jwtToken = JWTTokenGenerator.generateToken(authentication, response);
             if (jwtToken == null) {
                 throw new NullPointerException("Null jwt token");
             }

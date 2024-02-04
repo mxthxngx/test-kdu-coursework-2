@@ -47,7 +47,6 @@ public class JWTAuthFilter extends OncePerRequestFilter {
             try {
                 log.info(jwt);
                 Claims claims = JWTTokenGenerator.validateToken(jwt);
-                String authorities = (String) claims.get("roles");
                 String username = String.valueOf(claims.get("username"));
 
                 UserDetails customUserDetailsObj = customUserDetails.loadUserByUsername(username);
@@ -84,7 +83,7 @@ public class JWTAuthFilter extends OncePerRequestFilter {
      * @return the JWT token, or null if not found
      */
     private String getJWTfromRequest(HttpServletRequest request) {
-        String bearerToken = request.getHeader("Authorization");
+        String bearerToken = request.getHeader(JWT_HEADER);
         if(bearerToken!=null &&  bearerToken.startsWith("Bearer ")) {
             return bearerToken.substring(7);
         } else {

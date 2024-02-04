@@ -1,7 +1,5 @@
 package com.kdu.smarthome.dao;
 
-import com.kdu.smarthome.dto.RoomDTO;
-import com.kdu.smarthome.model.HouseUser;
 import com.kdu.smarthome.model.RoomModel;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

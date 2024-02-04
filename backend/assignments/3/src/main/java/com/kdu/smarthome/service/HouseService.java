@@ -10,6 +10,7 @@ import com.kdu.smarthome.dao.HouseDAO;
 import com.kdu.smarthome.dao.HouseUserDAO;
 import com.kdu.smarthome.dto.HouseDTO;
 import com.kdu.smarthome.dto.UserDTO;
+import com.kdu.smarthome.exception.custom.GenericException;
 import com.kdu.smarthome.mapper.HouseMapper;
 import com.kdu.smarthome.model.*;
 import lombok.extern.slf4j.Slf4j;
@@ -114,7 +115,7 @@ public class HouseService {
             }
 
             log.error("Unsuccessful in adding");
-            throw new Error("Unable to add user");
+            throw new GenericException("Unable to add user");
         } catch (Exception e) {
             log.error("Something went wrong in house member addition: " + e);
             throw e;
@@ -134,7 +135,7 @@ public class HouseService {
             if (optionalHouseModel.isPresent()) {
                 return optionalHouseModel.get();
             } else {
-                throw new Exception("House with ID " + houseId + " not found");
+                throw new GenericException("House with ID " + houseId + " not found");
             }
         } catch (Exception e) {
             log.error("Failed to retrieve house by ID: " + e.getMessage());
@@ -158,7 +159,7 @@ public class HouseService {
                 houseModel.setAddress(newAddress);
                 return houseDAO.save(houseModel);
             } else {
-                throw new Exception("House with ID " + houseId + " not found");
+                throw new GenericException("House with ID " + houseId + " not found");
             }
         } catch (Exception e) {
             log.error("Failed to update house address: " + e.getMessage());

@@ -58,12 +58,12 @@ public class InventoryService {
     /**
      * Retrieves a device from the inventory based on its kickston_id.
      *
-     * @param kickston_id The unique identifier for the device (kickston_id).
+     * @param kickstonId The unique identifier for the device (kickston_id).
      * @return The DeviceModel object representing the specified device.
      * @throws NullPointerException If the specified kickston_id is not found in the inventory.
      */
-    public DeviceModel getDeviceByInventory(String kickston_id) {
-        DeviceModel deviceModel = inventoryDAO.findByKickstonId(kickston_id);
+    public DeviceModel getDeviceByInventory(String kickstonId) {
+        DeviceModel deviceModel = inventoryDAO.findByKickstonId(kickstonId);
         if (deviceModel == null) {
             throw new NullPointerException("Kickston_id not found");
         }

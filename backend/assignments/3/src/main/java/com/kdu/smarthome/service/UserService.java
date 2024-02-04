@@ -36,8 +36,9 @@ public class UserService {
      */
     public void save(UserDTO user) {
         try {
-            UserDTO user2 = userDAO.save(user);
+            userDAO.save(user);
         } catch (Exception e) {
+            log.error(e.toString());
             throw e;
         }
     }

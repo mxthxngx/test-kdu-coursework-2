@@ -7,6 +7,7 @@ import com.kdu.smarthome.dto.DeviceRegisterDTO;
 import com.kdu.smarthome.dto.UserDTO;
 import com.kdu.smarthome.exception.custom.CustomItemNotFoundException;
 import com.kdu.smarthome.exception.custom.GenericException;
+import com.kdu.smarthome.exception.custom.UserNotAdminException;
 import com.kdu.smarthome.mapper.DeviceMapper;
 import com.kdu.smarthome.mapper.HouseMapper;
 import com.kdu.smarthome.model.*;
@@ -76,7 +77,7 @@ public class DeviceService {
                 }
 
                 if (deviceModel.getDevicePassword().equals(deviceRegisterDTO.getDevice_password())) {
-                    RegisteredDevice registeredDevice = DeviceMapper.toRegisteredDevice(deviceRegisterDTO);
+                    RegisteredDevice registeredDevice = DeviceMapper.toRegisteredDevice();
                     registeredDevice.setUserDTO(user);
                     registeredDevice.setDeviceModel(deviceModel);
                     registeredDeviceDAO.save(registeredDevice);
@@ -106,14 +107,14 @@ public class DeviceService {
      */
     public DeviceModel addDevice(AddDeviceDTO addDeviceRequest) throws Exception {
         AddDeviceModel addDeviceModel = DeviceMapper.toAddDeviceModel();
-        String ID = addDeviceRequest.getHouseId();
+        String id = addDeviceRequest.getHouseId();
         Pattern pattern = Pattern.compile("^\\d+$");
 
-        if(ID==null ||!pattern.matcher(ID).matches())
+        if(id==null ||!pattern.matcher(id).matches())
         {
             throw new CustomItemNotFoundException("House ID not found");
         }
-        int idInteger = Integer.parseInt(ID);
+        int idInteger = Integer.parseInt(id);
 
         String roomId = addDeviceRequest.getRoomId();
         if(roomId==null ||!pattern.matcher(roomId).matches())
@@ -167,14 +168,14 @@ public class DeviceService {
                 addDeviceModel.setHouseUser(houseUser);
 
             else {
-                throw new Exception("user not admin");
+                throw new UserNotAdminException("user not admin");
             }
 
             addDeviceDAO.save(addDeviceModel);
             return deviceModel;
         }
       else {
-          throw new Exception("Unable to move or add device");
+          throw new GenericException("Unable to move or add device");
         }
 
 

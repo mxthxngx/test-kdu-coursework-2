@@ -1,9 +1,9 @@
 package com.kdu.smarthome.service;
 
-import com.kdu.smarthome.dao.HouseDAO;
 import com.kdu.smarthome.dao.HouseUserDAO;
 import com.kdu.smarthome.dao.RoomDAO;
 import com.kdu.smarthome.dto.RoomDTO;
+import com.kdu.smarthome.exception.custom.GenericException;
 import com.kdu.smarthome.mapper.HouseMapper;
 import com.kdu.smarthome.mapper.RoomMapper;
 import com.kdu.smarthome.model.HouseModel;
@@ -52,14 +52,14 @@ public class RoomService {
         if (houseUserOpt.isPresent()) {
             HouseUser houseUser = houseUserOpt.get();
             if (HouseMapper.currentUserName().equals(houseUser.getUser().getUsername())) {
-                RoomModel roomModel = RoomMapper.DTOModelMapper(room, houseModel);
+                RoomModel roomModel = RoomMapper.dtomodelmapper(room, houseModel);
                 roomDAO.save(roomModel);
                 return roomModel;
             } else {
-                throw new Exception("Current user is not an admin");
+                throw new GenericException("Current user is not an admin");
             }
         } else {
-            throw new Exception("House with ID " + houseID + " not found");
+            throw new GenericException("House with ID " + houseID + " not found");
         }
     }
 

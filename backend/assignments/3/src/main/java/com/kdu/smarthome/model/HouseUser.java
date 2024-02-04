@@ -1,7 +1,6 @@
 package com.kdu.smarthome.model;
 
 import com.kdu.smarthome.dto.UserDTO;
-import com.kdu.smarthome.model.HouseModel;
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;

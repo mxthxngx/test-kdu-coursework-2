@@ -26,18 +26,14 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/auth")
 public class AuthController {
     private UserService userService;
-   private PasswordEncoder passwordEncoder;
-    private JWTTokenGenerator tokenGeneratorFilter;
     private AuthenticationManager authenticationManager;
     private CustomUserDetails customUserDetails;
 
     @Autowired
-    AuthController(UserService userService, AuthenticationManager authenticationManager, PasswordEncoder passwordEncoder, JWTTokenGenerator tokenGeneratorFilter,CustomUserDetails customUserDetails) {
+    AuthController(UserService userService, AuthenticationManager authenticationManager,CustomUserDetails customUserDetails) {
         this.userService = userService;
         this.authenticationManager = authenticationManager;
-        this.passwordEncoder = passwordEncoder;
         this.customUserDetails=customUserDetails;
-        this.tokenGeneratorFilter = tokenGeneratorFilter;
     }
 
 
@@ -65,7 +61,7 @@ public class AuthController {
             SecurityContextHolder.getContext().setAuthentication(authentication);
             UserDetails userDetails = customUserDetails.loadUserByUsername(user.getUsername());
             log.info(userDetails.toString());
-            String jwtToken=tokenGeneratorFilter.generateToken(authentication,user.getRole(),response);
+            String jwtToken= JWTTokenGenerator.generateToken(authentication,response);
             if(jwtToken==null)
             {
                 throw new NullPointerException("Null jwt token");

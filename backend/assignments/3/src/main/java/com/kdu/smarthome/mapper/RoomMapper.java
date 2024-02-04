@@ -17,7 +17,7 @@ public class RoomMapper {
      * @param houseModel  The HouseModel object to which the room belongs.
      * @return The corresponding RoomModel object.
      */
-    public static RoomModel DTOModelMapper(RoomDTO roomDTO, HouseModel houseModel) {
+    public static RoomModel dtomodelmapper(RoomDTO roomDTO, HouseModel houseModel) {
         RoomModel roomModel = new RoomModel();
         HouseModel houseModel1 = houseModel;
         houseModel1.setHouseName(houseModel1.getHouseName());

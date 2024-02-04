@@ -52,7 +52,7 @@ public class DeviceController {
         } catch (CredentialException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new GenericResponse("Invalid credentials", null, HttpStatus.UNAUTHORIZED));
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new GenericResponse("Unexpected error: " + e.getMessage(), null, HttpStatus.INTERNAL_SERVER_ERROR));
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new GenericResponse("Unexpected error occurred: " + e.getMessage(), null, HttpStatus.INTERNAL_SERVER_ERROR));
         }
     }
 

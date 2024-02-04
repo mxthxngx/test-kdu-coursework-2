@@ -39,6 +39,7 @@ public class HouseMapper {
      * @return The corresponding HouseUser object.
      */
     public static HouseUser toHouseUser(HouseDTO houseDTO, HouseRole houseRole) {
+        log.info("HouseDto {}", houseDTO);
         HouseUser houseUser = new HouseUser();
         houseUser.setHouseRole(houseRole);
         String username = currentUserName();
