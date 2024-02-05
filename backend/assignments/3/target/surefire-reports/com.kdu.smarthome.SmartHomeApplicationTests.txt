@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.kdu.smarthome.SmartHomeApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 26, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.489 s -- in com.kdu.smarthome.SmartHomeApplicationTests

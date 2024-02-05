@@ -1,0 +1,17 @@
+/home/hp/Downloads/assessmenttwo/src/test/java/com/kdu/smarthome/DTO/HouseRegisterRequest.java
+/home/hp/Downloads/assessmenttwo/src/test/java/com/kdu/smarthome/DTO/InventoryRequest.java
+/home/hp/Downloads/assessmenttwo/src/test/java/com/kdu/smarthome/configuration/TestDatabaseConfig.java
+/home/hp/Downloads/assessmenttwo/src/test/java/com/kdu/smarthome/DTO/AddDeviceRequest.java
+/home/hp/Downloads/assessmenttwo/src/test/java/com/kdu/smarthome/controller/DeviceControllerTest.java
+/home/hp/Downloads/assessmenttwo/src/test/java/com/kdu/smarthome/DTO/UserRegisterRequest.java
+/home/hp/Downloads/assessmenttwo/src/test/java/com/kdu/smarthome/controller/InventoryControllerTest.java
+/home/hp/Downloads/assessmenttwo/src/test/java/com/kdu/smarthome/SmartHomeApplicationTests.java
+/home/hp/Downloads/assessmenttwo/src/test/java/com/kdu/smarthome/DTO/UpdateAddressRequest.java
+/home/hp/Downloads/assessmenttwo/src/test/java/com/kdu/smarthome/DTO/AddUserToHouseRequest.java
+/home/hp/Downloads/assessmenttwo/src/test/java/com/kdu/smarthome/DTO/DeviceRegisterRequest.java
+/home/hp/Downloads/assessmenttwo/src/test/java/com/kdu/smarthome/utility/TestSuiteDataManager.java
+/home/hp/Downloads/assessmenttwo/src/test/java/com/kdu/smarthome/utility/RequestBuilders.java
+/home/hp/Downloads/assessmenttwo/src/test/java/com/kdu/smarthome/controller/HouseControllerTest.java
+/home/hp/Downloads/assessmenttwo/src/test/java/com/kdu/smarthome/DTO/AddRoomRequest.java
+/home/hp/Downloads/assessmenttwo/src/test/java/com/kdu/smarthome/controller/AuthControllerTest.java
+/home/hp/Downloads/assessmenttwo/src/test/java/com/kdu/smarthome/controller/RoomControllerTest.java

@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Elements Example</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        text-align: justify;
+    
+    }
+    body > :not(blockquote) {
+      margin-left: 40px;
+    }
+    blockquote{  
+    
+        background-color: #f8ebea;  
+                           border-radius: 4px;  
+                         }  
+     body > :not(blockquote) a,h4,h1,h2,p ,h3,h4,h5,h6,img,form{
+  margin-left: 40px;
+  margin-right: 40px;
+}
+  </style>
+</head>
+<body>
+    <main>
+        <blockquote><h1>Pre tag:</h1></blockquote>
+        <pre><p>This is website shows different html tags, this is written using the pre tag</p></pre>
+        <section>
+            <blockquote><h1>Header tag:</h1></blockquote>
+            <article>
+                <header>
+                <p>Posted by Mathangi K</p>
+                <p>Date 4th Feb</p>
+            </header>
+            </article>
+            </section>
+        <section>
+    <blockquote><h1>Heading tags:</h1></blockquote>
+  <!-- Heading Tags -->
+  <h1>Heading of paragraph using heading tag</h1>
+  <h2>Subheading:</h2>
+  <h3>Point 1 using h3 tag</h3>
+ 
+  <p>Paragraph tag font size is similar to h3 tag. Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime harum earum minima voluptas, tempora porro illo odit repudiandae officia doloremque inventore aliquam culpa tenetur facilis est eaque, eligendi rem nobis?</p>
+  <h4>SubPoint 1 using h4 tag</h4>
+  <p>Body of subpoint 1, Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis odio, delectus qui quasi omnis deleniti quod. Quidem corporis alias ab praesentium. Ex dolores veritatis provident numquam magni sit, nam ipsam!</p>
+  <h5>Usage of the h5 tag looks very similar to just using the bold tag. </h5>
+  <h6>H6 tag used here, maybe for caption of images</h6>
+</section>
+  <!-- Anchor Tags with Different _target Values -->
+  <section>
+  <blockquote><h1>Anchor tags with different target values:</h1></blockquote>
+  <span>
+   <h4>Kickdrum Website( in a new tab ):</h4>
+    <a href="https://www.kickdrum.com/" target="_blank">Open in new tab</a><br/>
+  </span>
+ <span>
+    <h4>Kickdrum Website( in the same tab ):</h4>
+  <a href="https://www.kickdrum.com/" target="_self">Click here</a><br/>
+  </section>
+  <!-- Img Tag -->
+  <blockquote><h1>Image tag:</h1></blockquote>
+</span>
+  
+  <img src="https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630" alt="Random tree image" height="300" width="500">
+
+  <!-- Ordered List & Unordered List -->
+  <blockquote><h1>Ordered list tag:</h1></blockquote>
+  <ol>
+    <li>First item</li>
+    <li>Second item</li>
+  </ol>
+  <blockquote><h1>Unordered tag:</h1></blockquote>
+  <ul>
+    <li>Unordered item 1</li>
+    <li>Unordered item 2</li>
+  </ul>
+
+  <!-- Forms -->
+  <blockquote><h1>Forms tag:</h1></blockquote>
+  <form>
+    <label>Enter what you feel about KDU</label><br>
+    <textarea></textarea><br>
+    <label  for = "gender">Gender</label><br>
+    <input type="radio" name="gender" value="male"> Male<br>
+    
+    <input type="radio" name="gender" value="female"> Female<br>
+    <label  for = "vehicle">Vehicle Type</label><br>
+
+    <input type="checkbox" name="vehicle" value="Bike"> I have a bike<br>
+    <input type="checkbox" name="vehicle" value="Car"> I have a car<br>
+    <label  for = "gender">Which bus would you prefer?</label><br>
+
+    <select>
+      <option value="volvo">Volvo</option>
+      <option value="saab">Saab</option>
+    </select><br>
+    <label for="Password">Enter your password:</label><br>
+    <input type="password" name = "Password" placeholder="Password"><br>
+    <label for="Age">Enter your age:</label><br>
+    <input type="number" name = "Age" placeholder="Age"><br>
+    <label for="Telephone">Enter your telephone:</label><br>
+    <input type="number" name="Telephone" placeholder="Telephone"><br>
+    <label for="Search">Enter text to search:</label><br>
+
+    <input type="search" name="Search" placeholder="Search"><br>
+    <input type="submit" value="Submit">
+    <input type="reset" value="Reset">
+  </form>
+    <!-- Text Formatting -->
+    <blockquote><h1>Formatting styles that we offer:</h1></blockquote>
+    <p><i>Italic text</i></p>
+    <p><b>Bold text</b></p>
+    <p><sup>Superscript text</sup></p>
+    <p><u>Underlined text</u></p>
+    <p><sub>Subscript text</sub></p>
+    <p><s>Strikethrough text</s></p>
+    <code><p>This is a piece of code.</p></code>
+
+  <!--Aside content-->
+  <blockquote><h1>Aside tag:</h1></blockquote>
+  <aside>
+    <h4>Office location</h4>
+    <p>#570, 571, 1st Cross Rd, 3rd Block, Santhosapuram, Koramangala 3 Block, Koramangala, Bengaluru, Karnataka 560038</p>
+  </aside>
+       <!--Navigation content-->
+       <blockquote><h1>Nav tag:</h1></blockquote>
+       <nav>
+         <a href="/project1/">Project1</a> |
+         <a href="/project2/">Project2</a> 
+         </nav>
+     
+     <!--Footer content-->
+  <blockquote><h1>Footer tag:</h1></blockquote>
+ 
+  <footer>
+    <p>For feedback or questions, please contact:</p>
+    <p><a href="mailto:mathangi@feedback.com">mathangi@feedback.com</a></p>
+  </footer>
+
+  
+
+</main>
+</body>
+</html>
