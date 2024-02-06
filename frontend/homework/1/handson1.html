@@ -9,7 +9,8 @@
       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
       text-align: justify;
     }
-    body > :not(blockquote) h1,h2,h3,h4,h5,h6,p,ul,ol,li,blockquote {
+    /* Child selector */
+    body > :not(blockquote) h1,h2,h3,h4,h5,h6,p,ul,ol,li,blockquote ,a,form,img{
       margin-left: 40px;
       margin-right: 40px;
     }
@@ -17,6 +18,91 @@
       background-color: #f8ebea;
       border-radius: 4px;
     }
+
+    /* ID selector */
+    #para1{
+      color: red;
+    }
+ 
+    /* Pseudo class */
+    a:hover{
+      color: rgb(213, 50, 194);
+    }
+     /* Usage of class */
+     .main-heading
+    {
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      color:blue
+    }
+    /* Descendant selector */
+    ol li {
+        background-color: rgb(244, 205, 205);
+        margin-bottom: 10px;
+    }
+    /* Adjacent sibling selector */
+    h2 + h3{
+        background-color: yellow;
+    }
+    /* General sibling selector */
+    h2 ~ p{
+        background-color: rgb(21, 255, 0);
+    }
+    .btn{
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-top: 20px;
+        background-color: lightblue;
+        border-radius: 20px;
+    }
+    div{
+        margin-top: 20px;
+        height: 400px;
+        width: 100%;
+        border: #150c0c 1px solid;
+    }
+    .div1 {
+  width: 300px;
+  height: 100px;
+  border: 1px solid blue;
+  box-sizing: border-box;
+}
+
+.content-box { 
+  box-sizing: content-box; 
+}
+.padding-box {
+  box-sizing: padding-box; 
+}
+.border-box { 
+  box-sizing: border-box; 
+}
+
+/* Pen Styling, unrelated to box-sizing */
+body { 
+  font-family: sans-serif; 
+}
+.box-sizing-example { 
+  margin: 0 0 1rem 0;
+  padding: 1rem;
+  background: #eee;
+}
+h4 {
+  margin: 0 0 0.5rem 0;
+}
+div[class*="box"] {
+  width: 300px;
+  padding: 20px;
+  background: #444;
+  color: white;
+  border: 10px solid red;
+  background-clip: content-box;
+  text-indent: 20px;
+}
+.image {
+  width: 100px;
+  height: 100px;
+}
+
   </style>
 </head>
 <body>
@@ -27,15 +113,16 @@
         <blockquote><h1>Header tag:</h1></blockquote>
         <article>
             <header>
-            <p>Posted by Mathangi K</p>
+                <p id="para1">Posted by Mathangi K</p>
             <p>Date 4th Feb</p>
         </header>
         </article>
         </section>
     <section>
         <blockquote><h1>Heading tags:</h1></blockquote>
-        <!-- Heading Tags -->
-        <h1>Heading of paragraph using heading tag</h1>
+       <!-- Heading Tags -->
+  <h1 class="main-heading">Heading of paragraph using heading tag</h1>
+ 
         <h2>Subheading:</h2>
         <h3>Point 1 using h3 tag</h3>
      
@@ -72,7 +159,9 @@
         <li>Unordered item 2</li>
     </ul>
     <!-- Forms -->
-    <blockquote><h1>Forms tag:</h1></blockquote>
+    <blockquote><!-- Heading Tags -->
+        <h1 class="main-heading">Forms tag:</h1>
+       </blockquote>
     <form>
         <label>Enter what you feel about KDU</label><br>
         <textarea></textarea><br>
@@ -95,9 +184,10 @@
         <input type="number" name="Telephone" placeholder="Telephone" tabindex="8"><br>
         <label for="Search">Enter text to search:</label><br>
         <input type="search" name="Search" placeholder="Search"><br>
-        <input type="submit" value="Submit">
-        <input type="reset" value="Reset">
+        <input type="submit" value="Submit" class="btn">
+        <input type="reset" value="Reset" class="btn">
     </form>
+    <div>
     <!-- Text Formatting -->
     <blockquote><h1>Formatting styles that we offer:</h1></blockquote>
     <p><i>Italic text</i></p>
@@ -107,12 +197,36 @@
     <p><sub>Subscript text</sub></p>
     <p><s>Strikethrough text</s></p>
     <code><p>This is a piece of code.</p></code>
+    </div>
     <!--Aside content-->
     <blockquote><h1>Aside tag:</h1></blockquote>
     <aside>
         <h4>Office location</h4>
         <p>#570, 571, 1st Cross Rd, 3rd Block, Santhosapuram, Koramangala 3 Block, Koramangala, Bengaluru, Karnataka 560038</p>
     </aside>
+    <blockquote><h1>Box sizing tags:</h1></blockquote>
+    <section class="box-sizing-example">
+        <h4>box-sizing: content-box;</h4>
+      <div class="content-box">
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio, repellat aperiam magnam velit sit porro molestias animi obcaecati excepturi nulla vitae, rem consequuntur quod vero in exercitationem aliquid ratione autem.</p>
+      </div>
+      </section>
+      
+      <section class="box-sizing-example">
+      <h4>box-sizing: padding-box;</h4>
+      <div class="padding-box">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, atque tempora eos odio libero neque! Laudantium perferendis quibusdam fuga recusandae atque, necessitatibus officiis cupiditate! Aliquam eos neque necessitatibus deserunt natus!</p>
+      </div>
+      </section>
+        
+      <section class="box-sizing-example">  
+      <h4>box-sizing: border-box;</h4>
+      <div class="border-box">
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi aspernatur, iure temporibus magni cumque quis voluptate alias in at commodi quia dolorem facere eius corporis natus corrupti omnis nostrum beatae.</p>
+      </div>
+      </section>
+
+
     <!--Navigation content-->
     <blockquote><h1>Nav tag:</h1></blockquote>
     <nav>
