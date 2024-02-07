@@ -1,0 +1,144 @@
+@import "variables.scss";
+.temperature-number
+{
+    margin-left: 5px;
+    vertical-align: top;
+    margin-top: 0;
+    font-size: xxx-large;
+}
+
+.degree
+{
+    font-size: x-small;
+    color: $primary-subheading-color;
+}
+.degree-unit{
+  margin-top: 10px;
+    color: $primary-subheading-color;
+    font-weight: 400;
+}
+
+.main-heading
+{
+
+    .heading
+    {
+        color: $primary-big-heading-color;
+        margin: 0;
+        font-size: 40px;
+        margin-bottom: 5px;
+        padding-left: 20px;
+    }
+    .subheading
+    {
+        padding-left: 20px;
+        color: $primary-subheading-color;
+        margin-top: 0;
+        margin-bottom: 0;
+        font-weight: 450;
+    }
+}
+body{
+    margin: 0;
+    
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.general-weather-container
+{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    padding-left: 20px;
+}
+.general-indicators-container
+{
+    margin-right: 100px;
+    font-weight: 500;
+    .key{
+        color: $primary-subheading-color;
+    }
+}
+.value{
+    color: $primary-text;
+}
+.general-temperature-container
+{
+    align-items:flex-start;
+    display: flex;
+    img{
+        margin-right: 10px;
+        height: 70%;
+        width: 100%;
+
+    }
+    
+    .value{
+        font-weight: 300;
+        color: $primary-subheading-color;
+    }
+    
+}
+.weather-of-the-weak
+{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+   
+
+    .day{
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: flex-start;
+        .day-of-week{
+            font-size: small;
+        }
+        img{
+            height: 70%;
+           
+        }
+        .temperature-details{
+            margin-left: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-evenly;
+        }
+       
+        .two-temperatures{
+            font-weight: 500;
+            display: flex;
+
+            // justify-content: space-evenly;
+            .element-group{
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-around;
+                margin-right: 10px;
+            }
+            
+        }
+        .small-text{
+            font-size: 13px;
+        }
+        
+        
+    .grey{
+        color:$primary-text;
+    }
+    
+    .title{
+        font-weight: 700;
+        // margin-left: 10px;
+        font-size: 14px;
+        
+    }
+    .title-div
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+}

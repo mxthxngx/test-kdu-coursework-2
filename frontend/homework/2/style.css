@@ -1,0 +1,120 @@
+.temperature-number {
+  margin-left: 5px;
+  vertical-align: top;
+  margin-top: 0;
+  font-size: xxx-large;
+}
+
+.degree {
+  font-size: x-small;
+  color: #605e5e;
+}
+
+.degree-unit {
+  margin-top: 10px;
+  color: #605e5e;
+  font-weight: 400;
+}
+
+.main-heading .heading {
+  color: #000000;
+  margin: 0;
+  font-size: 40px;
+  margin-bottom: 5px;
+  padding-left: 20px;
+}
+.main-heading .subheading {
+  padding-left: 20px;
+  color: #605e5e;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 450;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.general-weather-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  padding-left: 20px;
+}
+
+.general-indicators-container {
+  margin-right: 100px;
+  font-weight: 500;
+}
+.general-indicators-container .key {
+  color: #605e5e;
+}
+
+.value {
+  color: #4c4b4b;
+}
+
+.general-temperature-container {
+  align-items: flex-start;
+  display: flex;
+}
+.general-temperature-container img {
+  margin-right: 10px;
+  height: 70%;
+  width: 100%;
+}
+.general-temperature-container .value {
+  font-weight: 300;
+  color: #605e5e;
+}
+
+.weather-of-the-weak {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.weather-of-the-weak .day {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+}
+.weather-of-the-weak .day .day-of-week {
+  font-size: small;
+}
+.weather-of-the-weak .day img {
+  height: 70%;
+}
+.weather-of-the-weak .day .temperature-details {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+.weather-of-the-weak .day .two-temperatures {
+  font-weight: 500;
+  display: flex;
+}
+.weather-of-the-weak .day .two-temperatures .element-group {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  margin-right: 10px;
+}
+.weather-of-the-weak .day .small-text {
+  font-size: 13px;
+}
+.weather-of-the-weak .day .grey {
+  color: #4c4b4b;
+}
+.weather-of-the-weak .day .title {
+  font-weight: 700;
+  font-size: 14px;
+}
+.weather-of-the-weak .day .title-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}/*# sourceMappingURL=style.css.map */
