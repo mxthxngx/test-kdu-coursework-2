@@ -9,14 +9,18 @@ function addTodo() {
     const spanItem = document.createElement('span');
     const spanWithBtn = document.createElement("button");
     spanWithBtn.className = "btn";
-    spanWithBtn.innerText = "X ";
+    spanWithBtn.innerText = "Delete ";
     spanWithBtn.style.color ="red";
     spanWithBtn.addEventListener("click", deleteTodo);
     spanItem.textContent = input.value;
-    listItem.appendChild(spanItem);
-    listItem.appendChild(spanWithBtn);
-    document.getElementById("todo-list").appendChild(listItem); 
-    input.value = ''; 
+    if(input.value.length >0)
+    {
+        listItem.appendChild(spanItem);
+        listItem.appendChild(spanWithBtn);
+        document.getElementById("todo-list").appendChild(listItem); 
+        input.value = ''; 
+    }
+  
 }
 
 function deleteTodo(event) {
