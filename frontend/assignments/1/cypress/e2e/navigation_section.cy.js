@@ -34,7 +34,7 @@ describe("Navigation Section", () => {
     cy.visit(Cypress.env("HOME_PAGE_URL"));
 
     // Go with the size - Laptop (1079 x 726)
-    cy.viewport(414, 896);
+    cy.viewport(225, 800);
 
     // Ensure the profile icon element is visible in the viewport
     cy.get(".profile-icon").should("be.visible");

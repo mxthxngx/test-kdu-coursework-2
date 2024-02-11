@@ -20,6 +20,7 @@
   <body>
     <main>
       <div class="main-container">
+        <input id="imageInput" type="file" style="display: none;" accept="image/*">
         <div class="profile-icon">
           <img
             src="images/Profile/profile pic.png"
@@ -170,6 +171,18 @@
               <p class="nav-bar-text">Settings and privacy</p>
             </div>
           </div>
+          <div class="navigation-panel adds-div">
+            <div>
+              <img
+                src="images/icons/adds.svg"
+                alt="adds-icon"
+                class="left-icon adds-icon"
+              />
+            </div>
+            <div class="text-div">
+              <p class="nav-bar-text">Ads</p>
+            </div>
+          </div>
           <div class="navigation-panel monetiation-div">
             <div>
               <img
@@ -246,10 +259,13 @@
               <img src="images/Profile/profile pic.png" alt="profile-icon" class = "profile-img-post"/>
               <div class = "post-input-container">
                 <input type="text" placeholder="What is happening?!" class = "post-input"/>
-
+                <div class="post-input-image">
+                </div>
+                <div class="post-input-image">
+                </div>
                 <div class = "tweet-box-bottom-container">
                 <div class = "tweet-box-bottom">
-                  <div class = "gallery-container">
+                  <div class = "gallery-container" onclick="handleImageSelection()">
                   <img src="images/icons/gallery-icon.svg" alt="gallery-icon" class = "gallery-icon"/>
                   </div>
                   <div class = "gif-container">
@@ -303,7 +319,7 @@
               
               <div class = "tweet-box-bottom-container">
               <div class = "tweet-box-bottom">
-                <div class = "gallery-container">
+                <div class = "gallery-container" onclick="handleImageSelection()">
                 <img src="images/icons/gallery-icon.svg" alt="gallery-icon" class = "gallery-icon"/>
                 </div>
                 <div class = "gif-container">
@@ -378,10 +394,10 @@
                 <div class = "comment-box-profile-section">
                   <img src="images/Profile/profile pic.png" alt="profile-icon" class = "profile-img-post"/>
                   <div class = "comment-box-bottom">
-                    <input type="text" placeholder="Post your reply" class = "post-input comment-input"/>
+                    <input type="text" placeholder="Post your reply" class = "post-input-1 comment-input"/>
                     <div class = "comment-box-bottom-container">
                         <div class = "comment-icons">
-                    <div class = "gallery-container">
+                    <div class = "gallery-container" onclick="handleImageSelection()">
                     <img src="images/icons/gallery-icon.svg" alt="gallery-icon" class = "gallery-icon"/>
                     </div>
                     <div class = "gif-container">
@@ -450,7 +466,98 @@
                 </div>
               </div>
           </div>
+       
+        <div class = "post">
+          <div class = "post-profile">
+            <img src="images/Profile/profile pic.png" alt="profile-icon" class = "profile-img-post"/>
+          <div class = "post-profile-whole-text">
+            <div class ="post-text-including-icon">
+            <div class = "post-profile-text">
+              <p class = "post-profile-name">Nitesh Gupta</p>
+              <p class = "post-profile-username">@nit_hck • 1s</p>
+            </div>
+              <img src="images/icons/dots-grey.svg" alt="more-icon" class = "dot-icon"/>
+           
+            </div>
+           
+            <div class = "post-text">
+              <p>Coffee in hand, bugs beware. Time to crush some code.<span class = "hashtags">
+              #DeveloperLife #Coding
+            </span>
+          </p>
+          </div>
+          <div class="post-image">
+            <img src="images/postImages/small.jpg"/>
+          </div>
         </div>
+          </div>
+          <div class = "post-icons">
+            <div class = "comment">
+              <img src="images/icons/comment.svg" alt="comment-icon" class = "icon comment-icon"/>
+            </div>
+            <div class = "retweet">
+              <img src="images/icons/retweet.svg" alt="retweet" class = "icon retweet"/>
+            </div>
+            <div class= "like">
+              <img src="images/icons/like.svg" alt="like" class = "icon like-post"/>
+              <div class = "like-count">10</div>
+            </div>
+            <div class= "stats">
+              <img src="images/icons/stats.svg" alt="stats" class = "icon stats"/>
+            </div>
+            <div class= "bookmark-share">
+              <img src="images/icons/bookmark-grey.svg" alt="bookmark-icon" class = "icon bookmark-icon"/>
+              <img src="images/icons/share.svg" alt="share" class = "share-icon"/>
+
+            </div>
+          </div>
+      </div>
+      <div class = "post">
+        <div class = "post-profile">
+          <img src="images/Profile/profile pic.png" alt="profile-icon" class = "profile-img-post"/>
+        <div class = "post-profile-whole-text">
+          <div class ="post-text-including-icon">
+          <div class = "post-profile-text">
+            <p class = "post-profile-name">Nitesh Gupta</p>
+            <p class = "post-profile-username">@nit_hck • 1s</p>
+          </div>
+            <img src="images/icons/dots-grey.svg" alt="more-icon" class = "dot-icon"/>
+         
+          </div>
+         
+          <div class = "post-text">
+            <p>Coffee in hand, bugs beware. Time to crush some code.<span class = "hashtags">
+            #DeveloperLife #Coding
+          </span>
+        </p>
+        </div>
+        <div class="post-image">
+          <video controls autoplay src="images/postImages/video.mp4"/>
+        </div>
+      </div>
+        </div>
+        <div class = "post-icons">
+          <div class = "comment">
+            <img src="images/icons/comment.svg" alt="comment-icon" class = "icon comment-icon"/>
+          </div>
+          <div class = "retweet">
+            <img src="images/icons/retweet.svg" alt="retweet" class = "icon retweet"/>
+          </div>
+          <div class= "like">
+            <img src="images/icons/like.svg" alt="like" class = "icon like-post"/>
+            <div class = "like-count">10</div>
+          </div>
+          <div class= "stats">
+            <img src="images/icons/stats.svg" alt="stats" class = "icon stats"/>
+          </div>
+          <div class= "bookmark-share">
+            <img src="images/icons/bookmark-grey.svg" alt="bookmark-icon" class = "icon bookmark-icon"/>
+            <img src="images/icons/share.svg" alt="share" class = "share-icon"/>
+
+          </div>
+        </div>
+      </div>
+    </div>
         <div class="right-container"></div>
       </div>
       

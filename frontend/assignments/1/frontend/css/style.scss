@@ -8,6 +8,14 @@ body {
   height: 1.525rem;
   width: $logo-icon-width;
 }
+
+video{
+  border-radius: 0.5rem;
+  max-height: 500px;
+  max-width: 500px;
+  margin-top: 1rem;
+}
+
 .tweet-box .tweet-box-profile-mobile 
 {
   display:none;
@@ -26,6 +34,7 @@ body {
 .comment-box 
 {
   display: none;
+  
 }
 .comment-box-bottom
 {
@@ -35,9 +44,19 @@ flex-direction: column;
 justify-content: start;
 margin-left: 1rem;
 align-items: flex-start;
-.post-input{
+.post-input-1{
   padding: 0;
   margin-bottom: 1rem;
+    background-color: $black-bg; 
+    border: none;
+    border-radius: 8px; 
+    margin-left: 10px;
+    width: 100%; 
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+    outline: none; 
+  
 }
 }
 .past-comments {
@@ -89,11 +108,13 @@ align-items: flex-start;
     padding-left: 2.1rem;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: start;
     width: 16rem;
     border-right: $border-line-color 1.7px solid;
- 
+    position: sticky;
+    top: 0;
+    height: 80vh;
   }
 
   .navigation-panel {
@@ -146,7 +167,7 @@ align-items: flex-start;
   background-color: $button-bg;
   color: white;
   border: none;
-  padding: 1.8vh 6vw;
+  padding: 1.8vh 5rem;
   border-radius: 28px;
   cursor: pointer;
   font-size: 16px;
@@ -193,7 +214,7 @@ align-items: flex-start;
 {
   display: flex;
   flex-direction: column;
-  margin-left: 1.8vw;
+  margin-left: 1.2vw;
   img 
   {
     width: 2vw;
@@ -219,6 +240,24 @@ align-items: flex-start;
     }
   }
 }
+
+.post-profile .post-image img{
+  max-width: 500px;
+  max-height: 300px;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+}
+
+.post-input-image img{
+  margin-top: 4px;
+  margin-bottom: 4px;
+  max-width: 500px;
+  max-height: 300px;
+  border-radius: 0.5rem;
+}
+
 .post-icons
 {
   display: flex;
@@ -272,7 +311,8 @@ align-items: flex-start;
 }
 div.navigation-panel.monetiation-div,
 div.navigation-panel.settings-div,
-div.navigation-panel.logout-div {
+div.navigation-panel.logout-div,
+div.navigation-panel.adds-div {
   display: none;
 
 
@@ -418,15 +458,17 @@ position: fixed;
 
   .main-container {
     font-size: 20px;
-    margin-left: 0.4rem;
+    margin-left: 0.1rem;
     margin-right: .2rem;
     display: block;
     font-weight: 700;
     font-family: 'Poppins', sans-serif;
    
     .navigation-section {
+      justify-content: flex-end;
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         box-shadow: 0px 0px 10px #434B50; 
+        font-size: 14px;
       margin-left: 0;
       height: 100vh;
       display: none;
@@ -436,13 +478,16 @@ position: fixed;
         padding-right: 2px;
         height: 24px;
       }
+      .adds-div
+      {
+        display: flex;
+      }
       .navigation-panel {
         padding-bottom: 5px;
-        padding-top: 7px;
+        padding-top: 2px;
+        margin-left: -10px;
       }
-      .profile-div {
-        margin-top: 17px;
-      }
+
       .explore-div,
       .messages-div {
         display: none;
@@ -451,6 +496,7 @@ position: fixed;
         padding-bottom: 15px;
         padding-right: 15vh;
         border-bottom: $border-line-color 1.7px solid;
+        
       }
     }
  
@@ -473,11 +519,12 @@ position: fixed;
        .profile-img-section
        {
         display: flex;
-        margin-top: 5vh;
+        margin-top: 4vh;
         justify-content: space-between;
         align-items: center;
-        width: 62vw;
+        width: 80vw;
          .plus-icon{
+          position: relative;
             height: 12px;
             border: #404D57 .01px solid;
             border-radius: 50%;
@@ -510,12 +557,17 @@ position: fixed;
       }
     }
   }
-
+  
+img.left-icon 
+{
+  margin-right: 6px;
+}
   .profile-section {
     order: 6;
   }
   .profile-div {
     order: 5;
+  
   }
 
   .premium-div {
@@ -546,6 +598,7 @@ position: fixed;
 {
   width: 5vw;
 }
+
 
 .post-input {
   background-color: $black-bg; 
@@ -669,5 +722,21 @@ margin-top: 10px;
 }
 .comment-icons{
   width: 40vw;
+}
+.post-input-image{
+  display: flex;
+  justify-content: flex-end;
+}
+.post-input-image img{
+  margin-top: 4px;
+  margin-bottom: 4px;
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 0.5rem;
+}
+video{
+  border-radius: 0.5rem;
+  max-height: 300px;
+  max-width: 300px;
 }
 }

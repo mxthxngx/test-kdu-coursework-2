@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
   
   }
+  let imageInput = document.querySelector("#imageInput");
 
   let postButton = document.querySelector('.tweet-btn');
   let tweetInput = document.querySelector('.post-input');
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const tweetBoxProfileMobile= document.querySelector('.tweet-box-profile-mobile');
   const posts = document.getElementsByClassName('posts')[0];
  const profileIcon = document.getElementsByClassName('profile-icon')[0];
+ imageInput.addEventListener('change',handleImageInput);
  profileIcon.addEventListener('click',showNavigationSection);
   const floatingTweetBoxIcon = document.querySelector('.floating-tweet-box-icon');
 console.log(postButton);
@@ -97,7 +99,7 @@ console.log("here")
 
     }
     const postsContainer = document.querySelector('.posts');
-    postsContainer.appendChild(newPost);
+    postsContainer.insertBefore(newPost,postsContainer.children[0]);
     tweetInput.value = '';
     postButton.style.backgroundColor = '';
   });
@@ -250,12 +252,21 @@ function createPostElement(content) {
   const postTextWhole = document.createElement('div');
   postTextWhole.classList.add('post-profile-whole-text');
 
+  const img = document.querySelector(".post-input-image img");
+  const postImageDiv = document.createElement("div");
+  if(img){
+    postImageDiv.classList.add("post-image");
+    postImageDiv.appendChild(img);
+    document.querySelector(".post-input-image").innerHTML = "";
+  }
+
   postProfileTextDiv.appendChild(nameParagraph);
   postProfileTextDiv.appendChild(usernameParagraph);
   postTextDiv.appendChild(postProfileTextDiv);
   postTextDiv.appendChild(dotsIcon);
   postTextWhole.appendChild(postTextDiv);
   postTextWhole.appendChild(postContentDiv);
+  postTextWhole.appendChild(postImageDiv);
   postProfileDiv.appendChild(profileImg);
   postProfileDiv.appendChild(postTextWhole);
   postDiv.appendChild(postProfileDiv);
@@ -270,6 +281,9 @@ function createPostElement(content) {
 }
 
 function showNavigationSection() {
+  const floatingTweetBoxIcon = document.querySelector('.floating-tweet-box-icon');
+
+  floatingTweetBoxIcon.style.display='none';
   let navSection = document.getElementsByClassName("navigation-section")[0];
   navSection.style.display = "flex";
   navSection.style.paddingLeft = '15px';
@@ -288,6 +302,8 @@ function showNavigationSection() {
   grokDiv.style.display="none";
   let notifDiv = document.getElementsByClassName("notification-div")[0];
   notifDiv.style.display="none";
+  let centralContainer = document.getElementsByClassName("center-container")[0];
+  centralContainer.style.display = "none";
   let navigationPanel = document.getElementsByClassName("navigation-panel")[0];
   navigationPanel.style.paddingBottom="10px";
   navigationPanel.style.fontSize="14px";
@@ -303,4 +319,48 @@ function showNavigationSection() {
 
 function changeBackgroundColor(color,element) {
   element.style.backgroundColor = color;
+}
+
+function handleImageSelection(){
+  imageInput.click();
+}
+
+function handleImageInput(e){
+  const file = e.target.files[0];
+  displayImage(file)
+}
+
+function displayImage(file) {
+  const reader = new FileReader();
+  let img = document.createElement('img');
+  reader.onload = function (e) {
+    img.src = e.target.result;
+      const imgContainers = document.querySelectorAll(".post-input-image");
+      const imgContainer = window.innerWidth<500 && imgContainers.length > 1 ? imgContainers[1] : imgContainers[0]; 
+      console.log(document.querySelectorAll(".post-input-image"));
+      imgContainer.innerHTML = "";
+      imgContainer.appendChild(img);
+      activatPostBtn();
+  };
+  reader.readAsDataURL(file);
+}
+
+function activatPostBtn(){
+  postactivebtn = document.querySelector('.tweet-btn');
+  postactivebtn.style.backgroundColor = '#1D9BF0'; 
+  postactivebtn.disabled = false;
+  postactivebtn.style.color='white';
+}
+
+function deactivatePostBtn(){
+  postactivebtn = document.querySelector('.tweet-btn');
+  postactivebtn.disabled = true;
+  postactivebtn.style.backgroundColor = '';
+  postactivebtn.style.color='#70797F';
+}
+
+function isImageUploaded(){
+  const img = document.querySelector(".post-input-image img");
+  if(img) return true;
+  return false;
 }
