@@ -61,7 +61,7 @@ describe("Posts Section", () => {
    */
   it("should compare screenshot after posting a tweet in the mobile view", () => {
     postTweetAndCompareSnapshot(
-      414,
+      409.08,
       896,
       "Coffee in hand, bugs beware. Time to crush some code. #DeveloperLife #Coding",
       "MV-provided-post"
