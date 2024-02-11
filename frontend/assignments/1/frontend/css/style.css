@@ -86,7 +86,7 @@ video {
 }
 .comment-box-profile-section .comment-box-bottom-container {
   display: flex;
-  width: 50vw;
+  width: 30vw;
   justify-content: space-between;
   align-items: center;
 }
