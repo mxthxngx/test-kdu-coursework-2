@@ -103,13 +103,13 @@ console.log("here")
       posts.style.display='block';
       profileIcon.style.display='flex';
       floatingTweetBoxIcon.style.display='flex';
-
+      tweetBox.style.display='none';
     }
     const postsContainer = document.querySelector('.posts');
     postsContainer.insertBefore(newPost,postsContainer.children[0]);
     tweetInput.value = '';
     postButton.style.backgroundColor = '';
-    tweetBox.style.display='none';
+    
   }
   });
 
