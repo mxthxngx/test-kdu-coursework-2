@@ -13,7 +13,7 @@ module.exports = defineConfig({
   // Configuration for end-to-end (e2e) tests
   e2e: {
     // Base URL for your application
-    baseUrl: "http://localhost:5500/assignments/1/frontend",
+    baseUrl: "https://d1i4yevzum5d62.cloudfront.net",
 
 
     // Setup Node events for visual regression testing using cypress-visual-regression plugin

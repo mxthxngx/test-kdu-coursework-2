@@ -46,7 +46,7 @@ commentBtn.addEventListener('click', function () {
   const updatedComment = commentInput.value;
 
   postTextElement.textContent = updatedComment;
-  commentInput.value = ''; // Clear the input field after comment is submitted
+  commentInput.value = ''; 
   document.getElementsByClassName('past-comments')[0].appendChild(clonedComment);
 });
 
