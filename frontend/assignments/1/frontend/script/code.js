@@ -26,7 +26,7 @@ console.log(commentBtn);
 
 let commentInput = document.getElementsByClassName('comment-input')[0];
 commentInput.addEventListener('input', function () {
-  const tweetContent = commentInput.value;
+  const tweetContent = commentInput.value.trim;
   console.log("here");
   if (tweetContent.length > 0) {
     console.log("input length");
@@ -39,6 +39,9 @@ commentInput.addEventListener('input', function () {
 });
 
 commentBtn.addEventListener('click', function () {
+  const tweetContent = commentInput.value.trim;
+  if(tweetContent.length>0)
+  {
   const currentComment = document.getElementsByClassName('comment-1')[0];
   const clonedComment = currentComment.cloneNode(true);
 
@@ -48,10 +51,11 @@ commentBtn.addEventListener('click', function () {
   postTextElement.textContent = updatedComment;
   commentInput.value = ''; 
   document.getElementsByClassName('past-comments')[0].appendChild(clonedComment);
+}
 });
 
   tweetInput.addEventListener('input', function () {
-    const tweetContent = tweetInput.value;
+    const tweetContent = tweetInput.value.trim;
 console.log("here")
     if (tweetContent.length > 0) {
       console.log("input length")
