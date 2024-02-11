@@ -340,7 +340,6 @@ div.navigation-panel.adds-div {
   border-radius: 8px; 
   padding: 8px; 
   margin-left: 10px;
-  width: 100%; 
   font-size: 20px;
   font-weight: 500;
   color: white;
@@ -359,7 +358,8 @@ margin-top: 0;
 }
 .tweet-box
 {
-  margin-left: 2vh;
+  padding-left: 2vh;
+  padding-right: 2vh;
   margin-top: 2vh;
   display: flex;
   justify-content: flex-start;
@@ -426,7 +426,12 @@ margin-top: 10px;
 {
   display: none;
 }
+.center-container
+{
+  width: 50%;
+  border-right: $border-line-color 1px solid;
 
+}
 
 @media screen and (max-width: 414px) {
   div.navigation-panel.monetiation-div,
@@ -665,7 +670,7 @@ margin-top: 10px;
 
 .tweet-btn
 {
-
+margin-right: 10px;
   button 
   {
     background-color: #0F4E78;
