@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "cypress": "^13.6.3",
-    "cypress-visual-regression": "^3.0.0"
-  }
-}
