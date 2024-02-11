@@ -26,7 +26,7 @@ console.log(commentBtn);
 
 let commentInput = document.getElementsByClassName('comment-input')[0];
 commentInput.addEventListener('input', function () {
-  const tweetContent = commentInput.value.trim;
+  const tweetContent = commentInput.value.trim();
   console.log("here");
   if (tweetContent.length > 0) {
     console.log("input length");
@@ -39,7 +39,7 @@ commentInput.addEventListener('input', function () {
 });
 
 commentBtn.addEventListener('click', function () {
-  const tweetContent = commentInput.value.trim;
+  const tweetContent = commentInput.value.trim();
   if(tweetContent.length>0)
   {
   const currentComment = document.getElementsByClassName('comment-1')[0];
@@ -55,7 +55,7 @@ commentBtn.addEventListener('click', function () {
 });
 
   tweetInput.addEventListener('input', function () {
-    const tweetContent = tweetInput.value.trim;
+    const tweetContent = tweetInput.value.trim();
 console.log("here")
     if (tweetContent.length > 0) {
       console.log("input length")

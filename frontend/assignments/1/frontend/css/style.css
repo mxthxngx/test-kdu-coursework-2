@@ -361,7 +361,7 @@ div.navigation-panel.adds-div {
 }
 .tweet-box-bottom-container .tweet-box-bottom {
   display: flex;
-  width: 30vh;
+  width: 100%;
   justify-content: space-evenly;
   margin-top: 10px;
 }
