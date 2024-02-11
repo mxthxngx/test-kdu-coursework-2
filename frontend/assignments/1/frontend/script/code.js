@@ -96,7 +96,7 @@ console.log("here")
 
   
   postButton.addEventListener('click', function () {
-    const tweetContent = tweetInput.value;
+    const tweetContent = tweetInput.value.trim();
     if(tweetContent.length>0)
     {
 
