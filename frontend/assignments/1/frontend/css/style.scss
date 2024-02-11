@@ -115,7 +115,7 @@ align-items: flex-start;
     border-right: $border-line-color 1.7px solid;
     position: sticky;
     top: 0;
-    height: 80vh;
+    height: 97vh;
   }
 
   .navigation-panel {
@@ -540,15 +540,28 @@ div.profile-icon
  
   
     .profile-section {
- 
+ width: 100%;
       position: relative;
+      .profile-img
+      {
+        width: 100%;
+      }
        .profile-img-section
        {
         display: flex;
         margin-top: 4vh;
+        width: 95%;
+       .left-icon
+       {
+        width: 100%;
+       }
         justify-content: space-between;
         align-items: center;
-        width: 80vw;
+      .left-icon
+      {
+        width:2rem;
+        height: 2rem;
+      }
          .plus-icon{
           position: relative;
             height: 12px;

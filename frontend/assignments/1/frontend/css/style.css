@@ -118,7 +118,7 @@ video {
   border-right: #2F3336 1.7px solid;
   position: sticky;
   top: 0;
-  height: 80vh;
+  height: 97vh;
 }
 .main-container .navigation-panel {
   display: flex;
@@ -507,14 +507,25 @@ div.navigation-panel.adds-div {
     border-bottom: #2F3336 1.7px solid;
   }
   .main-container .profile-section {
+    width: 100%;
     position: relative;
+  }
+  .main-container .profile-section .profile-img {
+    width: 100%;
   }
   .main-container .profile-section .profile-img-section {
     display: flex;
     margin-top: 4vh;
+    width: 95%;
     justify-content: space-between;
     align-items: center;
-    width: 80vw;
+  }
+  .main-container .profile-section .profile-img-section .left-icon {
+    width: 100%;
+  }
+  .main-container .profile-section .profile-img-section .left-icon {
+    width: 2rem;
+    height: 2rem;
   }
   .main-container .profile-section .profile-img-section .plus-icon {
     position: relative;
