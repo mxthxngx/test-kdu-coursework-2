@@ -36,6 +36,7 @@ video{
   display: none;
   
 }
+
 .comment-box-bottom
 {
 display: flex;
@@ -197,10 +198,11 @@ align-items: flex-start;
     width: 70%;
   }
 }
+
 .post-text 
 {
 
-  margin-top: 2vh;
+ 
   font-size: 1rem;
  font-family: 'Poppins',sans-serif;
  font-weight: 400;
@@ -324,7 +326,7 @@ div.navigation-panel.adds-div {
 .tweet-box-profile {
 
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   width: 54vw;
 }
 
@@ -342,6 +344,15 @@ div.navigation-panel.adds-div {
   font-size: 20px;
   font-weight: 500;
   color: white;
+
+margin-top: 0;
+
+
+}
+.input-box 
+{
+  height: 7vh;
+
 }
 .post-input:focus {
   outline: none; 
@@ -432,6 +443,7 @@ margin-top: 10px;
   }
 .tweet-box
 {
+  display: none;
   border-bottom: none;
 }
 
@@ -455,8 +467,28 @@ position: fixed;
   height: 3.5rem;
   width: 3.5rem;
 }
-
+div.profile-icon
+{
+  display: flex;
+}
+.floating-tweet-box-icon
+{
+  display: flex;
+}
   .main-container {
+    .profile-icon {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding-top: 0.6rem;
+      padding-left: 0.6rem;
+      .profile-img {
+        display: block;
+        border-radius: 50%;
+        height: 4vh;
+        margin-right: 10vw;
+      }
+    }
     font-size: 20px;
     margin-left: 0.1rem;
     margin-right: .2rem;
@@ -500,19 +532,7 @@ position: fixed;
       }
     }
  
-    .profile-icon {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      padding-top: 0.6rem;
-      padding-left: 0.6rem;
-      .profile-img {
-        display: block;
-        border-radius: 50%;
-        height: 4vh;
-        margin-right: 10vw;
-      }
-    }
+  
     .profile-section {
  
       position: relative;
@@ -615,6 +635,10 @@ img.left-icon
 {
   margin: 2vh;
   justify-content: flex-start;
+  .tweet-box-profile-section
+  {
+    display: flex;
+  }
 }
 .X-logo-mobile
 {
@@ -648,10 +672,7 @@ margin-top: 10px;
     color: #70797F;
   }
 }
-.tweet-btn:focus
-{
-  color:$button-bg
-}
+
 
 .title-bar
 
@@ -701,6 +722,7 @@ margin-top: 10px;
 }
 .posts 
 {
+  margin-right: 2rem;
   .profile-img-post
   {
     height: 35px;

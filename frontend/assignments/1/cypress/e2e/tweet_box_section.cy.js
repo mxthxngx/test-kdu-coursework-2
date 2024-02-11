@@ -47,7 +47,7 @@ describe("Tweet Box Section", () => {
    */
   it("should compare screenshot of the send-post section", () => {
     // Go with the size - Laptop (1079 x 726)
-    visitPageAndSetViewport(1079, 726);
+    visitPageAndSetViewport(1079, 700);
 
     // Ensure the tweet-box element is visible in the viewport
     ensureElementVisible(".tweet-box");
@@ -65,7 +65,7 @@ describe("Tweet Box Section", () => {
    */
   it("should compare screenshot of the send-post section in the mobile view", () => {
     // Go with the size - Mobile (414 x 896)
-    visitPageAndSetViewport(414, 896);
+    visitPageAndSetViewport(314, 896);
 
     // Ensure the floating tweet-box icon element is visible in the viewport
     ensureElementVisible(".floating-tweet-box-icon");
@@ -74,7 +74,7 @@ describe("Tweet Box Section", () => {
     cy.get(".floating-tweet-box-icon").click();
 
     // Wait for the box to get open
-    cy.wait(1000);
+    cy.wait(2000);
 
     // Capture screenshot of the tweet-box element
     captureElementScreenshot(

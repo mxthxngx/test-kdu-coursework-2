@@ -197,7 +197,6 @@ video {
 }
 
 .post-text {
-  margin-top: 2vh;
   font-size: 1rem;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
@@ -317,7 +316,7 @@ div.navigation-panel.adds-div {
 
 .tweet-box-profile {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   width: 54vw;
 }
 
@@ -336,6 +335,11 @@ div.navigation-panel.adds-div {
   font-size: 20px;
   font-weight: 500;
   color: white;
+  margin-top: 0;
+}
+
+.input-box {
+  height: 7vh;
 }
 
 .post-input:focus {
@@ -418,6 +422,7 @@ div.navigation-panel.adds-div {
     width: 100vw;
   }
   .tweet-box {
+    display: none;
     border-bottom: none;
   }
   .floating-tweet-box-icon {
@@ -438,6 +443,12 @@ div.navigation-panel.adds-div {
     height: 3.5rem;
     width: 3.5rem;
   }
+  div.profile-icon {
+    display: flex;
+  }
+  .floating-tweet-box-icon {
+    display: flex;
+  }
   .main-container {
     font-size: 20px;
     margin-left: 0.1rem;
@@ -445,6 +456,19 @@ div.navigation-panel.adds-div {
     display: block;
     font-weight: 700;
     font-family: "Poppins", sans-serif;
+  }
+  .main-container .profile-icon {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 0.6rem;
+    padding-left: 0.6rem;
+  }
+  .main-container .profile-icon .profile-img {
+    display: block;
+    border-radius: 50%;
+    height: 4vh;
+    margin-right: 10vw;
   }
   .main-container .navigation-section {
     justify-content: flex-end;
@@ -476,19 +500,6 @@ div.navigation-panel.adds-div {
     padding-bottom: 15px;
     padding-right: 15vh;
     border-bottom: #2F3336 1.7px solid;
-  }
-  .main-container .profile-icon {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding-top: 0.6rem;
-    padding-left: 0.6rem;
-  }
-  .main-container .profile-icon .profile-img {
-    display: block;
-    border-radius: 50%;
-    height: 4vh;
-    margin-right: 10vw;
   }
   .main-container .profile-section {
     position: relative;
@@ -577,6 +588,9 @@ div.navigation-panel.adds-div {
     margin: 2vh;
     justify-content: flex-start;
   }
+  .tweet-box .tweet-box-profile-section {
+    display: flex;
+  }
   .X-logo-mobile {
     height: 2vh;
   }
@@ -597,9 +611,6 @@ div.navigation-panel.adds-div {
     background-color: #0F4E78;
     padding: 20px;
     color: #70797F;
-  }
-  .tweet-btn:focus {
-    color: #1D9BF0;
   }
   .title-bar {
     color: white;
@@ -638,6 +649,9 @@ div.navigation-panel.adds-div {
   }
   .everyone-can-reply img {
     margin-right: 2vw;
+  }
+  .posts {
+    margin-right: 2rem;
   }
   .posts .profile-img-post {
     height: 35px;

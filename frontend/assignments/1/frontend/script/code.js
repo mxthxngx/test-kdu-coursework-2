@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
   }
   let imageInput = document.querySelector("#imageInput");
-
+let tweetBox = document.querySelector('.tweet-box');
   let postButton = document.querySelector('.tweet-btn');
   let tweetInput = document.querySelector('.post-input');
   let postactivebtn = document.querySelector('.tweet-btn' );
@@ -68,6 +68,8 @@ console.log("here")
         console.log("here")
         tweetBoxProfileMobile.style.display = 'block';
         posts.style.display='none';
+        tweetBox.style.display="flex";
+        
         tweetInput.style.display="block";
         profileIcon.style.display='none';
         floatingTweetBoxIcon.style.display='none';
@@ -82,26 +84,33 @@ console.log("here")
     tweetBoxProfileMobile.style.display = 'none';
     posts.style.display='block';
     tweetInput.style.display="block";
-    profileIcon.style.display='block';
-    floatingTweetBoxIcon.style.display='block';
+    profileIcon.style.display='flex';
+    floatingTweetBoxIcon.style.display='flex';
+    tweetBox.style.display='none';
   });
 
   
   postButton.addEventListener('click', function () {
     const tweetContent = tweetInput.value;
+    if(tweetContent.length>0)
+    {
+
+    
     const newPost = createPostElement(tweetContent);
     if(window.innerWidth<500)
     {
       tweetBoxProfileMobile.style.display='none';
       posts.style.display='block';
-      profileIcon.style.display='block';
-      floatingTweetBoxIcon.style.display='block';
+      profileIcon.style.display='flex';
+      floatingTweetBoxIcon.style.display='flex';
 
     }
     const postsContainer = document.querySelector('.posts');
     postsContainer.insertBefore(newPost,postsContainer.children[0]);
     tweetInput.value = '';
     postButton.style.backgroundColor = '';
+    tweetBox.style.display='none';
+  }
   });
 
   const commentIcon = document.querySelector('.comment-icon');
@@ -189,6 +198,12 @@ console.log("here")
   });
 });
 
+/**
+ * Creates and returns a new post element based on the given content.
+ *
+ * @param {string} content - the content of the post
+ * @return {Element} the newly created post element
+ */
 function createPostElement(content) {
   const postDiv = document.createElement('div');
   postDiv.classList.add('post');
@@ -280,6 +295,12 @@ function createPostElement(content) {
   return postDiv;
 }
 
+/**
+ * Function to show the navigation section and hide certain elements on the page.
+ *
+ * @param None
+ * @return None
+ */
 function showNavigationSection() {
   const floatingTweetBoxIcon = document.querySelector('.floating-tweet-box-icon');
 
@@ -321,18 +342,40 @@ function changeBackgroundColor(color,element) {
   element.style.backgroundColor = color;
 }
 
+/**
+ * Handles the image selection by clicking the image input.
+ *
+ * @param None
+ * @return None
+ */
 function handleImageSelection(){
   imageInput.click();
 }
 
+/**
+ * Handle the image input event.
+ *
+ * @param {Event} e - The input event
+ * @return {void} 
+ */
 function handleImageInput(e){
   const file = e.target.files[0];
   displayImage(file)
 }
 
+/**
+ * Display an image from the given file.
+ *
+ * @param {File} file - The file to display as an image
+ * @return {void} 
+ */
 function displayImage(file) {
   const reader = new FileReader();
   let img = document.createElement('img');
+  /**
+   * Sets the src attribute of an image element with the result of the FileReader onload event, 
+   * clears the content of a specific image container, and appends the image element to it. 
+   */
   reader.onload = function (e) {
     img.src = e.target.result;
       const imgContainers = document.querySelectorAll(".post-input-image");
@@ -345,6 +388,10 @@ function displayImage(file) {
   reader.readAsDataURL(file);
 }
 
+/**
+ * Activates the post button by changing its background color, enabling it, and changing its text color.
+ *
+ */
 function activatPostBtn(){
   postactivebtn = document.querySelector('.tweet-btn');
   postactivebtn.style.backgroundColor = '#1D9BF0'; 
@@ -352,6 +399,11 @@ function activatPostBtn(){
   postactivebtn.style.color='white';
 }
 
+/**
+ * Deactivates the post button by disabling it and updating its style.
+ *
+ * @return {void} 
+ */
 function deactivatePostBtn(){
   postactivebtn = document.querySelector('.tweet-btn');
   postactivebtn.disabled = true;
@@ -359,6 +411,11 @@ function deactivatePostBtn(){
   postactivebtn.style.color='#70797F';
 }
 
+/**
+ * Check if an image is uploaded.
+ *
+ * @return {boolean} true if an image is uploaded, false otherwise
+ */
 function isImageUploaded(){
   const img = document.querySelector(".post-input-image img");
   if(img) return true;
