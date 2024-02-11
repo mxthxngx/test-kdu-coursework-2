@@ -401,10 +401,6 @@ div.navigation-panel.adds-div {
   padding-right: 0.5rem;
 }
 
-.tweet-btn:focus {
-  color: #1D9BF0;
-}
-
 .floating-tweet-box-icon {
   display: none;
 }

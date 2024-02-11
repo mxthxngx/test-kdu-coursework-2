@@ -59,7 +59,8 @@ console.log("here")
       postactivebtn.style.color='white';
     } else {
       postactivebtn.style.backgroundColor = '';
-      postactivebtn.style.color='#70797F';
+      postactivebtn.style.color='';
+
     }
   });
 
@@ -109,6 +110,7 @@ console.log("here")
     postsContainer.insertBefore(newPost,postsContainer.children[0]);
     tweetInput.value = '';
     postButton.style.backgroundColor = '';
+    postButton.style.color='';
     
   }
   });
