@@ -2,6 +2,7 @@
 body {
   background-color: $black-bg;
 }
+
 .logo-img {
   margin-top: .9rem;
   margin-bottom: 0.9rem;
@@ -106,6 +107,10 @@ align-items: flex-start;
   font-size: $medium-font-size;
 
   .navigation-section {
+    overflow-y: auto;
+    overflow-x:hidden;
+    scrollbar-color: $subtext-color $black-bg;
+    scrollbar-width: thin;
     padding-left: 2.1rem;
     display: flex;
     flex-direction: column;

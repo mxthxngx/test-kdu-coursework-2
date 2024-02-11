@@ -109,6 +109,10 @@ video {
   font-size: 20px;
 }
 .main-container .navigation-section {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-color: #4A4E51 #000000;
+  scrollbar-width: thin;
   padding-left: 2.1rem;
   display: flex;
   flex-direction: column;
