@@ -1,4 +1,4 @@
-var os = require('os')
+const os = require('os')
 
 /**
  * Retrieves and returns the specifications of the operating system and hardware.
