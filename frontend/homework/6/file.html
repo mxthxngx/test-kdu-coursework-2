@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="utf-8">
+    </head>
+    
+    <body>
+    
+    <div class="sample">
+    <h2>Create Post</h2>
+    <form action="/upload" method="POST" enctype="multipart/form-data" id="uploadForm">
+        <input type="text" placeholder="Text Content" id="textContent"/>
+        <input type="file" id="imageInput" name="image" />
+        <button type="submit" id = "upload">Post</button>
+    </form>
+    </div>
+    
+     
+    <script>
+         document.getElementById("uploadForm").addEventListener("submit",()=>
+            {
+                event.preventDefault();
+                const formData = new FormData(); 
+                const textContent = document.getElementById("textContent").value;
+        formData.append("textContent", textContent);
+                console.log("Text content ",textContent)
+        const imageFile = document.getElementById("imageInput").files[0];
+        formData.append("image", imageFile);
+        console.log(formData);
+        fetch("http://localhost:5000/api/posts/upload", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Response from server:", data);
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            // Handle errors, e.g., show an error message to the user
+        });
+    });
+    </script>
+    </body>
+    </html>
