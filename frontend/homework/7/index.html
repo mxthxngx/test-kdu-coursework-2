@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Chat using web sockets</title>
+</head>
+<body>
+    <h1>Chat using web sockets</h1>
+    <input type = "tex" id ="msgInput" placeholder="Enter ur message">
+    <button id="sendMessage">Send</button>
+    <div id = "messages"></div>
+    <script src="https://cdn.socket.io/4.7.4/socket.io.min.js" integrity="sha384-Gr6Lu2Ajx28mzwyVR8CFkULdCU7kMlZ9UthllibdOSo6qAiN+yXNHqtgdTvFXMT4" crossorigin="anonymous"></script>
+
+    <script>
+        const messageInput = document.getElementById('msgInput');
+        const sendButton = document.getElementById('sendMessage');
+        const messageOutput = document.getElementById("messages");
+
+        function addMessage(from,message){
+            const element = document.createElement('p');
+            element.innerText = from +": "+message;
+            messageOutput.appendChild(element);
+        }
+        const socket = io('http://localhost:3000')
+
+        sendButton.addEventListener("click",()=> {
+            const message = messageInput.value;
+            //   Send message to web socket
+            socket.emit("message",message);
+            addMessage("You",message);
+        })
+       socket.on("new-message",(message)=> {
+           addMessage("User",message);
+       })
+
+    </script>
+</body>
+</html>
