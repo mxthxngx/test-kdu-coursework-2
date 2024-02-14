@@ -2,11 +2,92 @@
 <html lang="en">
 <head>
     <title>Chat using web sockets</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        
+        .send-container 
+        {
+            display: flex;
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #fff;
+            border-radius: 20px;
+            padding: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            align-items: center;
+           
+        }
+        #msgInput 
+        {
+            width: 90vw;
+           
+            height: 20px;
+            border: none;
+            padding-top: 8px;
+            margin-left: 10px;
+           
+        }
+
+        #msgInput:focus{
+            outline: none;
+        }
+        #sendMessage 
+        {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid #ccc;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            outline: none;
+            font-size: 20px;
+            font-weight: 900;
+        }
+        #messages {
+            padding-top: 90px;
+            margin-left: 10px;
+            height: 80vh;
+            overflow-y: scroll;
+
+            overflow-x: hidden;
+            scrollbar-color:black rgb(152, 152, 152);
+            scrollbar-width: thin;
+        }
+        .heading {
+            margin: 10px;
+    background-color: #a5bcf7;
+    padding: 10px;
+    text-align: center;
+    width: 92%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1),
+                -5px -5px 15px rgba(255, 255, 255, 0.5);
+}
+        h1 
+        {
+            padding: 0;
+            margin: 0;
+           
+        }
+    </style>
 </head>
 <body>
-    <h1>Chat using web sockets</h1>
-    <input type = "tex" id ="msgInput" placeholder="Enter ur message">
-    <button id="sendMessage">Send</button>
+   <div class = "heading"> <h1>KDU Chat</h1></div>
+    <div class = "send-container">
+    <input type = "text" id ="msgInput" placeholder="Enter ur message">
+    <button id="sendMessage">↑</button>
+</div>
     <div id = "messages"></div>
     <script src="https://cdn.socket.io/4.7.4/socket.io.min.js" integrity="sha384-Gr6Lu2Ajx28mzwyVR8CFkULdCU7kMlZ9UthllibdOSo6qAiN+yXNHqtgdTvFXMT4" crossorigin="anonymous"></script>
 
@@ -16,21 +97,60 @@
         const messageOutput = document.getElementById("messages");
 
         function addMessage(from,message){
-            const element = document.createElement('p');
-            element.innerText = from +": "+message;
-            messageOutput.appendChild(element);
+            const div = document.createElement('div');
+            div.style.display='flex';
+            div.style.justifyContent='flex-start';
+            div.style.marginBottom='10px';
+            const div2 = document.createElement('div');
+            div2.style.color='black';
+            div2.style.padding='10px';
+            div2.style.paddingRight='13px';
+            div2.style.paddingLeft='13px';
+           
+            div2.style.fontSize='20px';
+            const element = document.createElement('div');
+            div2.style.borderRadius='50%';
+            if(from == "You")
+            {
+            div2.style.backgroundColor='#00bbff';
+            div2.textContent='Y';
+            element.style.backgroundColor='white';
+
+            }
+            else 
+            {
+                div2.style.backgroundColor='#a5bcf7';
+                div2.textContent='U';
+                element.style.backgroundColor='aliceblue';
+
+            }
+
+            div.appendChild(div2);
+            
+            element.style.padding='10px';
+            element.style.width='70%';
+            element.style.borderRadius='10px';
+            element.style.border='1px solid #ccc';
+            element.style.marginLeft='10px';
+            element.innerText =message;
+
+            div.appendChild(element);
+            messageOutput.appendChild(div);
+            
+          messageInput.value='';
         }
         const socket = io('http://localhost:3000')
 
         sendButton.addEventListener("click",()=> {
             const message = messageInput.value;
-            //   Send message to web socket
             socket.emit("message",message);
             addMessage("You",message);
         })
        socket.on("new-message",(message)=> {
            addMessage("User",message);
        })
+
+     
 
     </script>
 </body>
