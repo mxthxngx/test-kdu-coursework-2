@@ -36,10 +36,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 function fetchRecipesFromAPI() {
     return __awaiter(this, void 0, void 0, function () {
-        var response, data, recipes;
+        var response, data, recipes, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, fetch("https://dummyjson.com/recipes")];
+                case 0:
+                    _a.trys.push([0, 3, , 4]);
+                    return [4 /*yield*/, fetch("https://dummyjson.com/recipes")];
                 case 1:
                     response = _a.sent();
                     return [4 /*yield*/, response.json()];
@@ -56,19 +58,23 @@ function fetchRecipesFromAPI() {
                         calorieCount: item.caloriesPerServing
                     }); });
                     return [2 /*return*/, recipes];
+                case 3:
+                    error_1 = _a.sent();
+                    console.error("Error fetching recipes:", error_1);
+                    throw error_1;
+                case 4: return [2 /*return*/];
             }
         });
     });
 }
 function searchRecipes(query) {
     return __awaiter(this, void 0, void 0, function () {
-        var str, response, data, rec;
+        var str, response, data, rec, error_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    console.log(query);
+                    _a.trys.push([0, 3, , 4]);
                     str = "https://dummyjson.com/recipes/search?q=".concat(query);
-                    console.log(str);
                     return [4 /*yield*/, fetch(str)];
                 case 1:
                     response = _a.sent();
@@ -86,13 +92,22 @@ function searchRecipes(query) {
                         calorieCount: item.caloriesPerServing
                     }); });
                     return [2 /*return*/, rec];
+                case 3:
+                    error_2 = _a.sent();
+                    console.error("Error searching recipes:", error_2);
+                    throw error_2;
+                case 4: return [2 /*return*/];
             }
         });
     });
 }
 function printAllRecipes() {
-    fetchRecipesFromAPI().then(function (data) {
+    fetchRecipesFromAPI()
+        .then(function (data) {
         console.log(data);
+    })
+        .catch(function (error) {
+        console.error("Error printing recipes:", error);
     });
 }
 printAllRecipes();
