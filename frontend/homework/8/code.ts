@@ -26,9 +26,13 @@ async function fetchRecipesFromAPI(): Promise<Recipe[]> {
 }
 
 async function searchRecipes(query: string): Promise<Recipe[]> {
-    const response = await fetch('https://dummyjson.com/recipes/search?q=' + query);
+    console.log(query);
+    let str = `https://dummyjson.com/recipes/search?q=${query}`;
+console.log(str);
+
+    const response = await fetch(str);
     const data = await response.json();
-    const recipes: Recipe[] = data.recipes.map((item: any) => ({
+    const rec: Recipe[] = data.recipes.map((item: any) => ({
         image: item.image,
         name: item.name,
         rating: item.rating,
@@ -38,7 +42,7 @@ async function searchRecipes(query: string): Promise<Recipe[]> {
         timeTaken: item.prepTimeMinutes + item.cookTimeMinutes,
         calorieCount: item.caloriesPerServing
     }));
-    return recipes;
+    return rec;
 }
 
 function printAllRecipes(): void {

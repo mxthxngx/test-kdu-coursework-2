@@ -19,12 +19,15 @@
 
     </div>
     <script>
+    
        let searchBtn = document.getElementById("search-btn");
        searchBtn.addEventListener("click", callSearch);
-       let searchValue = document.querySelector(".input-box").value;
        let resultsDiv = document.querySelector(".results");
            resultsDiv.innerHTML = "";
        function callSearch(){
+        let searchValue = document.querySelector(".input-box").value;
+
+        console.log("searchvalues "+searchValue)
         searchRecipes(searchValue).then((results) => {
         console.log(results);
         if (results.length > 0) {
