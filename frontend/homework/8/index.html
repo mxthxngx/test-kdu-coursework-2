@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bonus Goal</title>
+    <link rel="stylesheet" href="style.css">
+    <script src ="code.js"></script>
+</head>
+<body>
+    <div class = "title-main">
+       <h2> Title</h2>
+    </div>
+    <div class = "search-box-container">
+        <input type="text" placeholder="Find a recipe.." class = "input-box">
+        <button id = "search-btn">Search</button>
+    </div>
+    <div class ="results">
+
+    </div>
+    <script>
+       let searchBtn = document.getElementById("search-btn");
+       searchBtn.addEventListener("click", callSearch);
+       let searchValue = document.querySelector(".input-box").value;
+       let resultsDiv = document.querySelector(".results");
+           resultsDiv.innerHTML = "";
+       function callSearch(){
+        searchRecipes(searchValue).then((results) => {
+        console.log(results);
+        if (results.length > 0) {
+            results.forEach((result) => {
+                
+                let resultDiv = document.createElement("div");
+                resultDiv.classList.add("result-item");
+
+                
+                let imageTag = document.createElement("img");
+                imageTag.src = result.image;
+                resultDiv.appendChild(imageTag);
+
+                let titleTag = document.createElement("h3");
+                titleTag.textContent = result.name;
+                titleTag.classList.add("title");
+                resultDiv.appendChild(titleTag);
+
+                let ingredientsList = document.createElement("ul");
+                result.ingredients.forEach((ingredient) => {
+                    let ingredientItem = document.createElement("li");
+                    ingredientItem.textContent = ingredient;
+                    ingredientsList.appendChild(ingredientItem);
+                });
+                resultDiv.appendChild(ingredientsList);
+                let mainLine = document.createElement("div");
+                mainLine.classList.add("main-line");
+
+                let line2 = document.createElement("div");
+
+
+                let line1 = document.createElement("div");
+                line1.classList.add("line1");
+
+                let cuisineTag = document.createElement("p");
+                cuisineTag.textContent = `Cuisine: `+result.cuisine;
+                cuisineTag.classList.add("cuisine");
+                line1.appendChild(cuisineTag);
+                let ratingDiv = document.createElement("div");
+                ratingDiv.classList.add("rating-div");
+                let ratingsTag = document.createElement("p");
+                ratingsTag.classList.add("ratings");
+                ratingsTag.textContent = `${result.rating}`;
+                ratingDiv.appendChild(ratingsTag);
+                resultDiv.appendChild(ratingDiv);              
+
+                let difficultyTag = document.createElement("p");
+                difficultyTag.classList.add("difficulty");
+                difficultyTag.textContent = `Difficulty: ${result.difficulty}`;
+                line2.appendChild(difficultyTag);
+
+
+                line2.classList.add("line2");
+
+                let timeTag = document.createElement("p");
+                timeTag.classList.add("time");
+                timeTag.textContent = `Time: ${result.timeTaken} minutes`;
+                line1.appendChild(timeTag);
+
+                let caloriesTag = document.createElement("p");
+                caloriesTag.classList.add("calories");
+                caloriesTag.textContent = `Calories: ${result.calorieCount}`;
+                line2.appendChild(caloriesTag);
+
+                mainLine.appendChild(line1);
+                mainLine.appendChild(line2);
+                resultDiv.appendChild(mainLine)
+                let resDiv = document.createElement("div");
+                resDiv.classList.add("parent-result");
+                resDiv.appendChild(resultDiv);
+                
+                resultsDiv.appendChild(resDiv);
+            });
+        } else {
+            let noResultsElement = document.createElement("p");
+            noResultsElement.textContent = "No results found.";
+            resultsDiv.appendChild(noResultsElement);
+        }
+    });
+       }
+       
+
+       
+    </script>
+</body>
+</html>

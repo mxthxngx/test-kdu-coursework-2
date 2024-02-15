@@ -1,0 +1,98 @@
+body {
+  font-family: sans-serif;
+}
+
+.title-main {
+  background-color: rgb(236, 230, 254);
+  color: rgb(10, 2, 2);
+  height: 5vh;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  font-size: larger;
+  border-radius: 10px;
+}
+
+.title {
+  background-color: rgb(236, 230, 254);
+  color: rgb(10, 2, 2);
+  height: 5vh;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  font-size: larger;
+  border-radius: 10px;
+}
+
+.search-box-container {
+  margin: 10px;
+}
+.search-box-container .input-box {
+  width: 70%;
+  padding: 8px;
+  border: 2px solid #e4e3e3;
+  border-radius: 20px;
+  outline: none;
+  font-size: 16px;
+  transition: border-color 0.3s ease-in-out;
+}
+.search-box-container button {
+  width: 140px;
+  height: 40px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  background-color: purple;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.parent-result {
+  position: relative;
+  width: 500px;
+  margin: 40px;
+}
+
+.results {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.result-item {
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+}
+.result-item .rating-div {
+  position: absolute;
+  top: -20px;
+  right: -10px;
+  border-radius: 50%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 17px;
+  padding-right: 17px;
+  border: #e4e3e3 1px;
+  background-color: rgb(235, 208, 233);
+}
+.result-item img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.line1 {
+  width: 50%;
+}
+
+.line2 {
+  width: 50%;
+  margin-left: 30px;
+}
+
+.main-line {
+  display: flex;
+  margin: 10px;
+}/*# sourceMappingURL=style.css.map */
