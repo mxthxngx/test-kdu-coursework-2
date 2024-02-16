@@ -91,18 +91,24 @@ body
   height: 500px;
   width: 98%;
   margin: 10px;
-  background-color: rgb(248, 250, 253);
   transform: scaleY(-1);
+  border: #000 1px solid;
+  border-radius: 10px;
 }
 
 .history-container {
   width: 30%;
   margin: 10px;
-  background-color: rgb(248, 250, 253);
   align-items: flex-end;
+  border: #000 1px solid;
+  border-radius: 10px;
 }
 
 .history-list {
   display: flex;
   justify-content: space-between;
+  border: #000 1px solid;
+  border-radius: 10px;
+  margin: 10px;
+  padding:10px
 }/*# sourceMappingURL=style.css.map */
