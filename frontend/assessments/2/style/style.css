@@ -1,0 +1,100 @@
+.heading {
+  background-color: #1871c2;
+  margin: 8px;
+  color: white;
+  padding: 10px;
+}
+
+.stock-name-container {
+  display: flex;
+  align-items: center;
+  width: 150px;
+  justify-content: space-evenly;
+  border: black 1px solid;
+}
+.stock-name-container img {
+  height: 30px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.price-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 350px;
+  border: black 1px solid;
+}
+
+.stock-details {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 350px;
+  height: 50px;
+  margin: 8px;
+  margin-left: 300px;
+  padding: 10px;
+}
+.stock-details div {
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.input-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+.input-container input {
+  height: 30px;
+  border-radius: 10px;
+}
+.input-container .buy-button {
+  background-color: #62f266;
+  color: #2f9e44;
+}
+.input-container .sell-button {
+  background-color: #ffc9c9;
+  color: #e03131;
+}
+.input-container button {
+  margin: 10px;
+  margin-top: 2px;
+  border: none;
+  padding: 0.8vh 1.6vw;
+  border-radius: 28px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.left-container {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.main-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.graph-container {
+  display: flex;
+  height: 500px;
+  width: 98%;
+  margin: 10px;
+  background-color: rgb(248, 250, 253);
+  align-items: flex-end;
+}
+
+.history-container {
+  width: 30%;
+  margin: 10px;
+  background-color: rgb(248, 250, 253);
+  align-items: flex-end;
+}
+
+.history-list {
+  display: flex;
+  justify-content: space-between;
+}/*# sourceMappingURL=style.css.map */

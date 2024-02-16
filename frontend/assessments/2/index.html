@@ -1,0 +1,259 @@
+<!--  things left: 
+change font
+add proper padding and margin to the stock details container
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>KDU Stock Market Dashboard</title>
+    <link rel="stylesheet" href="style/style.css" />
+  </head>
+  <body>
+    <div class="heading"><h1>KDU Stock Market Dashboard</h1></div>
+    <div class="main-container">
+    <div class = "left-container">
+    <div class = "stock-details">
+        <div class = "stock-name-container">
+            <img src = "zomato.jpg" alt = "zomato">
+            <div class = "stock-name">
+            
+            </div>
+            </div>
+        <div class ="price-container">
+            <div class="price">
+               <span>Price</span>
+            </div>
+            <div class = "price-value">
+
+            </div>
+            <div class="percentage"></div>
+        </div>
+        <div class = "input-container">
+        <input class = "input-text" type="text" placeholder="Enter QTY">
+        <button class = "buy-button">BUY</button>
+        <button class = "sell-button">SELL</button>
+        </div>
+        </div>
+            <div class="graph-container">
+            
+        </div>
+    </div>
+    <div class="history-container">
+        <h1>History</h1>
+
+    </div>
+
+    </div>
+
+    </div>
+    <script
+      src="https://cdn.socket.io/4.7.4/socket.io.min.js"
+      integrity="sha384-Gr6Lu2Ajx28mzwyVR8CFkULdCU7kMlZ9UthllibdOSo6qAiN+yXNHqtgdTvFXMT4"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const socket = io("http://localhost:3000");
+        socket.emit("load", "load the page");
+        socket.on("stock-detail",(payload)=> {
+            console.log("Payload: ",payload);
+            currentPrice = payload.price;
+            loadContent(payload);
+            updateGraph(payload.price);
+        })
+        fetchHistory();
+      });
+
+      document.querySelector('.buy-button').addEventListener('click', function () {
+                addToHistory('BUY');
+            });
+
+            document.querySelector('.sell-button').addEventListener('click', function () {
+                addToHistory('SELL');
+            });
+      let prevVal = 0;
+      let currentPrice = 0;
+      function loadContent(payload) {
+        let stockName = document.getElementsByClassName("stock-name")[0];
+        stockName.textContent = payload.stockName;
+        let percentage = (payload.price-prevVal)/(prevVal);
+        percentage=percentage.toFixed(2)
+        let percentageValue = document.getElementsByClassName("percentage")[0];
+
+        let priceValue = document.getElementsByClassName("price-value")[0];
+        if(prevVal>0)
+        percentageValue.textContent = percentage;
+
+        priceValue.textContent = payload.price;
+        if(payload.price>prevVal){
+            priceValue.style.color = "green";
+            percentageValue.style.color = "green";
+            priceValue.textContent = priceValue.textContent + "↑";
+        }
+        else{
+            priceValue.style.color = "red";
+            percentageValue.style.color = "red";
+            priceValue.textContent = priceValue.textContent + "↓";
+
+        }
+        prevVal=payload.price;
+        
+      }
+      let prevVal2 = 0;
+      let totalWidth=0;
+      function updateGraph(price) {
+        let graphContainer = document.getElementsByClassName('graph-container')[0];
+
+        let newBar = document.createElement('div');
+        newBar.classList.add('graph-bar');
+
+        newBar.style.height = price + 'px';
+        newBar.style.width='20px';
+        console.log(prevVal);
+
+        if(price>prevVal2)
+        {
+            
+            newBar.style.backgroundColor='#62f266';
+            newBar.style.border='1px solid #2f9e44';
+        }
+        else
+       { newBar.style.backgroundColor='#ffc9c9';
+       newBar.style.border='1px solid #e03131';
+         }
+         console.log("Previous price: ",prevVal2,"Current price: ",price);
+         prevVal2 = price;
+        graphContainer.appendChild(newBar);
+         totalWidth+=parseInt(newBar.style.width);
+         if(totalWidth>graphContainer.clientWidth*0.9)
+         {
+            clearGraphContainer();
+         }
+}
+function clearGraphContainer() {
+        let graphContainer = document.getElementsByClassName('graph-container')[0];
+        graphContainer.innerHTML = ''; 
+        totalWidth = 0; 
+      }
+
+      function addToHistory(action) {
+            let qty = document.querySelector('.input-text').value.trim();
+            if (qty !== '') {
+                let historyParent = document.getElementsByClassName('history-container')[0];
+                let historyList = document.createElement('div');
+                historyList.classList.add("history-list");
+                let title = document.createElement("div");
+                title.classList.add("title");
+                title.textContent = `${qty} stocks: at ${currentPrice} `;
+
+                let rightdiv = document.createElement("div");
+                rightdiv.classList.add("right-div");
+
+                let leftdiv = document.createElement("div")
+                leftdiv.classList.add("left-div");
+
+          
+                
+                let dateDetails = document.createElement("div");
+                dateDetails.classList.add("date");
+                const today = new Date();
+                const yyyy = today.getFullYear();
+                let mm = today.getMonth() + 1; 
+                let dd = today.getDate();
+
+                if (dd < 10) dd = '0' + dd;
+                if (mm < 10) mm = '0' + mm;
+
+                const formattedToday = dd + '/' + mm + '/' + yyyy;
+                dateDetails.textContent = formattedToday;
+
+                leftdiv.appendChild(title);
+                leftdiv.appendChild(dateDetails);
+
+                let actionElemn = document.createElement('div')
+                actionElemn.classList.add('action');
+                actionElemn.textContent = action;
+                rightdiv.appendChild(actionElemn);
+
+                historyList.appendChild(leftdiv);
+                historyList.appendChild(rightdiv);
+
+                historyParent.appendChild(historyList);
+                document.querySelector('.input-text').value = '';
+                saveToHistory(action, qty,currentPrice);
+
+
+            }
+        }
+
+        function fetchHistory() {
+            fetch('http://127.0.0.1:3000/history')
+                .then(response => response.json())
+                .then(data => {
+                    data.forEach(item => {
+                        let action_ = item.action;
+                        let qty = item.qty;
+                        let price = item.currentPrice;
+                        console.log(item)
+                        let historyParent = document.getElementsByClassName('history-container')[0];
+                let historyList = document.createElement('div');
+                historyList.classList.add("history-list");
+                let title = document.createElement("div");
+                title.classList.add("title");
+                title.textContent = `${qty} stocks: at ${price} `;
+
+                let rightdiv = document.createElement("div");
+                rightdiv.classList.add("right-div");
+
+                let leftdiv = document.createElement("div")
+                leftdiv.classList.add("left-div");
+
+          
+                
+                let dateDetails = document.createElement("div");
+                dateDetails.classList.add("date");
+                const today = new Date();
+                const yyyy = today.getFullYear();
+                let mm = today.getMonth() + 1; 
+                let dd = today.getDate();
+
+                if (dd < 10) dd = '0' + dd;
+                if (mm < 10) mm = '0' + mm;
+
+                const formattedToday = dd + '/' + mm + '/' + yyyy;
+                dateDetails.textContent = formattedToday;
+
+                leftdiv.appendChild(title);
+                leftdiv.appendChild(dateDetails);
+
+                let actionElemn = document.createElement('div')
+                actionElemn.classList.add('action');
+                actionElemn.textContent = action_;
+                rightdiv.appendChild(actionElemn);
+
+                historyList.appendChild(leftdiv);
+                historyList.appendChild(rightdiv);
+
+                historyParent.appendChild(historyList);
+                document.querySelector('.input-text').value = '';
+                    });
+                })
+                .catch(error => console.error('Error fetching history:', error));
+        }
+
+        function saveToHistory(action, qty,price) {
+            fetch('http://127.0.0.1:3000/history', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ action, qty,currentPrice })
+            })
+            .then(response => response.json())
+            .then(data => console.log('History saved:', data))
+            .catch(error => console.error('Error saving to history:', error));
+        }
+    </script>
+  </body>
+</html>
