@@ -3,7 +3,6 @@ const router = express.Router();
 const historyData = require('../data/History');
 const cors = require('cors');
 router.use(cors());
-// GET request to retrieve history data
 router.get("/", (req, res) => {
     try {
         console.log("Requested");
@@ -16,7 +15,7 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
     try {
-        const { action, qty,currentPrice } = req.body; // Extract action and qty from request body
+        const { action, qty,currentPrice } = req.body; 
         console.log("Received history request - Action:", action, "Qty:", qty);
         
         historyData.push({ action, qty ,currentPrice});

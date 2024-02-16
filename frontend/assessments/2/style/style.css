@@ -54,10 +54,19 @@ body
 }
 .input-container input {
   height: 30px;
-  border-radius: 10px;
+  border:none
+}
+.input-container:focus
+{
+  outline:none
+}
+.inpt 
+{
+  border: #000 1px solid;
 }
 .input-container .buy-button {
   background-color: #62f266;
+
   color: #2f9e44;
 }
 .input-container .sell-button {
@@ -112,3 +121,6 @@ body
   margin: 10px;
   padding:10px
 }/*# sourceMappingURL=style.css.map */
+.inpt {
+  padding:10px
+}

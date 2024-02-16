@@ -31,8 +31,11 @@ add proper padding and margin to the stock details container
             </div>
             <div class="percentage"></div>
         </div>
+
         <div class = "input-container">
+            <div class ="inpt">
         <input class = "input-text" type="text" placeholder="Enter QTY">
+    </div>
         <button class = "buy-button">BUY</button>
         <button class = "sell-button">SELL</button>
         </div>
@@ -241,7 +244,7 @@ function clearGraphContainer() {
                 let actionElemn = document.createElement('div')
                 actionElemn.classList.add('action');
                 actionElemn.textContent = action_;
-                if(action=="BUY")
+                if(action_=="BUY")
                 {
                     actionElemn.style.color = "#62f266"
                 }
