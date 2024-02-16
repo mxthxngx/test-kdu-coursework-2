@@ -176,6 +176,14 @@ function clearGraphContainer() {
 
                 let actionElemn = document.createElement('div')
                 actionElemn.classList.add('action');
+                if(action=="BUY")
+                {
+                    actionElemn.style.color = "#62f266"
+                }
+                else 
+                {
+                    actionElemn.style.color="#ffc9c9"
+                }
                 actionElemn.textContent = action;
                 rightdiv.appendChild(actionElemn);
 
@@ -233,6 +241,14 @@ function clearGraphContainer() {
                 let actionElemn = document.createElement('div')
                 actionElemn.classList.add('action');
                 actionElemn.textContent = action_;
+                if(action_=="BUY")
+                {
+                    actionElemn.style.color("#62f266")
+                }
+                else 
+                {
+                    actionElemn.style.color("#ffc9c9")
+                }
                 rightdiv.appendChild(actionElemn);
 
                 historyList.appendChild(leftdiv);

@@ -8,6 +8,11 @@ body
 {
   font-family: 'Poppins', sans-serif;
 }
+.title 
+{
+  font-size: 22px;
+  
+}
 .stock-name-container {
   display: flex;
   align-items: center;
