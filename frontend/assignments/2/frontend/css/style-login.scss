@@ -1,0 +1,79 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+    background-color: #000000; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+}
+
+.main-container {
+    max-width: 400px;
+    background-color: #000000;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.title img {
+    height: 25px;
+    width: 25px;
+}
+
+.title-text {
+    font-size: 27px;
+    font-weight: bold;
+    color: white;
+}
+
+.logo-img {
+    width: 50px;
+    height: auto;
+}
+
+.username-input, .password-inpt {
+    color: white;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #1D9BF0;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    background-color: #000000;
+}
+
+.username-input::placeholder, .password-inpt::placeholder {
+    color: white;
+}
+
+.login-button {
+    width: 100%;
+    font-weight: 600;
+    padding: 10px;
+    background-color: #1D9BF0;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #0066cc; 
+}

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="images/logo/black-with-white.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.socket.io/4.7.4/socket.io.min.js" integrity="sha384-Gr6Lu2Ajx28mzwyVR8CFkULdCU7kMlZ9UthllibdOSo6qAiN+yXNHqtgdTvFXMT4" crossorigin="anonymous"></script>
+
+    <script defer src="script/htmlScript/script.js"></script>
+
+    <link rel="stylesheet" href="css/style-chat.css" />
+
+    <link rel="stylesheet" href="css/reset.css" />
+
+    <title>Messages / X</title>
+  </head>
+  <body>
+    <main>
+      <div class="main-container">
+        <input id="imageInput" type="file" style="display: none;" accept="image/*">
+        <div class="profile-icon">
+          <img
+            src="images/Profile/profile pic.png"
+            alt="profile-icon"
+            class="profile-img"
+          />
+          <img
+          src="images/icons/back-button.svg"
+          alt="profile-icon"
+          class="back-button"
+          onclick="goBack()"
+        />
+         <h3>Messages</h3>
+        </div>
+        <div class="navigation-section">
+          <div class="logo">
+            <img
+              class="logo-img"
+              alt="X-logo"
+              src="images/logo/white-logo.png"
+            />
+          </div>
+          <a href="#" class="link" id="#homeLink" onclick="handleMessagesLink()">
+          <div class="navigation-panel home-div">
+            <div>
+              <img
+                src="images/icons/unselected-home.svg"
+                alt="home-icon"
+                class="left-icon"
+              />
+            </div>
+            <div>
+              <p class="nav-bar-text active">Home</p>
+            </div>
+          
+          </div>
+          </a>
+          <div class="navigation-panel explore-div">
+            <div>
+              <img
+                src="images/icons/search.svg"
+                alt="search-icon"
+                class="left-icon search-icon"
+              />
+            </div>
+            <div class="text-div">
+              <p class="nav-bar-text">Explore</p>
+            </div>
+          </div>
+          <div class="navigation-panel notification-div">
+            <div>
+              <img
+                src="images/icons/notif-icon.svg"
+                alt="notif-icon"
+                class="left-icon"
+              />
+            </div>
+            <div>
+              <p class="nav-bar-text">Notifications</p>
+            </div>
+          </div>
+          <div class="navigation-panel messages-div">
+            <div>
+              <img
+                src="images/icons/message-clicked.svg"
+                alt="mail-icon"
+                class="left-icon"
+              />
+            </div>
+            <div>
+              <p class="nav-bar-text">Messages</p>
+            </div>
+          </div>
+          <div class="navigation-panel grok-div">
+            <div>
+              <img
+                src="images/icons/slash-icon.svg"
+                alt="slash-icon"
+                class="left-icon"
+              />
+            </div>
+            <div>
+              <p class="nav-bar-text">Grok</p>
+            </div>
+          </div>
+          <div class="navigation-panel lists-div">
+            <div>
+              <img
+                src="images/icons/list-icon.svg"
+                alt="slash-icon"
+                class="left-icon list-icon"
+              />
+            </div>
+            <div>
+              <p class="nav-bar-text">Lists</p>
+            </div>
+          </div>
+          <div class="navigation-panel bookmarks-div">
+            <div>
+              <img
+                src="images/icons/bookmark-icon.svg"
+                alt="bookmark-icon"
+                class="left-icon "
+              />
+            </div>
+            <div>
+              <p class="nav-bar-text">Bookmarks</p>
+            </div>
+          </div>
+          <div class="navigation-panel communites-div">
+            <div>
+              <img
+                src="images/icons/community-icon.svg"
+                alt="bookmark-icon"
+                class="left-icon"
+              />
+            </div>
+            <div>
+              <p class="nav-bar-text">Communities</p>
+            </div>
+          </div>
+          <div class="navigation-panel premium-div">
+            <div>
+              <img
+                src="images/icons/premium-icon.svg"
+                alt="premium-icon"
+                class="left-icon"
+              />
+            </div>
+            <div>
+              <p class="nav-bar-text">Premium</p>
+            </div>
+          </div>
+          <div class="navigation-panel logout-div">
+            <div>
+              <img
+                src="images/icons/logout-icon.svg"
+                alt="slash-icon"
+                class="left-icon logout-icon"
+              />
+            </div>
+            <div>
+              <p class="nav-bar-text">Logout</p>
+            </div>
+          </div>
+          <div class="navigation-panel settings-div">
+            <div>
+              <img
+                src="images/icons/settings-icon.svg"
+                alt="slash-icon"
+                class="left-icon settings-icon"
+              />
+            </div>
+            <div>
+              <p class="nav-bar-text">Settings and privacy</p>
+            </div>
+          </div>
+          <div class="navigation-panel adds-div">
+            <div>
+              <img
+                src="images/icons/adds.svg"
+                alt="adds-icon"
+                class="left-icon adds-icon"
+              />
+            </div>
+            <div class="text-div">
+              <p class="nav-bar-text">Ads</p>
+            </div>
+          </div>
+          <div class="navigation-panel monetiation-div">
+            <div>
+              <img
+                src="images/icons/monetiation.svg"
+                alt="slash-icon"
+                class="left-icon monetiation"
+              />
+            </div>
+            <div>
+              <p class="nav-bar-text">Monetization</p>
+            </div>
+          </div>
+          <div class="navigation-panel profile-div">
+            <div>
+              <img
+                src="images/icons/profile-icon.svg"
+                alt="profile-icon"
+                class="left-icon "
+              />
+            </div>
+            <div>
+              <p class="nav-bar-text">Profile</p>
+            </div>
+          </div>
+
+          <div class="navigation-panel more-div">
+            <div>
+              <img
+                src="images/icons/more-icon.svg"
+                alt="profile-icon"
+                class="left-icon"
+              />
+            </div>
+            <div>
+              <p class="nav-bar-text">More</p>
+            </div>
+          </div>
+          <div class="btn-div">
+            <button class="post-btn-1" aria-label="Post">Post</button>
+          </div>
+
+          <div class="profile-section">
+            <div class="profile-img">
+              <div class = "profile-img-section">
+              <img
+                src="images/Profile/profile pic.png"
+                alt="profile-icon"
+                class="left-icon profile-pic"
+              />
+              <div class = "plus-mobile">
+                <img src="images/icons/plus-icon.svg" alt="plus-icon" class = "plus-icon"/>
+              </div>  
+            </div>
+            </div>
+            <div class="mid-profile-section">
+              <p class="profile-text">Nitesh Gupta</p>
+              <p class="profile-subtext">@nit_hck</p>
+            </div>
+            <div class ="followers">
+                <p><bold>1 </bold><span class ="profile-subtext"> Following</span></p>
+              &nbsp;  &nbsp;  &nbsp;    <p><bold>0 </bold><span class ="profile-subtext"> Followers</span></p>
+
+            </div>
+            <div class = "dots-class">
+              <img src="images/icons/dot-icon.svg" alt="dot-icon" class = "dots-icon"/>
+            </div>
+          </div>
+        </div>
+     
+        
+        <div class="center-container">
+            <div class = "message-title-container">
+                <div class = "message-title">
+                <p>Messages</p>
+                </div> 
+                <div class ="icon settings">
+                    <img src="images/icons/settings-icon.svg" alt="settings-icon" class = "settings-icon"/>
+                </div>
+                <div class = "icon message-plus">
+                  <img src="images/icons/message-plus-icon.svg" alt="message-plus-icon" class = "plus-icon"/>
+                  </div>
+
+            </div>
+            <div id = "messages">
+              
+            </div>
+        </div>
+        
+        <div class="right-container">
+            <div class="username-heading">
+               
+            </div>
+            <div class = "chat-body">
+
+            </div>
+            <div class = "chat-input-div">
+            <div class="chat-send">
+              <div class = "message-input-div">
+                <input type="text" placeholder="Enter message" class = "message-input" aria-label="Message Input" >
+              </div>
+                <button class = "username-btn"><img src="images/icons/send-icon-active.svg" alt="send-icon"></button>
+            </div>
+            </div>
+
+        </div>
+      </div>
+      
+      <div class="floating-tweet-box-icon">
+          <img src="images/icons/message-plus-icon.svg" alt="icon" class="icon-img" />
+
+      </div>
+    </main>
+
+      <div class = "bottom-nav-bar mobile">
+       <a href="#" class="link" id="#homeLink" onclick="handleMessagesLink()"><div class = "home"><img src = "/frontend/images/icons/unselected-home.svg" alt = "home"></div></a> 
+        <div class = "search"><img src = "/frontend/images/icons/search.svg" alt = "search"></div>
+        <div class = "slash-icon-nav"><img src = "/frontend/images/icons/slash-icon.svg" alt = "slash"></div>
+        <div class = "bell"><img src = "/frontend/images/icons/notif-icon.svg" alt = "bell"></div>
+        <a href="messages.html" class="link"><div class = "message-nav"><img src = "/frontend/images/icons/mail-icon.svg" alt = "bell"></div>
+        </a>
+      </div>
+      <script>
+        function handleMessagesLink() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const username = urlParams.get('username');
+    
+            const newURL = `index.html?username=${username}`;
+            window.location.href = newURL;
+        }
+    </script>
+  </body>
+</html>
