@@ -83,7 +83,3 @@ The server will start running on port 3000.
 - Express.js
 - Socket.IO
 - CORS
-
-## Contributors
-
-- Add your name here if you contributed to this project.
