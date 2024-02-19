@@ -1,0 +1,22 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 30px auto; 
+    background-color: rgb(255, 255, 112);
+    padding: 30px;
+    min-height: 80vh; 
+}
+
+.sub-container {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 20px;
+    min-width: 90vw;
+    min-height: 40vh;
+}
+
+div {
+    margin-right: 10px;
+}

@@ -1,0 +1,15 @@
+.hobbies 
+{
+
+    background-color: rgb(140, 238, 148);
+    padding: 30px;
+    padding-bottom: 60px;
+    width: 40%;
+    height: 50vh;
+
+}
+li 
+{
+    list-style-type: none;
+    color:green
+}
