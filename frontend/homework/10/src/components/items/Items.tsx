@@ -17,14 +17,18 @@ export function Items({ itemList ,setItemList,itemInput}: { readonly itemList: T
         
     <div className="item-container">
       <h2>Items</h2>
+      {filteredItems.length == 0?<ul>No Items found</ul>
+      :
       <ul>
-        {filteredItems.map((item) => (
-          <div className="todo-item" key={item.id}>
-            <li>{item.todo}</li>
-            <button className='cross-btn' onClick={() => handleDelete(item.id)}>x</button>
-          </div>
-        ))}
-      </ul>
+      {filteredItems.map((item) => (
+        <div className="todo-item" key={item.id}>
+          <li>{item.todo}</li>
+          <button className='cross-btn' onClick={() => handleDelete(item.id)}>x</button>
+        </div>
+      ))}
+    </ul>
+      }
+     
     </div>
   )
 }
