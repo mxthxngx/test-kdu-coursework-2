@@ -1,0 +1,42 @@
+.quote-container 
+{
+    background-color: rgb(92, 92, 240);
+    color: white;
+    width: 50vw;
+    border-radius: 30px;
+    padding:20px;
+    margin: 10px;
+}
+.quote 
+{
+    text-align: center;
+
+}
+.tag 
+{
+    padding: 10px 13px;
+    background-color: rgb(255, 105, 105);
+    margin-right: 20px;
+    border-radius: 30px;
+    color: black;
+    cursor: pointer;
+    font-weight: 500;
+}
+.tag-container 
+{
+    margin-top: 30px;
+}
+.right-align
+{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+p{
+    margin: 0;
+}
+.author 
+{
+    font-size: 20px;
+    font-weight: 600;
+}
