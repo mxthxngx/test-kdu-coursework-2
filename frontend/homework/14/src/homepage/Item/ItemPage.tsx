@@ -78,15 +78,62 @@ export function ItemPage() {
             cursor: 'pointer',
         },
     };
-
+     const headerStyles: { [key: string]: React.CSSProperties } = {
+        header: {
+            display: 'flex',
+            backgroundColor: 'rgb(4, 57, 171)',
+            color: 'white',
+            height: '40px',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+            padding: '0 20px',
+        },
+        search: {
+            width: '30%',
+            display: 'flex',
+            alignItems: 'center',
+        },
+        searchInput: {
+            width: '80%',
+            height: '100%',
+            padding: '8px',
+            border: 'none',
+            borderRadius: '5px',
+            marginRight: '10px',
+        },
+        searchButton: {
+            backgroundColor: 'white',
+            borderRadius: '20%',
+            border: 'none',
+            cursor: 'pointer',
+        },
+        searchIcon: {
+            height: '25px',
+        },
+        rightHeader: {
+            display: 'flex',
+            justifyContent: 'space-evenly',
+            width: '60%',
+        },
+        select: {
+            padding: '8px',
+            borderRadius: '5px',
+            border: 'none',
+            backgroundColor: 'white',
+            color: '#333',
+            cursor: 'pointer',
+        },
+    };
+    
     return (
         <div style={itemPageStyles.body}>
             <div className='item-container-itempage'>
-                <div className='header'>
-                    <div className='search'>
-                        <input type='text' placeholder='Search' />
+                <div className='header' style={headerStyles.header}>
+                    <div className='search' style={headerStyles.search}>
+                        <input type='text' placeholder='Search'   style={headerStyles.searchInput}/>
                         <button>
-                            <img src={searchIcon} alt='Search' className='search-icon' />
+                            <img src={searchIcon} alt='Search' className='search-icon' style={headerStyles.searchIcon}  />
                         </button>
                     </div>
                     <div className='right-header'></div>
