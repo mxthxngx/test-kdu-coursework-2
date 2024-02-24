@@ -1,7 +1,6 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import  { createContext,  useMemo,  useState } from 'react';
 import { Header } from './header/Header';
 import { Body } from './body/Body';
-import { useParams } from 'react-router-dom';
 import { IFilteredItems, ISearchItems, ISortItems, SortItems } from '../interfaces/Item';
 
 
@@ -27,11 +26,21 @@ export function MainHome() {
   const [searchedItem, setSearchedItem] = useState('');
  const [selectedSortOrder, setSelectedSortOrder] = useState(SortItems.Ascending);
 
+ const contextValue = useMemo(() => {
+  return { selectedFilter, setSelectedFilter };
+}, [selectedFilter, setSelectedFilter]);
 
+const contextValue2 = useMemo(() => {
+  return { searchedItem, setSearchedItem };
+}, [searchedItem, setSearchedItem]);
+
+const contextValue3 = useMemo(() => {
+  return { selectedSortOrder, setSelectedSortOrder };
+}, [selectedSortOrder, setSelectedSortOrder]);
   return (
-    <FilteredItemsContext.Provider value={{ selectedFilter: selectedFilter, setSelectedFilter: setSelectedFilter }}>
-      <SearchItemsContext.Provider value={{searchedItem:searchedItem,setSearchedItem:setSearchedItem}}>
-        <SortItemsContext.Provider value = {{selectedSortOrder:selectedSortOrder,setSelectedSortOrder:setSelectedSortOrder}}>
+    <FilteredItemsContext.Provider value={contextValue}>
+      <SearchItemsContext.Provider value={contextValue2}>
+        <SortItemsContext.Provider value = {contextValue3}>
       <div>
         <Header />
         <Body />

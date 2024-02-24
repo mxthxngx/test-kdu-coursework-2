@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams,useNavigate } from 'react-router-dom';
 import { ItemsContext } from '../../App';
 import searchIcon from '../../assets/search-icon.svg';
-import { useNavigate } from 'react-router-dom';
 import {ItemParams} from '../../interfaces/Item'
 
 export function ItemPage() {

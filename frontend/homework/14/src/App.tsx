@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useMemo, useState } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { MainHome } from './homepage/MainHome';
@@ -18,10 +18,12 @@ export const ItemsContext = createContext<ItemsContextInterface>({
 
 function App() {
   const [items, setItems] = useState<Item[]>([]);
-
+  const contextValue = useMemo(() => {
+    return { items, setItems };
+  }, [items, setItems]);
   return (
     <BrowserRouter>
-      <ItemsContext.Provider value={{ items, setItems }}>
+      <ItemsContext.Provider value={contextValue }>
         <Routes>
         <Route path="/:category" element={<MainHome />} />
           <Route path='/' element={<MainHome />} />
