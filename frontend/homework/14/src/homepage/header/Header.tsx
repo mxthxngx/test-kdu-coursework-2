@@ -16,7 +16,7 @@ export function Header() {
     const searchInputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
-        const searchQuery = (searchInputRef.current as HTMLInputElement | null)?.value.toLowerCase();
+        const searchQuery = searchInputRef.current?.value.toLowerCase();
         if (searchQuery !== undefined) {
             setSearchedItem(searchQuery);
         }
@@ -39,8 +39,8 @@ export function Header() {
     };
 
     const handleSearchButtonClick = () => {
-        const searchQuery = (searchInputRef.current as HTMLInputElement | null)?.value.toLowerCase();
-        setSearchedItem(searchQuery || '');
+        const searchQuery = searchInputRef.current?.value.toLowerCase();
+        setSearchedItem(searchQuery ?? '');
     };
 
     const headerStyles: { [key: string]: React.CSSProperties } = {
@@ -123,8 +123,8 @@ export function Header() {
                     <div className="filter">
                         <select value={selectedFilter} onChange={handleFilterChange} style={headerStyles.select}>
                             <option value="">Select Filter</option>
-                            {filterOptions.map((option, index) => (
-                                <option key={index} value={option}>
+                            {filterOptions.map((option) => (
+                                <option key={option} value={option}>
                                     {option}
                                 </option>
                             ))}
@@ -136,8 +136,8 @@ export function Header() {
                     <div className="sort">
                         <select value={selectedSortOrder} onChange={handleSortChange} style={headerStyles.select}>
                             <option value="">Select Sort Order</option>
-                            {sortOptions.map((option, index) => (
-                                <option key={index} value={option}>
+                            {sortOptions.map((option) => (
+                                <option key={option} value={option}>
                                     {option}
                                 </option>
                             ))}
