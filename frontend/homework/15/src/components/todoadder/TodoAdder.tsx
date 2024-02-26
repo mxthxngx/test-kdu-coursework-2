@@ -26,14 +26,31 @@ export function TodoAdder() {
   const reduxDispatch = useDispatch();
   
   const itemList = useSelector((state:RootState)=>state.adder.itemList)
+  /**
+   * Set the item list using the provided array of TodoInterface.
+   *
+   * @param {TodoInterface[]} itemList - The array of TodoInterface to set as the item list.
+   * @return {void} 
+   */
   const setItemListHandler = (itemList:TodoInterface[]) => {
     reduxDispatch(setItemList(itemList))
   }
   const item = useSelector((state:RootState)=>state.adder.item)
+  /**
+   * Sets the item using the provided value.
+   *
+   * @param {string} item - the item to be set
+   * @return {void} 
+   */
   const setItemHandler = (item:string) => {
     reduxDispatch(setItem(item))
   }
 
+  /**
+   * Add an item to the item list if the item is not empty.
+   *
+   * @return {void} 
+   */
   const addItem = () => {
     if (item !== "") {
       setItemHandler(""); 
@@ -41,6 +58,12 @@ export function TodoAdder() {
     }
   }
 
+  /**
+   * A function that handles the input change event.
+   *
+   * @param {React.ChangeEvent<HTMLInputElement>} event - the input change event
+   * @return {void} 
+   */
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
    console.log(event.target.value)
     setItemHandler(event.target.value); 
