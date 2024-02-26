@@ -43,6 +43,7 @@ export function Items() {
     },
     todoItem: {
       display: 'flex',
+      alignItems: 'center',
       justifyContent: 'space-between',
       border: '1px solid gainsboro',
       borderRadius: '2px',
@@ -75,6 +76,16 @@ export function Items() {
       margin: '0',
       padding: '0',
     },
+    inputBox: {
+      outline: 'none',
+      border:'none'
+    }
+  };
+  const handleItemChange = (id: number, newValue: string) => {
+    const updatedItemList = itemList.map((item) =>
+      item.id === id ? { ...item, todo: newValue } : item
+    );
+    setItemListHandler(updatedItemList);
   };
 
   return (
@@ -87,13 +98,24 @@ export function Items() {
         <ul style={cssStyles.ul}>
           {filteredItems.map((item) => (
             <div style={cssStyles.todoItem} key={item.id}>
-              <label style={{ textDecoration: item.isStriked ? 'line-through' : 'none' }}>
+             
+              <label style={{ textDecoration: item.isStriked ? 'line-through' : 'none' ,display:'flex',alignItems:'center'}}>
                 <input
                   type="checkbox"
                   checked={item.isStriked}
                   onChange={() => toggleItemStrike(item.id)}
                 />
-                {item.todo}
+                {item.isStriked?(
+                  <div>{item.todo}</div>
+                ):(
+                  <input
+                    style={{ ...cssStyles.inputBox }}
+                    type="text"
+                    value={item.todo}
+                    onChange={(e) => handleItemChange(item.id, e.target.value)}
+                  />
+                )}
+               
               </label>
               <button style={cssStyles.crossBtn} onClick={() => handleDelete(item.id)}>
                 x
