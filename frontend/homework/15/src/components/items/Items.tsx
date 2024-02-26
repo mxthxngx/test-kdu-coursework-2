@@ -4,18 +4,43 @@ import { RootState } from '../redux/Store';
 import { TodoInterface } from '../../TodoInterface';
 import { setItemList} from '../redux/ItemSlice';
 
+/**
+ * Renders a list of items and provides functionality to add, delete, and mark items as completed.
+ *
+ * @param {number} id - The unique identifier of the item
+ * @param {string} newValue - The new value to be updated for the item
+ * @return {JSX.Element} The JSX element representing the list of items
+ */
 export function Items() {
   const reduxDispatch = useDispatch();
   const itemList = useSelector((state: RootState) => state.adder.itemList);
+  /**
+   * Set the item list using the provided array of todos.
+   *
+   * @param {TodoInterface[]} itemList - The array of todos to set
+   * @return {void} 
+   */
   const setItemListHandler = (itemList: TodoInterface[]) => {
     reduxDispatch(setItemList(itemList));
   };
   const { itemInput } = useSelector((state: RootState) => state.adder);
+  /**
+   * Handles the deletion of an item from the itemList.
+   *
+   * @param {number} id - the id of the item to be deleted
+   * @return {void} 
+   */
   const handleDelete = (id: number) => {
     setItemListHandler(itemList.filter((item) => item.id !== id));
   };
 
 
+  /**
+   * Toggles the strike status of an item in the item list.
+   *
+   * @param {number} id - The unique identifier of the item to be toggled
+   * @return {void} 
+   */
   const toggleItemStrike = (id: number) => {
     const updatedItemList = itemList.map((item) =>
       item.id === id ? { ...item, isStriked: !item.isStriked } : item
@@ -23,6 +48,9 @@ export function Items() {
     setItemListHandler(updatedItemList);
   };
 
+  /**
+   * Clears all striked items from the item list.
+   */
   const clearAllStrikedItems = () => {
     const updatedItemList = itemList.filter((item) => !item.isStriked);
     setItemListHandler(updatedItemList);
@@ -81,6 +109,12 @@ export function Items() {
       border:'none'
     }
   };
+  /**
+   * Updates the item with the given id to have the new value.
+   *
+   * @param {number} id - the id of the item to update
+   * @param {string} newValue - the new value for the item
+   */
   const handleItemChange = (id: number, newValue: string) => {
     const updatedItemList = itemList.map((item) =>
       item.id === id ? { ...item, todo: newValue } : item
