@@ -37,7 +37,7 @@ export function TodoAdder() {
   const addItem = () => {
     if (item !== "") {
       setItemHandler(""); 
-      setItemListHandler([...itemList, { id: Date.now(), todo: item, isDone: false }]);
+      setItemListHandler([...itemList, { id: Date.now(), todo: item, isDone: false,isStriked:false }]);
     }
   }
 

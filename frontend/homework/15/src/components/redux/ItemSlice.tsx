@@ -6,12 +6,14 @@ interface ItemState
     itemList: TodoInterface[]
     itemInput: string
     item: string
+    strikedItems: TodoInterface[]
 }
 
 const initialValue: ItemState = {
     itemList: [],
     itemInput: "",
-    item: ""
+    item: "",
+    strikedItems:[]
 
 }
 const itemSlice = createSlice({
@@ -26,8 +28,11 @@ const itemSlice = createSlice({
         },
         setItem:(state, action: PayloadAction<string>) => {
             state.item = action.payload
+        },
+        setStrikedItem:(state,action: PayloadAction<TodoInterface[]>)=>{
+            state.strikedItems = action.payload
         }
     }
 })
-export const { setItemList, setInputItem ,setItem} = itemSlice.actions
+export const { setItemList, setInputItem ,setItem,setStrikedItem} = itemSlice.actions
 export const itemReducer =  itemSlice.reducer;
