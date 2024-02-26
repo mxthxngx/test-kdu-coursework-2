@@ -1,0 +1,13 @@
+.todo-input {
+  display: flex;
+}
+.todo-input button {
+  background-color: rgb(26, 25, 25);
+  color: white;
+  border-radius: 2px;
+  border: none;
+}
+.todo-input input {
+  border: gainsboro 1px solid;
+  height: 30px;
+}/*# sourceMappingURL=style.css.map */
