@@ -13,6 +13,6 @@ export  function Price() {
 
     
   return (
-    <div>{Number.isNaN(dayPrice)?0:dayPrice}</div>
+    <div>Cost + 18% GST :{Number.isNaN(dayPrice)?0:dayPrice*1.18 }</div>
   )
 }
