@@ -173,6 +173,12 @@ export function MainPortfolio() {
   }, [handleFilterChange]); 
 
 
+  /**
+   * Apply filters to the transactions list based on the filter values.
+   *
+   * @param {PortfolioItem[]} transactions - The list of portfolio items to filter
+   * @return {PortfolioItem[]} The filtered list of transactions
+   */
   const applyFilters = (transactions:PortfolioItem[]) => {
     const lowerCaseSearchQuery = filterValues.searchQuery.toLowerCase();
     const startDate = filterValues.startDate
@@ -209,6 +215,9 @@ export function MainPortfolio() {
   const uniqueStockNames = [
     ...new Set(portfolioItems.map((item) => item.stockname)),
   ];
+  /**
+   * Clears all the filters and resets the filter values to their initial state.
+   */
   const clearAllFilters = () => {
     setFilterValues({
       searchQuery: "",
