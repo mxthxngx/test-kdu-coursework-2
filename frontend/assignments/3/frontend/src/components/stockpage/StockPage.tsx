@@ -61,7 +61,7 @@ export function StockPage({ socket }: Readonly<SocketProps>) {
   useEffect(() => {
     const intervalId = setInterval(() => {
       fetchPrice();
-    }, 5000);
+    }, 1000);
     if (socket) {
       socket.emit("join-room", currentSymbol);
     }
@@ -125,6 +125,12 @@ export function StockPage({ socket }: Readonly<SocketProps>) {
     setShowSnackbar(true);
     setSnackbarMessage(message);
   };
+  /**
+   * Updates the transaction history based on the type of transaction and quantity.
+   *
+   * @param {string} typeOfTransaction - the type of transaction (e.g. "buy" or "sell")
+   * @param {number} quantity - the quantity of the transaction
+   */
   const historyUpdate = (typeOfTransaction: string, quantity: number) => {
     if (price !== null && quantity !== null) {
       console.log("price:", price, "quantity:", quantity);

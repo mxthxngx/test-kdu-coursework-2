@@ -13,6 +13,12 @@ export function Dashboard() {
   const isError = useSelector((state: RootState) => state.dashboard.error);
   const [activeTab, setActiveTab] = useState('explore');
 
+  /**
+   * Handles the click event for the tab.
+   *
+   * @param {string} tab - the tab that was clicked
+   * @return {void} 
+   */
   const handleTabClick = (tab: string) => {
     if (tab !== activeTab)
       setActiveTab(tab);
@@ -20,6 +26,12 @@ export function Dashboard() {
 
   const isExploreActive = activeTab === 'explore';
   const isWatchlistActive = activeTab === 'watchlist';
+  /**
+   * A function to handle the click event on a tab.
+   *
+   * @param {string} tab - the tab that was clicked
+   * @return {void} 
+   */
 
   const exploreTabStyle = {
     textDecoration: isExploreActive ? 'underline' : 'none',

@@ -218,6 +218,19 @@ export function MainPortfolio() {
       filterPassed: false,
       filterFailed: false,
     });
+    if(searchInputRef.current)
+    searchInputRef.current.value = "";
+    if(startDateRef.current)
+    startDateRef.current.value = "";
+    if(endDateRef.current)
+    endDateRef.current.value = "";
+    
+    if (passedCheckboxRef.current) {
+      passedCheckboxRef.current.checked = false;
+    }
+    if (failedCheckboxRef.current) {
+      failedCheckboxRef.current.checked = false;
+    }
   };
   return (
     <div>

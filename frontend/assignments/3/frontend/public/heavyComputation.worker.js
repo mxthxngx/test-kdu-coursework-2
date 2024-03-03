@@ -13,6 +13,12 @@ self.onmessage = (event) => {
       });
   };
   
+  /**
+   * Find the best time to buy and sell stocks based on the given data.
+   *
+   * @param {Array} data - the stock data to analyze
+   * @return {Array} an array of objects containing information about the best buy and sell dates, prices, and profits for each stock
+   */
   function findBestTimeToBuySell(data) {
     const results = [];
 

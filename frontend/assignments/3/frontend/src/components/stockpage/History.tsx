@@ -9,6 +9,12 @@ export function History() {
     const dispatch: AppDispatch = useDispatch();
     const history = useSelector((state: RootState) => state.price.history);
 
+    /**
+     * Formats a date string into a human-readable date format.
+     *
+     * @param {string} dateString - the date string to be formatted
+     * @return {string} the formatted date string
+     */
     const formatDate = (dateString: string) => {
         const options = { weekday: 'long', month: 'short', day: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' };
         const formattedDate = new Date(dateString).toLocaleDateString('en-US', options);

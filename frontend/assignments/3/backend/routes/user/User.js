@@ -17,12 +17,10 @@ router.post("/maketransaction", (req, res) => {
     const user = userData[userIndex];
     console.log("amount: ", amount, "stockname: ", stockname, "symbol: ", symbol, "basePrice: ", price, "date: ", date, "username: ", username, "wallet:")
     if (user.walletAmount < amount) {
-        // Check if transactionData[username] exists, if not, initialize it as an empty array
         if (!transactionData[username]) {
             transactionData[username] = [];
         }
 
-        // Push failed transaction details into the array
         transactionData[username].push({
             username: username,
             stockname: stockname,
@@ -36,15 +34,12 @@ router.post("/maketransaction", (req, res) => {
         return res.status(400).json({ error: 'Insufficient balance' });
     }
 
-    // Deduct amount from user's wallet
     userData[userIndex].walletAmount -= amount;
 
-    // Check if transactionData[username] exists, if not, initialize it as an empty array
     if (!transactionData[username]) {
         transactionData[username] = [];
     }
 
-    // Push successful transaction details into the array
     transactionData[username].push({
         username: username,
         stockname: stockname,

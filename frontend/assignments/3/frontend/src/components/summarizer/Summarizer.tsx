@@ -2,6 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import { Box, LinearProgress, Typography } from "@mui/material";
 import { FlexDivContainer } from "../utils/ui/layout/FlexDivContainer";
 
+/**
+ * Event handler for worker messages.
+ *
+ * @param {Event} event - the message event
+ * @return {void} 
+ */
 export function Summarizer() {
   const workerRef = useRef<Worker | null>(null);
   const [result, setResult] = useState<any>(null);
@@ -10,15 +16,27 @@ export function Summarizer() {
   useEffect(() => {
     workerRef.current = new Worker('heavyComputation.worker.js');
 
+    /**
+     * Event handler for worker messages.
+     *
+     * @param {Event} event - the message event
+     * @return {void} 
+     */
     workerRef.current.onmessage = (event) => {
       console.log(event.data);
       setResult(event.data);
-      setLoading(false); // Set loading to false when data arrives
+      setLoading(false); 
     };
 
+    /**
+     * Set up an error handler for the worker reference.
+     *
+     * @param {Event} event - the error event
+     * @return {void} 
+     */
     workerRef.current.onerror = (event) => {
       console.error(event);
-      setLoading(false); // Set loading to false in case of error
+      setLoading(false);
     };
 
     workerRef.current.postMessage({});

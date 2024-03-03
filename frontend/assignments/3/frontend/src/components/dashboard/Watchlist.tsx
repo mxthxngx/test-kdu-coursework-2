@@ -40,10 +40,22 @@ export function Watchlist() {
   const [currentPage, setCurrentPage] = React.useState(1); 
   const itemsPerPage = 5; 
 
+  /**
+   * Handles the hover event for the given index.
+   *
+   * @param {number | null} index - The index to be hovered over
+   * @return {void} 
+   */
   const handleHover = (index: number | null) => {
     setHoveredIndex(index); 
   };
 
+  /**
+   * Handles the removal of an item.
+   *
+   * @param {string} stockSymbol - the stock symbol to be removed
+   * @return {void} 
+   */
   const handleRemoveItem = (stockSymbol: string) => {
     dispatch(removeWatchlistItem(stockSymbol));
   };

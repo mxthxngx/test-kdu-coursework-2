@@ -2,7 +2,13 @@ const express = require('express');
 const router = express.Router();
 const transactionData = require('../../data/transactionData');
 
-// Define the filtering function
+/**
+ * Applies filters to the transactions based on the provided filter values.
+ *
+ * @param {Array} transactions - the array of transactions to be filtered
+ * @param {Object} filterValues - an object containing filter values like searchQuery, startDate, endDate, selectedStockNames, filterPassed, filterFailed
+ * @return {Array} - the filtered array of transactions
+ */
 const applyFilters = (transactions, filterValues) => {
     const { searchQuery, startDate, endDate, selectedStockNames, filterPassed, filterFailed } = filterValues;
 
@@ -28,38 +34,31 @@ const applyFilters = (transactions, filterValues) => {
     });
 };
 
-// Endpoint to apply filters to transactions
 router.post("/applyFilters", (req, res) => {
     const { username, filterValues } = req.body;
     console.log("applying filters", username, filterValues);
 
-    // Fetch transactions based on username
     const transactions = transactionData[username] || [];
 
-    // Apply filters to transactions
     const filteredTransactions = applyFilters(transactions, filterValues);
 
     res.json({ filteredTransactions });
 });
 
-// Endpoint to get transactions by username
 router.get("/get/:username", async (req, res) => {
     try {
         const { username } = req.params;
 
-        // Fetch data from the API
         const response = await fetch('https://kdu-automation.s3.ap-south-1.amazonaws.com/mini-project-apis/portfolio-transactions.json');
         if (!response.ok) {
             throw new Error('Error fetching from API', { cause: response });
         }
-        const apiTransactions = await response.json(); // Parse JSON response
+        const apiTransactions = await response.json(); 
 
-        // Initialize transactionData[username] if it doesn't exist
         if (!transactionData[username]) {
             transactionData[username] = [];
         }
 
-        // Process each transaction from API and update transactionData
         apiTransactions.forEach(transaction => {
             transactionData[username].push({
                 username: username,
@@ -71,10 +70,8 @@ router.get("/get/:username", async (req, res) => {
             });
         });
 
-        // Sort transactionData[username] based on the timestamp of transactions
         transactionData[username].sort((a, b) => new Date(b.date) - new Date(a.date));
 
-        // Respond with the updated transaction data
         res.status(200).json({ transactionData: transactionData[username] });
     } catch (error) {
         console.error('Error updating transactions:', error);

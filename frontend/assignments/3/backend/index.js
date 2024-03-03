@@ -7,7 +7,7 @@ const usernames  = require("./data/userData")
 
 app.use(express.json());
 app.use(cors({
-  origin: 'http://localhost:5173' // Allow requests from this origin
+  origin: 'http://localhost:5173' 
 }));
 
 const server = http.createServer(app);
@@ -23,7 +23,7 @@ app.use('/user',userAPI);
 app.use('/portfolio',portfolioAPI);
 const io = socketIO(server, {
   cors: {
-    origin: "http://localhost:5173", // Allow socket connection from this origin
+    origin: "http://localhost:5173", 
     methods: ["GET", "POST"]
   }
 });
@@ -52,14 +52,17 @@ socket.emit('username', username);
 server.listen(3000, () => {
   console.log("Listening on port 3000");
 });
-// TODO: MOVE THIS TO UTILS FOLDER
+/**
+ * Generates random user data including a username and wallet amount.
+ *
+ * @return {Object} An object containing the generated username and wallet amount
+ */
 function generateRandomUserData() {
   const adjectives = ['Red', 'Green', 'Blue', 'Yellow', 'Purple', 'Orange', 'Pink', 'Black', 'White'];
   const nouns = ['Apple', 'Banana', 'Cherry', 'Grape', 'Lemon', 'Orange', 'Peach', 'Pear', 'Strawberry'];
   const adjective = adjectives[Math.floor(Math.random() * adjectives.length)];
   const noun = nouns[Math.floor(Math.random() * nouns.length)];
   const username = `${adjective}${noun}`;
-  const walletAmount = Math.floor(Math.random() * 100000); // Generate random wallet amount
-
+  const walletAmount = Math.floor(Math.random() * 100000); 
   return { username, walletAmount };
 }
