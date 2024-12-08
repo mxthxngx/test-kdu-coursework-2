@@ -25,8 +25,6 @@ reviews:
     - "!**/*.svg" # Exclude markdown files
     - "!**/*.ts" # Exclude markdown files
 
-
-
   path_instructions:
     - path: "**/*.js"
       instructions: |
