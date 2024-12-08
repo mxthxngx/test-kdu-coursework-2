@@ -13,10 +13,10 @@ reviews:
     - path: "**/*.js"
       instructions: |
         Follow the best practices of JavaScript specifically nodejs.
-        
+
     - path: "src/dashboard/*.tsx"
       instructions: |
-       This will be the landing page for your users.
+        This will be the landing page for your users.
         The header contains a logo that, when clicked, redirects the user to the dashboard page, which serves as the home page of the application. Secondly it should contain the product name, Link to My Portfolio page and Link to Summarizer page.
         There should be two tabs present at the top, namely Explore and 'My WatchList'('Explore'should be active by default).
         On the Explore page the user will find a list of stocks - Users can add stocks to the watchlist by clicking on '+'icon present at the end of each row. 
@@ -29,9 +29,10 @@ reviews:
         A spinner should be shown when data is loading  on the dashboard page.
         The stocks should be listed in a sorted order based on the names of the stocks.
         The user should be able to search for a stock by typing the name of the stock in the search bar.
+
     - path: "src/portfolio/*.tsx"
       instructions: |
-         My Portfolio page:
+        My Portfolio page:
         On this particular page, all the transactions should be listed, whether the transaction is failed/successful.
         The transactions will be provided through an endpoint, you can use the data to render on UI. Also if user has some transactions data stored in-memory then render those as well. 
         The data should be rendered in reverse order, basically the latest date transactions should be at top and oldest date transactions should be at bottom.
@@ -51,7 +52,8 @@ reviews:
         The user should be able to clear all filters with the click of 'Clear All' button.
         If the transaction was successful then there should be a green dot at the end of the particular transaction row detail. Similarly, there should be a red dot at the end of failed transactions.
         If no transaction is present, an appropriate message should be shown at your convenience.
-      - path: "src/stockpage/*.tsx"
+
+    - path: "src/stockpage/*.tsx"
       instructions: |
         When the user taps/clicks on any stock on the dashboard, it'll redirect to the Stock page.
         Users should be able to buy/sell stocks based on his/her current available wallet balance.
@@ -68,7 +70,6 @@ reviews:
         The custom dropdown should be the same as the design provided, it should hold the stock name and its icon (Symbol).
         There should be a price indicator at top, where the current price, price change (In percentage) and an up/down arrow should be displayed accordingly.
         The 'Transaction History' and 'Live Notifications' on the Stock page should be sticky and have scrollbars if the content is overflowing the available height.
-
 
 chat:
   auto_reply: true
