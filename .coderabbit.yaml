@@ -11,7 +11,9 @@ reviews:
     drafts: false
   path_filters:
     - "**/*.js"  # Include all JavaScript files
-    - "**/*.tsx" # Include all TypeScript React files
+    - "src/dashboard/**/*.tsx" # Include all TypeScript React files
+    - "src/portfolio/**/*.tsx" # Include all TypeScript React files
+    - "src/stockpage/**/*.tsx" # Include all TypeScript React files
     - "!**/*.css" # Exclude all CSS files
     - "!**/*.html" # Exclude all HTML files
     - "!**/*.json" # Exclude all JSON files
