@@ -11,9 +11,9 @@ reviews:
     drafts: false
   path_filters:
     - "**/*.js"  # Include all JavaScript files
-    - "src/dashboard/**/*.tsx" # Include all TypeScript React files
-    - "src/portfolio/**/*.tsx" # Include all TypeScript React files
-    - "src/stockpage/**/*.tsx" # Include all TypeScript React files
+    - "**/src/dashboard/**/*.tsx" # Include all TypeScript React files
+    - "**/src/portfolio/**/*.tsx" # Include all TypeScript React files
+    - "**/src/stockpage/**/*.tsx" # Include all TypeScript React files
     - "!**/*.css" # Exclude all CSS files
     - "!**/*.html" # Exclude all HTML files
     - "!**/*.json" # Exclude all JSON files
@@ -32,7 +32,7 @@ reviews:
       instructions: |
         Follow the best practices of JavaScript specifically nodejs.
 
-    - path: "src/dashboard/**/*.tsx"
+    - path: "**/src/dashboard/**/*.tsx"
       instructions: |
         This will be the landing page for your users.
         The header contains a logo that, when clicked, redirects the user to the dashboard page, which serves as the home page of the application. Secondly, it should contain the product name, Link to My Portfolio page, and Link to Summarizer page.
@@ -48,7 +48,7 @@ reviews:
         The stocks should be listed in a sorted order based on the names of the stocks.
         The user should be able to search for a stock by typing the name of the stock in the search bar.
 
-    - path: "src/portfolio/**/*.tsx"
+    - path: "**/src/portfolio/**/*.tsx"
       instructions: |
         My Portfolio page:
         On this particular page, all the transactions should be listed, whether the transaction is failed/successful.
@@ -71,7 +71,7 @@ reviews:
         If the transaction was successful then there should be a green dot at the end of the particular transaction row detail. Similarly, there should be a red dot at the end of failed transactions.
         If no transaction is present, an appropriate message should be shown at your convenience.
 
-    - path: "src/stockpage/**/*.tsx"
+    - path: "**/src/stockpage/**/*.tsx"
       instructions: |
         When the user taps/clicks on any stock on the dashboard, it'll redirect to the Stock page.
         Users should be able to buy/sell stocks based on his/her current available wallet balance.
