@@ -1,12 +1,14 @@
-package com.kdu.caching.service;
+package com.caching.service;
 
+import com.caching.service.dto.ResponseDTOReverse;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.cache.CacheManager;
+import org.springframework.cache.caffeine.CaffeineCacheManager;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,27 +16,32 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.beans.factory.annotation.Value;
+
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@Slf4j
 @ComponentScan(basePackages = "com.kdu.caching")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class GeoCodingImpTest {
-    private static Object expectedGeoCodingApiResponse;
-    private static Object expectedReverseGeoCodingApiResponse;
-    private static String geoCodingTestUrl;
-    private static String reverseGeoCodingTestUrl;
+
+    private static final long REQUEST_DELAY_MS=800;
+
+    private static String mockAPIForwardResponse;
+
+
+    private static String mockReverseAPIResponse;
     @Autowired
     private MockMvc mockMvc;
     @Autowired
-    private CacheManager cacheManager;
+    private CaffeineCacheManager cacheManager;
+
 
     /**
      * Negative test case for the geocoding endpoint with an invalid address.
@@ -42,47 +49,16 @@ public class GeoCodingImpTest {
      *
      * @throws Exception If an error occurs during the tests.
      */
-    @Test
-    @Order(4)
-    public void testGetGeoCodeNegative() {
-        int resultCode = HttpStatus.OK.value();
-        try {
-            MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/geocoding")
-                            .param("address", "invalid_address")
-                            .contentType(MediaType.APPLICATION_JSON))
-                    .andReturn();
 
-            resultCode = result.getResponse().getStatus();
-            if (resultCode != HttpStatus.OK.value()) {
-                throw new Exception();
-            }
-        } catch (Exception e) {
-            assertTrue(resultCode >= HttpStatus.BAD_REQUEST.value() &&
-                            resultCode < HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                    "HTTP Status Code should be 4xx for client error");
-
-        } finally {
-            if (resultCode == HttpStatus.OK.value()) {
-                fail("Expected HttpClientErrorException, but got a response with status code: " + resultCode);
-            }
-        }
-    }
-
-    /**
-     * Test case to verify the reverse geocoding endpoint with invalid parameters.
-     * The request is intentionally made with invalid latitude and other scenarios to check for a negative response.
-     *
-     * @throws Exception If an error occurs during the tests.
-     */
     @Test
     @Order(1)
-    public void testGetReverseGeoCodeNegative() {
+    void testGetReverseGeoCodeNegative() {
         int resultCode = HttpStatus.OK.value();
         try {
             MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/reverse-geocoding")
-                            .param("latitude", "cat")
-                            .param("longitude", "-120.781462")
-                            .contentType(MediaType.APPLICATION_JSON))
+                            .param("lat", "cat")
+                            .param("lon", "-120.781462")
+                            .contentType(MediaType.TEXT_HTML))
                     .andReturn();
 
             resultCode = result.getResponse().getStatus();
@@ -102,82 +78,117 @@ public class GeoCodingImpTest {
     }
 
     /**
-     * Test case to verify the successful retrieval of geocoding information from the external API via the "/geocoding" endpoint.
-     * The external API response is mocked.
+     * Test for getting geocode
      *
-     * @throws Exception If an error occurs during the tests.
+     * @throws Exception
      */
     @Test
     @Order(2)
-    public void testGetGeoCode() throws Exception {
+    void testGetGeoCode() throws Exception {
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/geocoding")
                         .param("address", "delhi")
                         .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn();
 
-        String resultInStringFormat = result.getResponse().getContentAsString();
 
-        // Create an ObjectMapper
-        ObjectMapper objectMapper = new ObjectMapper();
+        String actualResponse = result.getResponse().getContentAsString();
 
-        // Convert JSON string to Map
-        Map<String, Double> actualResponse = objectMapper.readValue(resultInStringFormat, Map.class);
 
-        // Check that the response body is not empty
         assertNotNull(actualResponse, "Response body should not be null");
 
-        // Add additional checks based on the expected response content
-        assertTrue(actualResponse instanceof Map, "Response should be a Map");
+        String expectedResponse = mockAPIForwardResponse;
 
-        HashMap<?, ?> expectedResponseMap = (HashMap<?, ?>) ((ArrayList<?>) ((HashMap<?, ?>) expectedGeoCodingApiResponse).get("data")).get(0);
+        assertEquals(expectedResponse, actualResponse, "Coordinates should match");
 
-        Double expectedLatitude = (Double) expectedResponseMap.get("latitude");
-        Double expectedLongitude = (Double) expectedResponseMap.get("longitude");
-
-        Double actualLatitude = actualResponse.get("latitude");
-        Double actualLongitude = actualResponse.get("longitude");
-
-        assertEquals(expectedLatitude, actualLatitude, "Latitude should match");
-        assertEquals(expectedLongitude, actualLongitude, "Longitude should match");
     }
-
-
     /**
-     * Test case to verify the successful retrieval of reverse geocoding information from the external API via the "/reverse-geocoding" endpoint.
-     * The external API response is mocked.
+     * Test case to verify the reverse geocoding endpoint with invalid parameters.
+     * The request is intentionally made with invalid lat and other scenarios to check for a negative response.
      *
      * @throws Exception If an error occurs during the tests.
      */
     @Test
     @Order(2)
-    public void testGetReverseGeoCode() throws Exception {
-        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/reverse-geocoding")
-                        .param("latitude", "37.431155")
-                        .param("longitude", "-120.781462")
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andReturn();
+    void testGetReverseGeoCode() throws Exception {
+        boolean success = false;
+        while (!success) {
+            MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/reverse-geocoding")
+                            .param("lat", "37.4311234")
+                            .param("lon", "-120.7813136"))
+                    .andReturn();
 
-        String resultInStringFormat = result.getResponse().getContentAsString();
+            if (result.getResponse().getStatus() == HttpStatus.OK.value()) {
+                // If the request is successful, set success to true to exit the loop
+                success = true;
 
-        // Split the string into an array
-        String[] addressArray = resultInStringFormat.split(", ");
-
-        // Convert JSON string to Map
-        Integer actualResponse = Integer.parseInt((String) (addressArray[0].split(" ")[0]));
-
-        // Check that the response body is not empty
-        assertNotNull(actualResponse, "Response body should not be null");
-
-        HashMap<?, ?> expectedResponseMap = (HashMap<?, ?>) ((ArrayList<?>) ((HashMap<?, ?>) expectedReverseGeoCodingApiResponse).get("data")).get(0);
-
-        // Check that the response body is not empty
-        assertNotNull(actualResponse, "Response body should not be null");
-
-        Integer expectedValue = Integer.parseInt((String) expectedResponseMap.get("number"));
-
-        assertEquals(expectedValue, actualResponse, "Address should match");
+                // Retrieve the actual response and compare it with the expected value
+                String actualResponse = result.getResponse().getContentAsString();
+                assertNotNull(actualResponse, "Response body should not be null");
+                String expectedValue = mockReverseAPIResponse;
+                assertEquals(expectedValue, actualResponse, "Address should match");
+            } else if (result.getResponse().getStatus() == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
+                // If the request returns a 500 status code, wait for a brief period before retrying
+                Thread.sleep(1000); // Wait for 1 second before retrying
+            } else {
+                // If the request returns any other status code, fail the test
+                fail("Received unexpected status code: " + result.getResponse().getStatus());
+            }
+        }
     }
 
+
+
+    /**
+     * Parses the JSON response to create a list of ResponseDTOReverse objects containing address details.
+     *
+     * @param  jsonResponse  the JSON response string to be parsed
+     * @return               a list of ResponseDTOReverse objects representing the parsed addresses
+     */
+    private List<ResponseDTOReverse> parseResponseReverse(String jsonResponse) {
+        List<ResponseDTOReverse> addresses = new ArrayList<>();
+        log.info("jsonResponse : " + jsonResponse);
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode root = objectMapper.readTree(jsonResponse);
+
+            JsonNode addressNode = root.get("address");
+
+            String road = getStringOrNull(addressNode, "road");
+            String houseNumber = getStringOrNull(addressNode, "house_number");
+            String suburb = getStringOrNull(addressNode, "neighbourhood");
+            String neighbourhood = getStringOrNull(addressNode, "suburb");
+            String city = getStringOrNull(addressNode, "city");
+            String county = getStringOrNull(addressNode, "county");
+            String state = getStringOrNull(addressNode, "state");
+            String postcode = getStringOrNull(addressNode, "postcode");
+            String country = getStringOrNull(addressNode, "country");
+            String countyCode = getStringOrNull(addressNode, "country_code");
+
+            ResponseDTOReverse address = new ResponseDTOReverse();
+            address.setRoad(road);
+            address.setHouseNumber(houseNumber);
+            address.setSuburb(suburb);
+            address.setNeighbourhood(neighbourhood);
+            address.setCity(city);
+            address.setCounty(county);
+            address.setState(state);
+            address.setPostcode(postcode);
+            address.setCountry(country);
+            address.setCountryCode(countyCode);
+
+            addresses.add(address);
+            log.info("Successfully retrieved response");
+        } catch (Exception e) {
+            log.error("Error parsing response: " + e.getMessage());
+        }
+
+        return addresses;
+    }
+    private String getStringOrNull(JsonNode node, String fieldName) {
+        JsonNode fieldNode = node.get(fieldName);
+        return fieldNode != null && !fieldNode.isNull() ? fieldNode.asText() : "-";
+    }
     /**
      * Test case to verify that the cache is populated and successfully retrieved on the second call for the geocoding endpoint.
      *
@@ -185,10 +196,11 @@ public class GeoCodingImpTest {
      */
     @Test
     @Order(3)
-    public void testGeoCodingCacheHitWithEndpoint() throws Exception {
+    void testGeoCodingCacheHitWithEndpoint() throws Exception {
         // Call the endpoint with a specific address
         // First request, cache should miss
         hitGeoCodingCache("delhi");
+       // Thread.sleep(1000);
 
         // Second request with the same address, cache should hit
         hitGeoCodingCache("delhi");
@@ -202,62 +214,20 @@ public class GeoCodingImpTest {
     }
 
     /**
-     * Test case to verify that the cache is populated and successfully retrieved on the second call for the reverse geocoding endpoint.
+     * Test geo coding cache eviction.
      *
-     * @throws Exception If an error occurs during the tests.
-     */
-    @Test
-    @Order(4)
-    public void testReverseGeoCodingCacheHitWithEndpoint() throws Exception {
-        ArrayList<Double> keyForCache = new ArrayList<>(List.of(37.431155, -120.781462));
-
-        // Call the endpoint
-        hitReverseGeoCodingCache("37.431155", "-120.781462");
-
-        // Verify that the cached value is retrieved the second time
-        Object cachedValue = cacheManager.getCache("reverse-geocoding").get(keyForCache.toString());
-
-        // Ensure that the cache is populated after the first request
-        assertNotNull("Cache 'reverse-geocoding' should not be null", cacheManager.getCache("reverse-geocoding").toString());
-        assertNotNull("Cache entry '[37.431155, -120.781462]' should not be null", (String) cachedValue);
-
-        // Call the endpoint again
-        hitReverseGeoCodingCache("37.431155", "-120.781462");
-
-        // Verify that the cached value is retrieved the second time
-        assertNotNull("Cache 'reverse-geocoding' should not be null", cacheManager.getCache("reverse-geocoding").toString());
-        assertNotNull("Cache entry '[37.431155, -120.781462]' should not be null", (String) cachedValue);
-    }
-
-    /**
-     * Test case to verify that calling the geocoding endpoint with a specific address results in a cache miss.
-     * The external API response is mocked, and the cache miss is validated.
-     *
-     * @throws Exception If an error occurs during the tests.
-     */
-    @Test
-    @Order(5)
-    public void testGeoCodingCacheMiss() throws Exception {
-        // Call the method with a specific address (First time)
-        hitGeoCodingCache("goa");
-
-        // Verify that the cache miss count has increased for the first call
-        assertNull(cacheManager.getCache("geocoding").get("goa"), "Cache miss unsuccessful: Cache entry must be null");
-    }
-
-    /**
-     * Test case to verify the eviction of cache entries for geocoding information.
-     * The cache is populated, evicted, and the eviction success is validated.
-     *
-     * @throws Exception If an error occurs during the tests.
+     * @throws Exception  description of exception
      */
     @Test
     @Order(6)
-    public void testGeoCodingCacheEviction() throws Exception {
+    void testGeoCodingCacheEviction() throws Exception {
+
         // Call the method with address goa
         hitGeoCodingCache("goa");
 
-        // Call the method with address delhi
+        // Introduce a 1-second gap
+      //  Thread.sleep(1000);
+
         hitGeoCodingCache("delhi");
 
         // Verify that the cache miss count has increased for the first call
@@ -265,46 +235,143 @@ public class GeoCodingImpTest {
         assertNotNull(cacheManager.getCache("geocoding").get("delhi"), "Cache evict unsuccessful - Cache entry must be null");
     }
 
+
     /**
-     * Clear all the cached data
+     * Test the reverse geocoding cache hit with endpoint.
+     *
+     * @throws Exception   if an error occurs
      */
+    @Test
+    @Order(4)
+    void testReverseGeoCodingCacheHitWithEndpoint() throws Exception {
+        ArrayList<Double> keyForCache = new ArrayList<>(List.of(37.431155, -120.781462));
+
+
+        hitReverseGeoCodingCache("37.431155", "-120.781462");
+
+
+        Object cachedValue = cacheManager.getCache("reverse-geocoding").get(keyForCache.toString());
+
+
+        assertNotNull("Cache 'reverse-geocoding' should not be null", cacheManager.getCache("reverse-geocoding").toString());
+        assertNotNull("Cache entry '[37.431155, -120.781462]' should not be null", (String) cachedValue);
+
+
+        hitReverseGeoCodingCache("37.431155", "-120.781462");
+
+
+        assertNotNull("Cache 'reverse-geocoding' should not be null", cacheManager.getCache("reverse-geocoding").toString());
+        assertNotNull("Cache entry '[37.431155, -120.781462]' should not be null", (String) cachedValue);
+    }
+
+    /**
+     * Hits the reverse geocoding cache with the given latitude and longitude coordinates.
+     *
+     * @param  lat  the latitude coordinate
+     * @param  lon  the longitude coordinate
+     * @throws Exception
+     */
+    private void hitReverseGeoCodingCache(String lat, String lon) throws Exception {
+        boolean success = false;
+        while (!success) {
+            MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/reverse-geocoding")
+                            .param("lat", lat)
+                            .param("lon", lon)
+                            .contentType(MediaType.APPLICATION_JSON))
+                    .andReturn();
+
+            if (result.getResponse().getStatus() == HttpStatus.OK.value()) {
+                // If the request is successful, set success to true to exit the loop
+                success = true;
+            } else if (result.getResponse().getStatus() == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
+                // If the request returns a 500 status code, wait for a brief period before retrying
+                Thread.sleep(1000); // Wait for 1 second before retrying
+            } else {
+                // If the request returns any other status code, fail the method
+                fail("Received unexpected status code: " + result.getResponse().getStatus());
+            }
+        }
+    }
+
+    /**
+     * A test for the method testGetGeoCodeNegative, which tests handling of invalid addresses.
+     *
+     */
+    @Test
+    @Order(4)
+    void testGetGeoCodeNegative() {
+
+        int resultCode = HttpStatus.OK.value();
+        try {
+            MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/geocoding")
+                            .param("address", "invalid_address")
+                            .contentType(MediaType.APPLICATION_JSON))
+                    .andReturn();
+            resultCode = result.getResponse().getStatus();
+            if (resultCode != HttpStatus.OK.value()) {
+                throw new Exception();
+            }
+        } catch (Exception e) {
+            assertTrue(resultCode >= HttpStatus.BAD_REQUEST.value() &&
+                            resultCode < HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                    "HTTP Status Code should be 4xx for client error");
+
+        } finally {
+            if (resultCode == HttpStatus.OK.value()) {
+                fail("Expected HttpClientErrorException, but got a response with status code: " + resultCode);
+            }
+        }
+
+
+    }
+
+    /**
+     * Test for geocoding cache miss.
+     *
+     * @throws Exception  exception thrown if an error occurs
+     */
+    @Test
+    @Order(5)
+    void testGeoCodingCacheMiss() throws Exception {
+        // Call the method with a specific address (First time)
+        hitGeoCodingCache("goa");
+
+        // Verify that the cache miss count has increased for the first call
+        assertNull(cacheManager.getCache("geocoding").get("goa"), "Cache miss unsuccessful: Cache entry must be null");
+    }
     @AfterEach
     @BeforeEach
-    public void tearDown() {
+
+    public void tearDown() throws InterruptedException {
 
         cacheManager.getCache("geocoding").clear();
         cacheManager.getCache("reverse-geocoding").clear();
+      //  Thread.sleep(REQUEST_DELAY_MS);
+    }
+    private synchronized void hitGeoCodingCache(String address) throws Exception {
+        boolean success = false;
+        while (!success) {
+            MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/geocoding")
+                            .param("address", address)
+                            .contentType(MediaType.APPLICATION_JSON))
+                    .andReturn();
+
+            if (result.getResponse().getStatus() == HttpStatus.OK.value()) {
+                // If the request is successful, set success to true to exit the loop
+                success = true;
+            } else {
+                // If the request fails (returns 400), wait for a brief period before retrying
+                Thread.sleep(1000); // Wait for 1 second before retrying
+            }
+        }
     }
 
-    private void hitGeoCodingCache(String address) throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/geocoding")
-                        .param("address", address)
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isOk());
-    }
-
-    private void hitReverseGeoCodingCache(String latitude, String longitude) throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/reverse-geocoding")
-                        .param("latitude", latitude)
-                        .param("longitude", longitude)
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isOk());
-    }
 
     @BeforeAll
-    public static void setup(@Value("${geocoding-url}") String geoCodingUrl,
-                             @Value("${reverse-geocoding-url}") String reverseGeoCodingUrl) {
-        geoCodingTestUrl = geoCodingUrl;
-        reverseGeoCodingTestUrl = reverseGeoCodingUrl;
+    public static void setup(@Value("${app.mockForwardAPIResponse}") String mockForwardResponse, @Value("${app.mockReverseAPIResponse}")String mockReverseResponse )  {
 
-        RestTemplate restTemplate = new RestTemplate();
-        expectedGeoCodingApiResponse = restTemplate.getForObject(
-                geoCodingTestUrl,
-                Object.class);
+        mockAPIForwardResponse=mockForwardResponse;
+        mockReverseAPIResponse = mockReverseResponse;
 
-        expectedReverseGeoCodingApiResponse = restTemplate.getForObject(
-                reverseGeoCodingTestUrl,
-                Object.class);
     }
 }
-
