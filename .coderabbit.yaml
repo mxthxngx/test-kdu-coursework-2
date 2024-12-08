@@ -1,0 +1,75 @@
+language: "en-US"
+early_access: false
+reviews:
+  profile: "assertive"
+  request_changes_workflow: false
+  high_level_summary: true
+  review_status: true
+  collapse_walkthrough: false
+  auto_review:
+    enabled: true
+    drafts: false
+  path_instructions:
+    - path: "**/*.js"
+      instructions: |
+        Follow the best practices of JavaScript specifically nodejs.
+
+    - path: "src/dashboard/*.tsx"
+      instructions: |
+        This will be the landing page for your users.
+        The header contains a logo that, when clicked, redirects the user to the dashboard page, which serves as the home page of the application. Secondly it should contain the product name, Link to My Portfolio page and Link to Summarizer page.
+        There should be two tabs present at the top, namely Explore and 'My WatchList'('Explore'should be active by default).
+        On the Explore page the user will find a list of stocks - Users can add stocks to the watchlist by clicking on '+'icon present at the end of each row. 
+        If a stock is already added to the watchlist and the user wants to remove it, then on hover a 'x'icon (Refer design for better understanding) should appear, on click of that the stock should be removed from watchlist.
+        On the Watchlist page the user will find the list of stocks added to watchlist, the user should be able to remove any stocks by clicking on 'x'button which appears on hover of tick mark (Refer design).
+        Users should be able to add stocks to his/her watchlist (Favorites).
+        If users want to visit the favorites, they can refer to the 'My WatchList'tab.
+        Users should be able to click on a particular stock to track it in detail.
+        There should be a pagination at the bottom of the Explore and Watchlist pages, design a pagination as shown in Excalidraw designs.
+        A spinner should be shown when data is loading  on the dashboard page.
+        The stocks should be listed in a sorted order based on the names of the stocks.
+        The user should be able to search for a stock by typing the name of the stock in the search bar.
+
+    - path: "src/portfolio/*.tsx"
+      instructions: |
+        My Portfolio page:
+        On this particular page, all the transactions should be listed, whether the transaction is failed/successful.
+        The transactions will be provided through an endpoint, you can use the data to render on UI. Also if user has some transactions data stored in-memory then render those as well. 
+        The data should be rendered in reverse order, basically the latest date transactions should be at top and oldest date transactions should be at bottom.
+        The transactions should be listed in such a way that the transactions done on the same day should lie under the same date. Refer design for clear visibility.
+        There should be an input field at the top, using which users can filter different transactions. Note- If a user types a stock name/symbol then transactions should be filtered based on the stock name/symbol.
+        You should handle it dynamically, whether user is typing stock name / stock symbol the results should be filtered accordingly.
+        The complete filter section should be sticky at the same position, if content overflows it should have its scrollbar.
+        A spinner should be shown when data is loading/filtering on the portfolio page.
+        There should be two types of checkbox filters
+        A checkbox filter using which users can filter transactions based on their states i.e. failed/passed.
+        Another checkbox filter should have stock names listed, the selected stocks should have their names as bold and the other stock cards should have an overall opacity of 0.7
+        There should be a date filter to filter the transactions between the start date and the end date. The following are the scenarios-
+        If the user selects a start date, the transactions should be filtered based on the selected date. Example - User selects 18-Feb, then transaction from 18-Feb (Including) to present date should be shown.
+        If the user selects an end date, the transactions should be filtered based on the selected date. Example - User selects 18-Feb, then transaction before 18-Feb (Including) should be shown.
+        If the user selects both the start and end date, the transactions should be filtered based on the selected date. Example - User selects 18-Feb as start date and 21-Feb as end date, then transaction from 18-Feb (Including) to 21-Feb (Including) should be shown.
+        Note- There can be a scenario where the user selects the start and end date as the same. Assume the user will always select a start date as less than the end date.
+        The user should be able to clear all filters with the click of 'Clear All' button.
+        If the transaction was successful then there should be a green dot at the end of the particular transaction row detail. Similarly, there should be a red dot at the end of failed transactions.
+        If no transaction is present, an appropriate message should be shown at your convenience.
+
+    - path: "src/stockpage/*.tsx"
+      instructions: |
+        When the user taps/clicks on any stock on the dashboard, it'll redirect to the Stock page.
+        Users should be able to buy/sell stocks based on his/her current available wallet balance.
+        Initially users have 0 stocks.
+        Consider a default wallet balance, to buy stocks - If a user tries to buy a stock and he/she doesn't have enough balance then consider it as a failed transaction.
+        Users should be able to view their transaction history related to all stocks in the history tab on the right side.
+        Here all the successful user transactions will appear. 
+        You'll be provided with a set of transactions for My Portfolio page and you need to keep appending the user transactions in-memory. Later show the complete data on My Portfolio page i.e. The in-memory stored transactions as well as set of transactions provided through API.
+        Users should be able to view all the live notifications occurring on a particular stock dashboard. Suppose the user is on the 'ZOMATO' stock page, then all transactions(BUY/SELL) occurring related to this stock should be visible to the user. Refer design for a clear understanding.
+        The stock price change should be reflected on the stock page, depending on the change i.e. Green/Red if the change is positive/negative respectively.
+        Note- You can have setInterval on the client side only. No need to receive pings from the server end.
+        The user should be able to switch between different stocks from the top dropdown. The drop down should have at max 5 stocks visible, if the number of stocks is more than 5, then there should be a scrollbar present inside the dropdown.
+        For each stock the symbol should appear at the place of icon, refer design for clear understanding.
+        The custom dropdown should be the same as the design provided, it should hold the stock name and its icon (Symbol).
+        There should be a price indicator at top, where the current price, price change (In percentage) and an up/down arrow should be displayed accordingly.
+        The 'Transaction History' and 'Live Notifications' on the Stock page should be sticky and have scrollbars if the content is overflowing the available height.
+
+chat:
+  auto_reply: true
