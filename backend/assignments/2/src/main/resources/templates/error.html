@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'SF Pro Display', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #222; /* Dark background color */
+            color: #ddd;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #333; /* Dark container background color */
+            border-radius: 20px; /* Rounded border */
+            border: 1px solid #555; /* Dark border color */
+            text-align: center; /* Center content horizontally */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Add box shadow for depth */
+        }
+
+        h1 {
+            color: #ddd; /* Light heading color */
+        }
+
+        p {
+            color: #aaa; /* Light paragraph color */
+            margin-top: 20px;
+        }
+
+        img {
+            margin-top: 20px; /* Add space between text and image */
+            max-width: 100%; /* Make sure the image doesn't exceed container width */
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <div th:switch="${status}">
+        <p th:case="'404'">The resource you requested was not found.</p>
+        <p th:case="'500'">An internal server error occurred. Please try again later.</p>
+        <p th:case="*">
+            <!-- Display the error message from the controller -->
+            <span th:text="${message}"></span>
+            Please try again later.
+        </p>
+    </div>
+    <img src="https://cdn.wallpapersafari.com/34/82/YRzXPk.jpeg" alt="Error Image" />
+</div>
+</body>
+
+</html>
