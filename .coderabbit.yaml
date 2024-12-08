@@ -24,7 +24,7 @@ reviews:
     - "!**/*.gitignore" # Exclude markdown files
     - "!**/*.svg" # Exclude markdown files
     - "!**/*.ts" # Exclude markdown files
-
+    - "!**/*.config.js" # Exclude markdown files
   path_instructions:
     - path: "**/*.js"
       instructions: |
