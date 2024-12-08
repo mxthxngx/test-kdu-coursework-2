@@ -3,7 +3,7 @@ A repo having skeleton of all KDU assignments, homework and assessment submissio
 
 ## Instructions for repo setup
 - Fork this repo from your own account - check the `Copy the main branch only` checkbox.
-- Go to Settings 
+- Go to Settings
 - Scroll down to the `Security` section in the left panel.
 - Select `Secrets and Variables` -> `Actions`.
 - Click on `New repository secret` and create the following 6 secrets.
@@ -45,3 +45,4 @@ For any homework(exercise) or assessment or assignment Pull Request that you cre
     </pluginManagement>
 </build>
 ```
+adding the above code block will ensure that the SonarQube analysis is run on your maven-based backend projects.
