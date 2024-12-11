@@ -1,11 +1,6 @@
 language: "en-US"
 early_access: false
-tone_instructions: >
-  Talk like the senior software engineer of Google, who is reviewing the PR of a junior developer who is just starting his career.
-  The problem being solved is to design a Crypto Trading Application. In the crypto market, there are a lot of coins that have been
-  listed, and operations like updatePrice, buy, sell, and increaseVolume can be performed on them. Traders buy and sell coins on a
-  daily basis and maintain a portfolio of every coin they own. Design a system with appropriate models to represent the data and 
-  improve data querying.
+tone_instructions: 'Review the PR as a senior software engineer at Google. The task is to design a Crypto Trading Application with operations like updatePrice, buy, sell, and increaseVolume. Ensure proper data models and efficient querying. Provide a score out of 10.'
 reviews:
   profile: "chill"
   request_changes_workflow: false
@@ -17,51 +12,47 @@ reviews:
     enabled: true
     drafts: false
   path_filters:
-    - "**/*.js"    # Include all JavaScript files
-    - "!**/*.tsx"  # Exclude all TypeScript React files
-    - "!**/*.css"  # Exclude all CSS files
+    - "**/*.js"  # Include all JavaScript files
+    - "!**/*.tsx" # Include all TypeScript React files
+    - "!**/*.css" # Exclude all CSS files
     - "!**/*.html" # Exclude all HTML files
     - "!**/*.json" # Exclude all JSON files
-    - "!**/*.md"   # Exclude markdown files
-    - "!**/*.yml"  # Exclude YAML files
-    - "**/*.java"  # Include Java files    
-    - "!dist/**"   # Exclude everything in the dist folder
+    - "!**/*.md" # Exclude markdown files
+    - "!**/*.yml" # Exclude markdown files
+    - "**/*.java" # Exclude markdown files    
+    - "!dist/**"  # Exclude everything in the dist folder
     - "!node_modules/**"  # Exclude node_modules folder
-    - "!**/*.xml"  # Exclude XML files
-    - "!**/*.gitignore" # Exclude .gitignore files
-    - "!**/*.svg"  # Exclude SVG files
-    - "!**/*.ts"   # Exclude TypeScript files
-    - "!**/*.config.js" # Exclude config.js files
+    - "!**/*.xml" # Exclude markdown files
+    - "!**/*.gitignore" # Exclude markdown files
+    - "!**/*.svg" # Exclude markdown files
+    - "!**/*.ts" # Exclude markdown files
+    - "!**/*.config.js" # Exclude markdown files
   path_instructions:
     - path: "**/*.java"
       instructions: |
-        Your program must follow the following flow:
+        Your program must follow the following flow.
         1. On load, data from the CSV files must be loaded into the memory.
         2. Load the specified JSON file containing transaction data into the memory.
         3. A thread pool must be created to process the transactions where each transaction is
-           processed by a separate thread to improve the efficiency of the system.
-        4. Keep in mind that every transaction must be thread-safe to ensure data integrity.
-
-        In addition to the flow, your program should also have the following helper functions:
+        processed by a separate thread to improve the efficiency of the system.
+        4. Keep in mind that every transaction must be thread-safe to ensure data integrity,
+        In addition to the flow, your program should also have following helper functions-
         a. Given the name or code of a coin, retrieve all its details.
         b. Display top N coins in the market based on price.
-        c. For a given trader, show their portfolio.
+        c. For a given trader, show his portfolio.
         d. For a given trader, display the total profit or loss they have made trading in the
-           crypto market.
-        e. Show the top 5 and bottom 5 traders based on their profit/loss.
-
-        Note: Show the best usage of Java stream processing for these helper functions.
-
-        The following constraints must be kept in mind:
+        crypto market.
+        e. Show top 5 and bottom 5 traders based on their profit/loss.
+        Note- Show the best usage of Java stream processing for these helper functions.
+        The following constraints must be kept in mind
         1. The volume of coins available for trade should never go below zero or exceed the
-           maximum value.
+        maximum value.
         2. If at any point, a BUY request is made where the number of coins available is less than
-           the requested amount, the BUY request must transition to a pending state where it will
-           wait for another trader to SELL their coins or wait for the volume to be increased.
+        the requested amount, the BUY request must transition to a pending state where it will
+        wait for another trader to SELL their coins or wait for the volume to be increased.
         3. Ensure that a user is only allowed to SELL coins that they have previously bought.
-
         Since cryptocurrency transactions are compute-heavy, where for every transaction a block hash
-        must be generated and stored, simulate this behavior using the method provided below to
+        must be generated and stored,  to simulate this behavior use the method provided below to
         generate a random transaction hashcode.
 
 chat:
