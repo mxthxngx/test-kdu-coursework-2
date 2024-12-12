@@ -1,0 +1,56 @@
+language: "en-US"
+early_access: false
+tone_instructions: 'Review the PR as a senior software engineer. Evaluate code structure, efficiency, and correctness of user permission management. Ensure proper null checks, error handling, and use of appropriate data structures. Provide a score out of 10.'
+reviews:
+  profile: "chill"
+  request_changes_workflow: false
+  high_level_summary: true
+  review_status: true
+  collapse_walkthrough: false
+  sequence_diagrams: false
+  auto_review:
+    enabled: true
+    drafts: false
+  path_filters:
+    - "**/*.java"  # Include all Java files
+    - "!dist/**"  # Exclude everything in the dist folder
+    - "!node_modules/**"  # Exclude node_modules folder
+    - "!**/*.js"  # Exclude JavaScript files
+    - "!**/*.tsx" # Exclude TypeScript React files
+    - "!**/*.css"  # Exclude CSS files
+    - "!**/*.html"  # Exclude HTML files
+    - "!**/*.json"  # Exclude JSON files
+    - "!**/*.md"  # Exclude markdown files
+    - "!**/*.yml"  # Exclude YAML files
+    - "!**/*.xml"  # Exclude XML files
+    - "!**/*.gitignore"  # Exclude .gitignore files
+    - "!**/*.svg"  # Exclude SVG files
+    - "!**/*.ts"  # Exclude TypeScript files
+    - "!**/*.config.js" # Exclude configuration files
+  path_instructions:
+    - path: "**/*.java"
+      instructions: |
+        Your program must follow these guidelines:
+        
+        1. Ensure efficient handling of user permissions using appropriate data structures.
+        2. Validate user IDs and permissions to avoid null pointer exceptions.
+        3. Use optimized methods for operations like checking permissions and fetching all permissions.
+        4. Implement proper synchronization if this code will be used in a multithreaded environment.
+        
+        **Key Functional Requirements**:
+        a. Allow adding a permission to a user.
+        b. Support checking if a user has a specific permission.
+        c. Enable removing a specific permission for a user.
+        d. Provide a way to clear all permissions for a given user.
+        e. Retrieve all permissions across all users.
+
+        **Constraints**:
+        1. Minimize redundant operations while handling permissions.
+        2. Ensure there are no duplicate permissions stored for a user.
+        3. Handle edge cases where user IDs or permissions might be invalid or missing.
+
+        **Review Focus**:
+        - Code readability and maintainability.
+        - Proper null and error handling.
+        - Efficiency of data structure usage.
+        - Scalability for scenarios with a large number of users and permissions.
