@@ -1,59 +1,56 @@
 language: "en-US"
 early_access: false
-tone_instructions: 'Review the PR as a senior software engineer at Google. The task is to design a Crypto Trading Application with operations like updatePrice, buy, sell, and increaseVolume. Ensure proper data models and efficient querying. Provide a score out of 10.'
+tone_instructions: 'Review the PR as a senior software engineer at Google. The task is to design a user management system with operations to add, remove, and check permissions for users. Ensure efficient data structures, proper null checks, and minimal redundancy. Provide a score out of 10.'
 reviews:
   profile: "chill"
   request_changes_workflow: false
   high_level_summary: true
   review_status: true
   collapse_walkthrough: false
-  sequence_diagrams: true
+  sequence_diagrams: false
   auto_review:
     enabled: true
     drafts: false
   path_filters:
-    - "**/*.js"  # Include all JavaScript files
-    - "!**/*.tsx" # Include all TypeScript React files
-    - "!**/*.css" # Exclude all CSS files
-    - "!**/*.html" # Exclude all HTML files
-    - "!**/*.json" # Exclude all JSON files
-    - "!**/*.md" # Exclude markdown files
-    - "!**/*.yml" # Exclude markdown files
-    - "**/*.java" # Exclude markdown files    
+    - "**/*.java"  # Include all Java files
     - "!dist/**"  # Exclude everything in the dist folder
     - "!node_modules/**"  # Exclude node_modules folder
-    - "!**/*.xml" # Exclude markdown files
-    - "!**/*.gitignore" # Exclude markdown files
-    - "!**/*.svg" # Exclude markdown files
-    - "!**/*.ts" # Exclude markdown files
-    - "!**/*.config.js" # Exclude markdown files
+    - "!**/*.js"  # Exclude JavaScript files
+    - "!**/*.tsx" # Exclude TypeScript React files
+    - "!**/*.css"  # Exclude CSS files
+    - "!**/*.html"  # Exclude HTML files
+    - "!**/*.json"  # Exclude JSON files
+    - "!**/*.md"  # Exclude markdown files
+    - "!**/*.yml"  # Exclude YAML files
+    - "!**/*.xml"  # Exclude XML files
+    - "!**/*.gitignore"  # Exclude .gitignore files
+    - "!**/*.svg"  # Exclude SVG files
+    - "!**/*.ts"  # Exclude TypeScript files
+    - "!**/*.config.js" # Exclude configuration files
   path_instructions:
     - path: "**/*.java"
       instructions: |
-        Your program must follow the following flow.
-        1. On load, data from the CSV files must be loaded into the memory.
-        2. Load the specified JSON file containing transaction data into the memory.
-        3. A thread pool must be created to process the transactions where each transaction is
-        processed by a separate thread to improve the efficiency of the system.
-        4. Keep in mind that every transaction must be thread-safe to ensure data integrity,
-        In addition to the flow, your program should also have following helper functions-
-        a. Given the name or code of a coin, retrieve all its details.
-        b. Display top N coins in the market based on price.
-        c. For a given trader, show his portfolio.
-        d. For a given trader, display the total profit or loss they have made trading in the
-        crypto market.
-        e. Show top 5 and bottom 5 traders based on their profit/loss.
-        Note- Show the best usage of Java stream processing for these helper functions.
-        The following constraints must be kept in mind
-        1. The volume of coins available for trade should never go below zero or exceed the
-        maximum value.
-        2. If at any point, a BUY request is made where the number of coins available is less than
-        the requested amount, the BUY request must transition to a pending state where it will
-        wait for another trader to SELL their coins or wait for the volume to be increased.
-        3. Ensure that a user is only allowed to SELL coins that they have previously bought.
-        Since cryptocurrency transactions are compute-heavy, where for every transaction a block hash
-        must be generated and stored,  to simulate this behavior use the method provided below to
-        generate a random transaction hashcode.
+        Your program must follow these guidelines:
+        
+        1. Ensure efficient handling of user permissions using appropriate data structures.
+        2. Validate user IDs and permissions to avoid null pointer exceptions.
+        3. Use optimized methods for operations like checking permissions and fetching all permissions.
+        4. Implement proper synchronization if this code will be used in a multithreaded environment.
+        
+        **Key Functional Requirements**:
+        a. Allow adding a permission to a user.
+        b. Support checking if a user has a specific permission.
+        c. Enable removing a specific permission for a user.
+        d. Provide a way to clear all permissions for a given user.
+        e. Retrieve all permissions across all users.
 
-chat:
-  auto_reply: true
+        **Constraints**:
+        1. Minimize redundant operations while handling permissions.
+        2. Ensure there are no duplicate permissions stored for a user.
+        3. Handle edge cases where user IDs or permissions might be invalid or missing.
+
+        **Review Focus**:
+        - Code readability and maintainability.
+        - Proper null and error handling.
+        - Efficiency of data structure usage.
+        - Scalability for scenarios with a large number of users and permissions.
