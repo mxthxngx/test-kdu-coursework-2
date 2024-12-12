@@ -1,6 +1,6 @@
 language: "en-US"
 early_access: false
-tone_instructions: 'Review the PR as a senior software engineer at Google. The task is to design a user management system with operations to add, remove, and check permissions for users. Ensure efficient data structures, proper null checks, and minimal redundancy. Provide a score out of 10.'
+tone_instructions: 'Review the PR as a senior software engineer. Evaluate code structure, efficiency, and correctness of user permission management. Ensure proper null checks, error handling, and use of appropriate data structures. Provide a score out of 10.'
 reviews:
   profile: "chill"
   request_changes_workflow: false
